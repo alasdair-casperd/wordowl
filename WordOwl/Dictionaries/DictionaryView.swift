@@ -11,16 +11,22 @@ struct DictionaryView: View {
         
     var dictionary: Dictionary
         
+    private let maxLength = 200
+    
     var body: some View {
         Form {
             Section(header: Text("Dictionary Details")) {
                 DetailsPair(parameter: "Name", value: dictionary.name)
-                DetailsPair(parameter: "Words", value: "\(dictionary.words.count)")
+                DetailsPair(parameter: "Words", value: "\(dictionary.words.count)")                
             }
             
-            Section(header: Text("Dictionary Contents")) {
-                ForEach(dictionary.words, id: \.self) {word in
+            Section(header: Text("Dictionary Contents"), footer: Text(dictionary.words.count > maxLength ? "Further words in this large dictionary have not been displayed." : "").padding(.top)) {
+                ForEach(dictionary.words.prefix(maxLength), id: \.self) {word in
                     Text(word.capitalizingFirstLetter())
+                }
+                if dictionary.words.count > maxLength {
+                    Text("...")
+                        .foregroundColor(.secondary)
                 }
             }
         }

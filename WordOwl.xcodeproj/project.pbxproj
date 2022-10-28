@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BD13F47927A706E3004950E1 /* EnglishDictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = BD13F47827A706E3004950E1 /* EnglishDictionary.json */; };
+		BD003B0F290C5DEB00CB2362 /* LargeEnglishDictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = BD003B0E290C5DEA00CB2362 /* LargeEnglishDictionary.json */; };
+		BD13F47927A706E3004950E1 /* SmallEnglishDictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = BD13F47827A706E3004950E1 /* SmallEnglishDictionary.json */; };
 		BD13F47B27A70915004950E1 /* Anagrams.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD13F47A27A70915004950E1 /* Anagrams.swift */; };
 		BD22718F27B12B390016468B /* InputStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD22718E27B12B390016468B /* InputStyles.swift */; };
 		BD22719127B13EAC0016468B /* MultipleCharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD22719027B13EAC0016468B /* MultipleCharactersView.swift */; };
@@ -65,7 +66,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BD13F47827A706E3004950E1 /* EnglishDictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = EnglishDictionary.json; sourceTree = "<group>"; };
+		BD003B0E290C5DEA00CB2362 /* LargeEnglishDictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LargeEnglishDictionary.json; sourceTree = "<group>"; };
+		BD13F47827A706E3004950E1 /* SmallEnglishDictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SmallEnglishDictionary.json; sourceTree = "<group>"; };
 		BD13F47A27A70915004950E1 /* Anagrams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anagrams.swift; sourceTree = "<group>"; };
 		BD22718E27B12B390016468B /* InputStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStyles.swift; sourceTree = "<group>"; };
 		BD22719027B13EAC0016468B /* MultipleCharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleCharactersView.swift; sourceTree = "<group>"; };
@@ -211,7 +213,8 @@
 			children = (
 				BD97114127A6A2B5006A6C09 /* TinySampleDictionary.json */,
 				BD97114C27A6B3AE006A6C09 /* SmallSampleDictionary.json */,
-				BD13F47827A706E3004950E1 /* EnglishDictionary.json */,
+				BD13F47827A706E3004950E1 /* SmallEnglishDictionary.json */,
+				BD003B0E290C5DEA00CB2362 /* LargeEnglishDictionary.json */,
 				BDD665F427B04913008C6D3A /* ChemicalElements.json */,
 				BDFEF85F27AC301C00E84B2F /* Countries.json */,
 				BDD665F227B0490D008C6D3A /* Animals.json */,
@@ -358,8 +361,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD003B0F290C5DEB00CB2362 /* LargeEnglishDictionary.json in Resources */,
 				BDD665F527B04913008C6D3A /* ChemicalElements.json in Resources */,
-				BD13F47927A706E3004950E1 /* EnglishDictionary.json in Resources */,
+				BD13F47927A706E3004950E1 /* SmallEnglishDictionary.json in Resources */,
 				BDD665F327B0490D008C6D3A /* Animals.json in Resources */,
 				BDFEF86027AC301C00E84B2F /* Countries.json in Resources */,
 				BDDF05AA2795E007000BEF85 /* Preview Assets.xcassets in Resources */,

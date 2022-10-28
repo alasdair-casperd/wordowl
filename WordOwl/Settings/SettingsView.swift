@@ -65,7 +65,7 @@ struct SettingsView: View {
                         Button("Reset", role: .destructive) { resetSettings() }
                         Button("Cancel", role: .cancel) { }
                     }
-                    Button("Submit feedback") {}
+//                    Button("Submit feedback") {}
                 }
             }
             .navigationTitle("Settings")

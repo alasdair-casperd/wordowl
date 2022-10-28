@@ -23,8 +23,8 @@ struct ResultsView: View {
     var compoundSearch = false
     var toollist = ToolList()
     
-    var results: [String]
-    
+    @State private var results: [String] = [String]()
+    @State private var resultsLoaded = false
     @State private var selections = [String: Bool]()
     
     var canEnterChecklistView: Bool {
@@ -52,12 +52,13 @@ struct ResultsView: View {
                 }
             }
             
+
             Section(
-                header: Text("\(results.count) search results"),
-                footer: Text(showingChecklistView ? "" : (canEnterChecklistView ? "Long press a result to enter checklist mode." : "Checklist mode is unavailable for this quantity of results."))
+                header: Text(resultsLoaded && results.count > 0 ? "\(results.count) search results" : "search results"),
+                footer: Text(resultsLoaded && results.count > 0 ? (showingChecklistView ? "" : (canEnterChecklistView ? "Long press a result to enter checklist mode." : "Checklist mode is unavailable for this quantity of results.")) : "").padding(.top)
             )
             {
-                if !results.isEmpty {
+                if resultsLoaded && !results.isEmpty {
                     ForEach(results.sorted(by: sorting.comparison), id: \.self) {result in
                         HStack {
                             
@@ -83,19 +84,31 @@ struct ResultsView: View {
                         .onLongPressGesture{ enterChecklistMode(result) }
                     }
                 }
-                
-                // Done button
-                if (showingChecklistView) {
-                    // Section {
-                        Button(action: exitChecklistMode) {
-                            HStack {
-                                Spacer()
-                                Text("Done")
-                                Spacer()
-                            }
-                        }
-                    // }
+                else if resultsLoaded {
+                    Text("No Results Found")
+                        .foregroundColor(.secondary)
                 }
+                else {
+                    HStack {
+                        Text("Searching")
+                            .foregroundColor(.secondary)
+                        Spacer()
+                        ProgressView()
+                    }
+                }
+            }
+            
+            // Done button
+            if (showingChecklistView) {
+                // Section {
+                    Button(action: exitChecklistMode) {
+                        HStack {
+                            Spacer()
+                            Text("Done")
+                            Spacer()
+                        }
+                    }
+                // }
             }
         }
         .navigationTitle("Results")
@@ -111,6 +124,25 @@ struct ResultsView: View {
                 selections[result] = false
             }
         }
+        .task {
+            getResults()
+        }
+    }
+    
+    private func getResults() {
+        results = [String]()
+        if compoundSearch {
+            var dict = dictionary
+            
+            for filter in toollist.filters {
+                results = filter.tool.searchFunction(dict, filter.aggregateInput)
+                dict = CustomDictionary(words: results)
+            }
+        }
+        else {
+            results = tool.searchFunction(dictionary, aggregateInput)
+        }
+        resultsLoaded = true
     }
     
     private func selectAll() {
@@ -210,7 +242,7 @@ struct ResultsView: View {
 struct ResultsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ResultsView(tool: Tools.anagramsTool, dictionary: Dictionaries.list[1], sorting: Sortings.list[0], resultDetailType: ResultDetailTypes.list[0], aggregateInput: AggregateInput(), input: "Apple", results: ["Apple", "Banana", "Avocado"])
+            ResultsView(tool: Tools.anagramsTool, dictionary: Dictionaries.list[1], sorting: Sortings.list[0], resultDetailType: ResultDetailTypes.list[0], aggregateInput: AggregateInput(), input: "Paple")
         }
     }
 }

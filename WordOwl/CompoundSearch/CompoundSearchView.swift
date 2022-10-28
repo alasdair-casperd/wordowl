@@ -44,6 +44,7 @@ struct CompoundSearchView: View {
                             .textCase(nil)
                             .font(.footnote)
                             .multilineTextAlignment(.leading)
+                            .padding(.bottom)
                     ) {
                         ForEach(toolList.filters) { filter in
                             CompoundSearchRowView(order: (toolList.filters.firstIndex(of: filter) ?? 0) + 1, tool: filter.tool, aggregateInput: filter.aggregateInput)
@@ -65,6 +66,16 @@ struct CompoundSearchView: View {
                     }
                     
                     // Settings
+                    
+                    Section(header: Text("Search Options")) {
+                        Picker("Dictionary", selection: $selectedDictionary) {
+                            ForEach(Dictionaries.list) { dictionary in
+                                
+                                Text(dictionary.name)
+                                .tag(dictionary)
+                            }
+                        }
+                    }
                     
                     Section(header: Text("Display Options")) {
                         Picker("Sort Words", selection: $selectedSorting) {
@@ -112,8 +123,7 @@ struct CompoundSearchView: View {
                         aggregateInput: AggregateInput(),
                         input: "No input given",
                         compoundSearch: true,
-                        toollist: toolList,
-                        results: self.results),
+                        toollist: toolList),
                     isActive: $showingSearchResults
                 ) { EmptyView() }
             }

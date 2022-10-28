@@ -6,6 +6,7 @@ struct Dictionary: Identifiable, Hashable {
     let name: String
     let shortName: String
     let titleName: String
+    let description: String
     let path: String
     let symbolName: String?
     
@@ -29,6 +30,7 @@ func CustomDictionary(words: [String]) -> Dictionary {
         name: "",
         shortName: "",
         titleName: "",
+        description: "",
         path: "",
         symbolName: nil)
     dict.manualWords = words
@@ -39,34 +41,42 @@ class Dictionaries {
     
     static let list = [
         Dictionary(
-            id: "English",
-            name: "English Dictionary",
-            shortName: "English Dictionary",
-            titleName: "English Dictionary",
-            path: "EnglishDictionary.json",
+            id: "Small",
+            name: "Small Dictionary",
+            shortName: "Small Dictionary",
+            titleName: "Small Dictionary", description: "A relatively small dictionary containing the most common English words.",
+            path: "SmallEnglishDictionary.json",
             symbolName: nil),
         
         Dictionary(
-            id: "Countries",
-            name: "Countries of the World",
-            shortName: "World Countries",
-            titleName: "World Countries",
-            path: "Countries.json",
-            symbolName: "globe.europe.africa.fill"),
+            id: "Large",
+            name: "Large Dictionary",
+            shortName: "Large Dictionary",
+            titleName: "Large Dictionary", description: "A large dictionary containing even the most obscure English words.",
+            path: "LargeEnglishDictionary.json",
+            symbolName: nil),
         
-        Dictionary(
-            id: "Elements", name: "Chemical Elements",
-            shortName: "Elements",
-            titleName: "Chemical Elements",
-            path: "ChemicalElements.json",
-            symbolName: "testtube.2"),
-        
-        Dictionary(
-            id: "Animals", name: "Animals",
-            shortName: "Animals",
-            titleName: "Common Animals",
-            path: "Animals.json",
-            symbolName: "pawprint.fill"),
+//        Dictionary(
+//            id: "Countries",
+//            name: "Countries of the World",
+//            shortName: "World Countries",
+//            titleName: "World Countries", description: "A list of all the countries of the world.",
+//            path: "Countries.json",
+//            symbolName: "globe.europe.africa.fill"),
+//        
+//        Dictionary(
+//            id: "Elements", name: "Chemical Elements",
+//            shortName: "Elements",
+//            titleName: "Chemical Elements", description: "A list of all of the chemical elements of the periodic table",
+//            path: "ChemicalElements.json",
+//            symbolName: "testtube.2"),
+//        
+//        Dictionary(
+//            id: "Animals", name: "Animals",
+//            shortName: "Animals",
+//            titleName: "Common Animals", description: "A list of some of our planets animal species.",
+//            path: "Animals.json",
+//            symbolName: "pawprint.fill"),
         
         /*
         

@@ -18,9 +18,6 @@ struct ToolView: View {
     @StateObject var aggregateInput = AggregateInput()
     
     @State private var showingResults = false
-    @State private var showingWarning = false
-    
-    @State var results = [String]()
     
     var body: some View {
         ZStack {
@@ -34,10 +31,12 @@ struct ToolView: View {
                 Section(header: Text("Search Options")) {
                     Picker("Dictionary", selection: $selectedDictionary) {
                         ForEach(Dictionaries.list) { dictionary in
-                            HStack {
-                                Image(systemName: dictionary.symbolName ?? "text.book.closed.fill")
-                                Text(dictionary.name)
-                            }
+                            
+                            Text(dictionary.name)
+//                            HStack {
+//                                Image(systemName: dictionary.symbolName ?? "text.book.closed.fill")
+//                                Text(dictionary.name)
+//                            }
                             .tag(dictionary)
                         }
                         //.navigationTitle("Dictionary")
@@ -66,9 +65,6 @@ struct ToolView: View {
                             initiateSearch()
                         }
                         .disabled(searchDisabled)
-                        .alert("No Words Found", isPresented: $showingWarning) {
-                                    Button("Ok", role: .cancel) { }
-                                }
                         Spacer()
                     }
                 }
@@ -81,8 +77,8 @@ struct ToolView: View {
                     sorting: selectedSorting,
                     resultDetailType: selectedResultDetailType,
                     aggregateInput: aggregateInput,
-                    input: styledAggregateInput(aggregateInput, tool: tool),
-                    results: results),
+                    input: styledAggregateInput(aggregateInput, tool: tool)
+                    ),
                 isActive:
                     $showingResults
             ) { EmptyView() }
@@ -91,13 +87,7 @@ struct ToolView: View {
     }
     
     func initiateSearch() {
-        self.results = tool.searchFunction(selectedDictionary, aggregateInput)
-        if results.isEmpty {
-            showingWarning = true
-        }
-        else {
-            self.showingResults = true
-        }
+        self.showingResults = true
     }
     
     var searchDisabled: Bool {
@@ -126,7 +116,7 @@ struct ToolView: View {
 struct ToolView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ToolView(tool: Tools.crosswordSolver, selectedSorting: Sortings.list[0], selectedResultDetailType: ResultDetailTypes.list[0])
+            ToolView(tool: Tools.containsAtLeastTool, selectedSorting: Sortings.list[0], selectedResultDetailType: ResultDetailTypes.list[0])
         }
     }
 }

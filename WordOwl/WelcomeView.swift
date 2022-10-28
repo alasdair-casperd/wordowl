@@ -8,20 +8,56 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
-        VStack {
-            Text("Welcome to")
-            Text("WordOwl")
-                .font(.title.weight(.bold))
+        VStack(alignment: .leading) {
             
-            VStack {
-                WelcomeRowView(symbolName: "magnifyingglass", title: "Search for Words", text: "WordOwl contains every tool you could ever need to find exactly the words you're looking for.")
-                
-                WelcomeRowView(symbolName: "books.vertical.fill", title: "Manage Dictionaries", text: "WordOwl contains every tool you could ever need to find exactly the words you're looking for.")
-                
-                WelcomeRowView(symbolName: "magnifyingglass", title: "Search for Words", text: "WordOwl contains every tool you could ever need to find exactly the words you're looking for.")
+            Spacer()
+                        
+            HStack {
+                Spacer()
+                VStack {
+                    Text("Welcome to")
+                        .foregroundColor(.white)
+                    Text("WordOwl")
+                        .font(.largeTitle.weight(.bold))
+                        .foregroundColor(.white)
+                }
+                Spacer()
             }
+            
+            Text("Struggling to solve a crossword? Looking for anagrams of 'triangle'? No matter what words you're looking for, WordOwl has you covered.")
+                .multilineTextAlignment(.leading)
+                .padding()
+            
+            WelcomeViewDetailView(symbolName: "magnifyingglass", title: "Simple Search", content: " lets you search for words using one of our numerous pre-made search tools.")
+            
+            WelcomeViewDetailView(symbolName: "slider.horizontal.3", title: "Compound Search", content: " lets you bulid your own search function for the ultimate customizable experience.")
+            
+            Spacer()
+            
+            Button(action: {presentationMode.wrappedValue.dismiss()}) {
+                HStack {
+                    Spacer()
+                    Text("Continue")
+                        .padding()
+                        .foregroundColor(.accentColor)
+                    Spacer()
+                }
+                .background {
+                    RoundedRectangle(cornerRadius: 20)
+                        .foregroundColor(.white)
+                }
+            }
+            .padding()
+            .padding(.bottom)
+                        
         }
+        .foregroundColor(.white)
+        .background(Color.accentColor)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -31,25 +67,22 @@ struct WelcomeView_Previews: PreviewProvider {
     }
 }
 
-struct WelcomeRowView: View {
+struct WelcomeViewDetailView: View {
     
-    let symbolName: String
-    let title: String
-    let text: String
+    var symbolName: String
+    var title: String
+    var content: String
     
     var body: some View {
         HStack {
             Image(systemName: symbolName)
-                .foregroundColor(.accentColor)
                 .font(.title)
-                .padding()
-            VStack(alignment: .leading) {
-                Text(title)
-                    .font(.body.weight(.bold))
-                Text(text)
-                    .foregroundColor(.secondary)
-            }
+                .frame(width: 50)
+            Text(title)
+                .font(.body.weight(.bold))
+            + Text(content)
             Spacer()
         }
+        .padding()
     }
 }

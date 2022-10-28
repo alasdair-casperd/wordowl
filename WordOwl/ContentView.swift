@@ -7,6 +7,8 @@
 import SwiftUI
 
 struct ContentView: View {
+        
+    @State private var showingWelcomeView = false
     
     var body: some View {
         TabView {
@@ -14,22 +16,29 @@ struct ContentView: View {
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
-
-//            DictionariesView()
-//                .tabItem {
-//                    Label("Dictionaries", systemImage: "books.vertical.fill")
-//                }
             
             CompoundSearchView()
                 .tabItem {
                     Label("Compound", systemImage: "slider.horizontal.3")
                 }
             
+//            DictionariesView()
+//                .tabItem {
+//                    Label("Dictionaries", systemImage: "books.vertical.fill")
+//                }
+            
             SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gearshape")
                 }
-        }        
+        }
+        .fullScreenCover(isPresented: $showingWelcomeView) {
+            WelcomeView()
+        }
+        .onAppear {
+            showingWelcomeView = !UserDefaults.standard.bool(forKey: "Used Before")
+            UserDefaults.standard.set(true, forKey: "Used Before")
+        }
     }    
 }
 

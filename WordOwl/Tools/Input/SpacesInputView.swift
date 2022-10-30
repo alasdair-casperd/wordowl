@@ -63,6 +63,7 @@ struct SpacesInputView: View {
                                 aggregateInput.inputStrings[9] = aggregateInput.inputStrings[9].lettersOrQuestion
                             }
                         }
+                        .keyboardType(.alphabet)
                 }
                 else {
                     TextField("e.g. \"c?o?swo?d\"", text: $aggregateInput.inputStrings[9])
@@ -74,6 +75,7 @@ struct SpacesInputView: View {
                                 aggregateInput.inputStrings[9] = aggregateInput.inputStrings[9].lettersOrQuestion
                             }
                         }
+                        .keyboardType(.alphabet)
                 }
             }
             if (usingVisualInput) {

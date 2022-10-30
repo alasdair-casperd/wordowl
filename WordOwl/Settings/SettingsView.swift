@@ -9,14 +9,16 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    private var exportStylings = ["aa", "Aa", "AA"]
+    var exportStylings = ["aa", "Aa", "AA"]
     
     @AppStorage("selectedExportStyling") private var selectedExportStyling = "Aa"
     @AppStorage("addNewLines") private var addNewLines = true
     @AppStorage("selectedSorting") private var selectedSorting = 0
     @AppStorage("selectedResultDetailType") private var selectedResultDetailType = 0
     
-    @State private var showingAlert = false
+    @State var showingAlert = false
+    
+    var showWelcomeScreen: () -> ()
     
     var body: some View {
         NavigationView {
@@ -60,6 +62,9 @@ struct SettingsView: View {
                     }
                 }
                 Section(footer: MadeWithHeartView()) {
+                    Button("Show Welcome Screen") {
+                        showWelcomeScreen()
+                    }
                     Button("Reset Settings to Defaults") { showingAlert = true }
                     .alert("Reset App Settings?", isPresented: $showingAlert) {
                         Button("Reset", role: .destructive) { resetSettings() }
@@ -82,7 +87,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(showWelcomeScreen: {})
     }
 }
 

@@ -27,7 +27,7 @@ struct ContentView: View {
 //                    Label("Dictionaries", systemImage: "books.vertical.fill")
 //                }
             
-            SettingsView()
+            SettingsView(showWelcomeScreen: {showingWelcomeView = true})
                 .tabItem {
                     Label("Settings", systemImage: "gearshape")
                 }
@@ -36,8 +36,8 @@ struct ContentView: View {
             WelcomeView()
         }
         .onAppear {
-            showingWelcomeView = !UserDefaults.standard.bool(forKey: "Used Before")
-            UserDefaults.standard.set(true, forKey: "Used Before")
+            showingWelcomeView = !UserDefaults.standard.bool(forKey: "Used-Before")
+            UserDefaults.standard.set(true, forKey: "Used-Before")
         }
     }    
 }

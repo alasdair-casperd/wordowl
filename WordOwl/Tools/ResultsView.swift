@@ -41,15 +41,19 @@ struct ResultsView: View {
                     }
                 }
             }
-            else {
-                Section(header: Text("Search Details")) {
-                    
+            
+            Section(header: Text("Search Details")) {
+                
+                if !compoundSearch {
                     DetailsPair(parameter: "Tool", value: tool.shortName)
-                    DetailsPair(parameter: "Dictionary", value: dictionary.shortName)
-                    DetailsPair(parameter: tool.promptName, value: input)
-                    
-                    ToolResultsDetailsView(tool: tool, aggregateInput: aggregateInput)
                 }
+                DetailsPair(parameter: "Dictionary", value: dictionary.shortName)
+                
+                if !compoundSearch {
+                    DetailsPair(parameter: tool.promptName, value: input)
+                }
+                
+                ToolResultsDetailsView(tool: tool, aggregateInput: aggregateInput)
             }
             
 

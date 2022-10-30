@@ -98,10 +98,10 @@ func styledAggregateInputForFilterDisplay(_ aggregateInput: AggregateInput, tool
         return "Of the form " + styledAggregateInput(aggregateInput, tool: tool)
     }
     else if tool == Tools.containsOnlyTool {
-        return "Only contains the letters " + styledAggregateInput(aggregateInput, tool: tool)
+        return "Only contains " + styledAggregateInput(aggregateInput, tool: tool)
     }
     else if tool == Tools.containsAtLeastTool {
-        return "Contains the letters " + styledAggregateInput(aggregateInput, tool: tool)
+        return "Contains " + styledAggregateInput(aggregateInput, tool: tool)
     }
     else if tool == Tools.containsQuantitiesTool {
         

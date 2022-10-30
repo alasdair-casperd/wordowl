@@ -10,20 +10,26 @@ import SwiftUI
 struct WelcomeView: View {
     
     @Environment(\.presentationMode) var presentationMode
+    @State private var rotation = -3.0
 
     var body: some View {
         VStack(alignment: .leading) {
             
             Spacer()
-                        
+            
             HStack {
                 Spacer()
                 VStack {
+                    Image("WordOwl Outline")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80)
+                        .rotationEffect(Angle(degrees: rotation))
+                        .animation(.easeInOut.repeatForever())
+                        .onAppear{rotation += 10}
                     Text("Welcome to")
-                        .foregroundColor(.white)
                     Text("WordOwl")
                         .font(.largeTitle.weight(.bold))
-                        .foregroundColor(.white)
                 }
                 Spacer()
             }
@@ -43,7 +49,7 @@ struct WelcomeView: View {
                     Spacer()
                     Text("Continue")
                         .padding()
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(Color.accentColor)
                     Spacer()
                 }
                 .background {
@@ -56,6 +62,7 @@ struct WelcomeView: View {
                         
         }
         .foregroundColor(.white)
+//        .background(LinearGradient(colors: [Color(red: 43/255, green: 52/255, blue: 90/255),Color(red: 15/255, green: 18/255, blue: 43/255)], startPoint: .top, endPoint: .bottom))
         .background(Color.accentColor)
         .edgesIgnoringSafeArea(.all)
     }

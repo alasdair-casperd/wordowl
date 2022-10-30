@@ -18,6 +18,7 @@ struct StringInputView: View {
                 }
             }
             .disableAutocorrection(true)
+            .keyboardType(.alphabet)
     }
     
 }

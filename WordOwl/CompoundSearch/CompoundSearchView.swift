@@ -134,28 +134,7 @@ struct CompoundSearchView: View {
     }
     
     func initiateSearch() {
-        if toolList.filters.isEmpty {
-            warningText = "Please Add Search Filters"
-            showingWarning = true
-        }
-        else {
-            
-            results = [String]()
-            var dict = selectedDictionary
-            
-            for filter in toolList.filters {
-                results = filter.tool.searchFunction(dict, filter.aggregateInput)
-                dict = CustomDictionary(words: results)
-            }
-            
-            if results.isEmpty {
-                warningText = "No Words Found"
-                showingWarning = true
-            }
-            else {
-                self.showingSearchResults = true
-            }
-        }
+        self.showingSearchResults = true
     }
 }
 

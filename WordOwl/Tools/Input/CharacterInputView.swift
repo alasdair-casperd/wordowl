@@ -22,6 +22,7 @@ struct CharacterInputView: View {
             else {
                 TextField(tool.prompt[1], text: $aggregateInput.inputStrings[0])
                     .disableAutocorrection(true)
+                    .keyboardType(.alphabet)
                     .onReceive(Just(aggregateInput.inputStrings[0])) { _ in
                         if (aggregateInput.x.count > 1) {
                             aggregateInput.x = String(aggregateInput.x.prefix(1))

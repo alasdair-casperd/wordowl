@@ -8,7 +8,7 @@ struct RangeInputView: View {
     
     var body: some View {
         Stepper {
-            Text("\(aggregateInput.j)") + Text((tool.prompt.isEmpty ? "" : " (\(tool.prompt[0]))")).foregroundColor(.secondary)
+             Text((tool.prompt.isEmpty ? "" : "\(tool.prompt[0]) ")).foregroundColor(.secondary) + Text("\(aggregateInput.j)")
         } onIncrement: {
             if aggregateInput.j < 45 {
                 aggregateInput.j += 1
@@ -22,7 +22,7 @@ struct RangeInputView: View {
             }
         }
         Stepper {
-            Text("\(aggregateInput.i)") + Text((tool.prompt.isEmpty ? "" : " (\(tool.prompt[1]))")).foregroundColor(.secondary)
+            Text((tool.prompt.isEmpty ? "" : "\(tool.prompt[1]) ")).foregroundColor(.secondary) + Text("\(aggregateInput.i)")
         } onIncrement: {
             if aggregateInput.i < 45 {
                 aggregateInput.i += 1

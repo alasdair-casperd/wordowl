@@ -34,7 +34,7 @@ struct WelcomeView: View {
             
             WelcomeViewDetailView(symbolName: "magnifyingglass", title: "Simple Search", content: " lets you search for words using one of our numerous pre-made search tools.")
             
-            WelcomeViewDetailView(symbolName: "slider.horizontal.3", title: "Compound Search", content: " lets you bulid your own search function for the ultimate customizable experience.")
+            WelcomeViewDetailView(symbolName: "slider.horizontal.3", title: "Compound Search", content: " lets you bulid your own search function for the ultimate customisable experience.")
             
             Spacer()
             

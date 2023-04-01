@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CompoundSearchView: View {
     
+    static let filledIcon = "square.stack.3d.up.fill"
+    static let icon = "square.stack.3d.up"
+    
     @Environment(\.editMode) private var editMode
     
     @State private var selectedDictionary = Dictionaries.list[0]
@@ -22,23 +25,23 @@ struct CompoundSearchView: View {
     
     // Shows the tool picker sheet
     @State private var showingToolPicker = false
+    @State private var showingToolEditor = false
     @State private var showingSearchResults = false
     
-    // Warning alert
-    @State private var warningText = "Error"
-    @State private var showingWarning = false
+    @State private var editorFilter = Filter(id: UUID(), tool: Tool.startingStringTool, aggregateInput: AggregateInput())
     
-    @State var results = [String]()
+    var searchDisabled: Bool {
+        return toolList.filters.count == 0
+    }
     
-    func addFilter(tool: Tool, aggregateInput: AggregateInput) {
-        toolList.addFilter(tool: tool, aggregateInput: aggregateInput)
-    }    
+    func addFilter(filter: Filter) {
+        toolList.addFilter(filter: filter)
+    }
     
     var body: some View {
         NavigationView {
             ZStack {
                 Form {
-
                     Section(
                         header: Text("Use multiple filters simultaneously to perform compound searches.")
                             .textCase(nil)
@@ -47,7 +50,11 @@ struct CompoundSearchView: View {
                             .padding(.bottom)
                     ) {
                         ForEach(toolList.filters) { filter in
-                            CompoundSearchRowView(order: (toolList.filters.firstIndex(of: filter) ?? 0) + 1, tool: filter.tool, aggregateInput: filter.aggregateInput)
+//                            NavigationLink(destination:
+//                                            ToolFilterView(dismiss: {showingToolEditor = false}, aggregateInput: filter.aggregateInput, tool: filter.tool, addFilter: addFilter)
+//                                    .navigationTitle(filter.tool.shortName)) {
+                            CompoundSearchRowView(order: (toolList.filters.firstIndex(of: filter) ?? 0) + 1, tool: filter.tool, aggregateInput: filter.aggregateInput, inverted: filter.inverted, initiateEdit: {initiateEdit(filter: filter)})
+//                            }
                         }
                         .onDelete(perform: toolList.deleteFilters)
                         .onMove(perform: toolList.moveFilter)
@@ -94,18 +101,7 @@ struct CompoundSearchView: View {
                     
                     // Search button
                     
-                    Section {
-                        Button(action: { initiateSearch() }) {
-                            HStack {
-                                Spacer()
-                                Text("Search for words")
-                                Spacer()
-                            }
-                        }.disabled(toolList.filters.count == 0)
-                        .alert(warningText, isPresented: $showingWarning) {
-                                    Button("Ok", role: .cancel) { }
-                                }                        
-                    }
+                    SearchButton(filters: toolList.filters, selectedDictionary: selectedDictionary, selectedSorting: selectedSorting, selectedResultDetailType: selectedResultDetailType, searchDisabled: searchDisabled)                    
                 }
                 .navigationBarTitle("Compound Search")
                 .toolbar {
@@ -113,24 +109,30 @@ struct CompoundSearchView: View {
                         EditButton()
                     }
                 }
-                NavigationLink(
-                    destination:
-                        ResultsView(
-                        tool: Tools.wordLengthTool,
-                        dictionary: selectedDictionary,
-                        sorting: selectedSorting,
-                        resultDetailType: selectedResultDetailType,
-                        aggregateInput: AggregateInput(),
-                        input: "No input given",
-                        compoundSearch: true,
-                        toollist: toolList),
-                    isActive: $showingSearchResults
-                ) { EmptyView() }
+
             }
         }
         .sheet(isPresented: $showingToolPicker) {
             ToolPickerView(addFilter: addFilter)
         }
+        .sheet(isPresented: $showingToolEditor) {
+            NavigationView {
+                ToolFilterView(id: editorFilter.id, dismiss: {showingToolEditor = false}, buttonText: "Save", tool: editorFilter.tool, preloadingFilter: editorFilter, addFilter: addFilter)
+            }
+        }
+        .onChange(of: editorFilter) { _ in print("Editor filter updated")}
+    }
+    
+    func initiateEdit(filter: Filter) {
+        print("Initiating edit")
+        print("FILTER")
+        print("Inverted: \(filter.inverted)")
+        print("Input x: \(filter.aggregateInput.x)")
+        editorFilter = filter
+        print("FILTER")
+        print("Inverted: \(editorFilter.inverted)")
+        print("Input x: \(editorFilter.aggregateInput.x)")
+        showingToolEditor = true
     }
     
     func initiateSearch() {

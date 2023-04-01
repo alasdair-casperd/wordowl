@@ -9,16 +9,22 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    var exportStylings = ["aa", "Aa", "AA"]
+    static let simpleIconsKey = "simpleIcons"
+    static let icon = "gearshape"
+    
+    let  exportStylings = ["aa", "Aa", "AA"]
     
     @AppStorage("selectedExportStyling") private var selectedExportStyling = "Aa"
     @AppStorage("addNewLines") private var addNewLines = true
     @AppStorage("selectedSorting") private var selectedSorting = 0
     @AppStorage("selectedResultDetailType") private var selectedResultDetailType = 0
+    @AppStorage(simpleIconsKey) private var simpleIcons = false
+    @AppStorage(HapticsController.settingString) private var hapticsDisabled = false
     
     @State var showingAlert = false
     
     var showWelcomeScreen: () -> ()
+    var showUpdateScreen: () -> ()
     
     var body: some View {
         NavigationView {
@@ -39,6 +45,7 @@ struct SettingsView: View {
                         //.navigationBarTitleDisplayMode(.inline)
                     }
                 }
+                
                 Section(header: Text("Export")) {
                     HStack {
                         Text("Export Styling")
@@ -61,11 +68,36 @@ struct SettingsView: View {
                         Text("Crossword Solver Input")
                     }
                 }
+                
+                Section {
+                    Toggle("Fewer Rainbows", isOn: $simpleIcons)
+                    Toggle("Disable Haptics", isOn: $hapticsDisabled.animation())
+                } header: { Text("Customisation") } footer: {
+                    if hapticsDisabled {
+                        Text("Some in-app haptics will be disabled. The rest are controlled through your device's settings.")
+                    }
+                }
+                
+//                Section(header: Text("Debug")) {
+//                    NavigationLink("Test Asynchronous Search") {
+//                        AsynchronousSearchTestView2()
+//                    }
+//                    Button("Test Console") {print("Testing console.")}
+//                }
+                
                 Section(footer: MadeWithHeartView()) {
                     Button("Show Welcome Screen") {
                         showWelcomeScreen()
                     }
+                    .icon("hand.wave")
+                    
+                    Button("What's New in this Update?") {
+                        showUpdateScreen()
+                    }
+                    .icon("sparkles")
+                    
                     Button("Reset Settings to Defaults") { showingAlert = true }
+                        .icon("arrow.counterclockwise")
                     .alert("Reset App Settings?", isPresented: $showingAlert) {
                         Button("Reset", role: .destructive) { resetSettings() }
                         Button("Cancel", role: .cancel) { }
@@ -87,7 +119,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(showWelcomeScreen: {})
+        SettingsView(showWelcomeScreen: {}, showUpdateScreen: {})
     }
 }
 
@@ -110,8 +142,8 @@ struct MadeWithHeartView: View {
             Spacer()
             Text("Made with ") + Text("\u{2665}").foregroundColor(.red) + Text(" by Alasdair Casperd")
             Spacer()
-        }
-        .padding(.top)
+        }        
+        .padding(.vertical, 28)
     }
 }
 

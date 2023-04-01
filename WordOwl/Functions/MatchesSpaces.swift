@@ -5,7 +5,7 @@
 //  Created by Alasdair Casperd on 02/02/2022.
 //
 
-func matchesSpaces(_ dictionary: Dictionary, _ aggregateInput: AggregateInput) -> [String] {
+func matchesSpaces(_ words: [String], _ aggregateInput: AggregateInput) async -> [String] {
     
     var letters = [String]()
     
@@ -20,12 +20,20 @@ func matchesSpaces(_ dictionary: Dictionary, _ aggregateInput: AggregateInput) -
         }
     }
     
-    let n = letters.count
-    let words = dictionary.words
+    let n = letters.count    
     
     var output = [String]()
     
+    var p = 0
+    
     for word in words {
+        
+        // Introduce pause for async
+        p += 1
+        if p.isMultiple(of: 100) {
+            await Task.yield()
+        }
+        
         var match = true
         if (word.count == n) {
             for i in 0...(n-1) {

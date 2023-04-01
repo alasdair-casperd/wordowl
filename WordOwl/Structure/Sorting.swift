@@ -24,7 +24,8 @@ class Sortings {
         Sorting(id: 2, name: "Shortest to Longest", comparison: stringPrecedesInLength),
         Sorting(id: 3, name: "Longest to Shortest", comparison: stringSucceedsInLength),
         Sorting(id: 4, name: "Scrabble Score", comparison: scrabbleSucceeds),
-        Sorting(id: 5, name: "Words with Friends Score", comparison: wordsWithFriendsSucceeds)
+        Sorting(id: 5, name: "Words with Friends Score", comparison: wordsWithFriendsSucceeds),
+        Sorting(id: 6, name: "Randomly", comparison: randomRelation)
     ]
     
 }
@@ -44,6 +45,10 @@ func stringPrecedesInLength(_ s1: String, _ s2: String) -> Bool {
     else {
         return s1.count < s2.count
     }
+}
+
+func randomRelation(_ s1: String, _ s2: String) -> Bool {
+    return [true, false].randomElement()!
 }
 
 func stringSucceedsInLength(_ s1: String, _ s2: String) -> Bool {

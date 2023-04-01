@@ -1,12 +1,5 @@
 
-func containsAtLeast(_ dictionary: Dictionary, _ aggregateInput: AggregateInput) -> [String] {
-    
-    let words = dictionary.words
-    
-    return containsAtLeastWords(words, aggregateInput)
-}
-
-func containsAtLeastWords(_ words: [String], _ aggregateInput: AggregateInput) -> [String] {
+func containsAtLeast(_ words: [String], _ aggregateInput: AggregateInput) async -> [String] {
     
     var input = ""
     for letter in EnglishAlphabet.allCases {
@@ -16,8 +9,16 @@ func containsAtLeastWords(_ words: [String], _ aggregateInput: AggregateInput) -
     }
         
     var output = [String]()
+    var p = 0
     
     for word in words {
+        
+        // Introduce pause for async
+        p += 1
+        if p.isMultiple(of: 100) {
+            await Task.yield()
+        }
+        
         if input == input.filter({ word.lowercased().contains($0) }) {
             output.append(word)
         }

@@ -3,4 +3,292 @@
    uuid = "DD1B7515-3DD4-4C6A-B95B-65DF1EB0C155"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FBCE512C-12C5-44ED-B0FD-6EACE0A42046"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordOwl/CompoundSearch/CompoundSearchView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "initiateSearch()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "023699A4-F455-4700-9C00-491802FFB0CD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordOwl/Tools/ResultsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "copyToClipboard()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C0F0F60E-4D17-4611-A9D0-429934CEC0DE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordOwl/Tools/ResultsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "textToExport()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C561FDA3-09ED-46DD-8513-A1865142F75B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordOwl/Tools/ResultsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
+            landmarkName = "showShareSheet()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "94295043-7E1B-4124-8A44-E411B2EE79C3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordOwl/Tools/ResultsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "deselectAll(playHaptic:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D0F4C4C5-2F1D-468A-A12E-CC4EE561CE0A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordOwl/Tools/ResultsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "ResultsView"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DFDFBCBB-A81C-4C63-A56F-6B7739836B36"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordOwl/Tools/ResultsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "DFDFBCBB-A81C-4C63-A56F-6B7739836B36 - 67ba429af8fbf1ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 @Sendable () async -&gt; () in WordOwl.ResultsView.body.getter : some"
+                  moduleName = "WordOwl"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alasdaircasperd/Documents/Xcode/WordOwl/WordOwl/Tools/ResultsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "172">
+               </Location>
+               <Location
+                  uuid = "DFDFBCBB-A81C-4C63-A56F-6B7739836B36 - bd2d5a1d1ce09e8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) await resume partial function for closure #3 @Sendable () async -&gt; () in WordOwl.ResultsView.body.getter : some"
+                  moduleName = "WordOwl"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alasdaircasperd/Documents/Xcode/WordOwl/WordOwl/Tools/ResultsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "DFDFBCBB-A81C-4C63-A56F-6B7739836B36 - 6c18e01f97d5d509"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for closure #3 @Sendable () async -&gt; () in WordOwl.ResultsView.body.getter : some"
+                  moduleName = "WordOwl"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alasdaircasperd/Documents/Xcode/WordOwl/WordOwl/Tools/ResultsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EE3069AB-8CDF-4F2C-8845-749E0BC58FEE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordOwl/Tools/ResultsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "EE3069AB-8CDF-4F2C-8845-749E0BC58FEE - 6c18e01f97d5d4cb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for closure #3 @Sendable () async -&gt; () in WordOwl.ResultsView.body.getter : some"
+                  moduleName = "WordOwl"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alasdaircasperd/Documents/Xcode/WordOwl/WordOwl/Tools/ResultsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "96">
+               </Location>
+               <Location
+                  uuid = "EE3069AB-8CDF-4F2C-8845-749E0BC58FEE - 6c18e01f97d5d4cb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for closure #3 @Sendable () async -&gt; () in WordOwl.ResultsView.body.getter : some"
+                  moduleName = "WordOwl"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alasdaircasperd/Documents/Xcode/WordOwl/WordOwl/Tools/ResultsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "130"
+                  endingLineNumber = "130"
+                  offsetFromSymbolStart = "268">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B9478823-F19D-440B-ABE6-CF90609EC808"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordOwl/Tools/ResultsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "B9478823-F19D-440B-ABE6-CF90609EC808 - 67ba429af8fbf1ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 @Sendable () async -&gt; () in WordOwl.ResultsView.body.getter : some"
+                  moduleName = "WordOwl"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alasdaircasperd/Documents/Xcode/WordOwl/WordOwl/Tools/ResultsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "172">
+               </Location>
+               <Location
+                  uuid = "B9478823-F19D-440B-ABE6-CF90609EC808 - bd2d5a1d1ce09e8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) await resume partial function for closure #3 @Sendable () async -&gt; () in WordOwl.ResultsView.body.getter : some"
+                  moduleName = "WordOwl"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alasdaircasperd/Documents/Xcode/WordOwl/WordOwl/Tools/ResultsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "B9478823-F19D-440B-ABE6-CF90609EC808 - 6c18e01f97d5d509"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for closure #3 @Sendable () async -&gt; () in WordOwl.ResultsView.body.getter : some"
+                  moduleName = "WordOwl"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alasdaircasperd/Documents/Xcode/WordOwl/WordOwl/Tools/ResultsView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "76">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C3E2601F-94E4-4B88-8E85-5872544128D2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WordOwl/Tools/ResultsView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "ResultsView"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

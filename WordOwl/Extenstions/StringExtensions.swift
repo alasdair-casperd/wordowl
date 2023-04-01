@@ -8,6 +8,7 @@
 import Foundation
 
 extension String {
+    
     func capitalizingFirstLetter() -> String {
         return prefix(1).capitalized + dropFirst()
     }
@@ -15,9 +16,7 @@ extension String {
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
-}
-
-extension String {
+    
     var scrabbleScore: Int {
         var score = 0
         for i in self.uppercased() {
@@ -25,9 +24,7 @@ extension String {
         }
         return score
     }
-}
-
-extension String {
+    
     var wordsWithFriendsScore: Int {
         var score = 0
         for i in self.uppercased() {
@@ -35,27 +32,25 @@ extension String {
         }
         return score
     }
-}
-
-extension String {
+    
     var letters: String {
         return String(unicodeScalars.filter(CharacterSet.letters.contains))
     }
-}
-
-extension String {
+    
     var lettersOrQuestion: String {
         var lettersAndQuestion = CharacterSet.letters
         lettersAndQuestion.insert(charactersIn: "?")
         return String(unicodeScalars.filter(lettersAndQuestion.contains))
     }
-}
-
-extension String {
+    
     func characterCount(of character: Character) -> Int {
         return reduce(0) {
             $1 == character ? $0 + 1 : $0
         }
+    }
+    
+    func removingFirst(_ k: Int) -> String {
+        return String(self.suffix(from: self.index(self.startIndex, offsetBy: k)))
     }
 }
 

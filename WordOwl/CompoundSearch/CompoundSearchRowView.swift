@@ -12,10 +12,13 @@ struct CompoundSearchRowView: View {
     var order: Int
     var tool: Tool
     var aggregateInput: AggregateInput
+    var inverted: Bool
     
     var text: String {
-        return styledAggregateInputForFilterDisplay(aggregateInput, tool: tool)
+        return styledAggregateInputForFilterDisplay(aggregateInput, tool: tool, inverted: inverted)
     }
+    
+    var initiateEdit: () -> ()
     
     var body: some View {
         HStack(spacing: 0) {
@@ -33,9 +36,9 @@ struct CompoundSearchRowView: View {
             
             Spacer()
             
-//            Button(action: {}) {
-//                Image(systemName: "gearshape.fill")
-//            }
+            Button(action: initiateEdit) {
+                Image(systemName: "square.and.pencil")
+            }
         }
         .padding(4)
     }

@@ -25,7 +25,7 @@ struct CharacterQuantitiesView: View {
             }
         }
         .onDelete(perform: removeRows)
-        NavigationLink(destination: MultipleCharactersDetailView(tool: Tools.containsOnlyTool, aggregateInput: aggregateInput)) {
+        NavigationLink(destination: MultipleCharactersDetailView(tool: Tool.containsOnlyTool, aggregateInput: aggregateInput)) {
             Text(listNonEmpty() ? "Select Characters" : "Add Characters")
         }
     }

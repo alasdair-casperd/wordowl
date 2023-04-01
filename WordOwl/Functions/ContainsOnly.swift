@@ -1,12 +1,5 @@
 
-func containsOnly(_ dictionary: Dictionary, _ aggregateInput: AggregateInput) -> [String] {
-    
-    let words = dictionary.words
-    
-    return containsOnlyWords(words, aggregateInput)
-}
-
-func containsOnlyWords(_ words: [String], _ aggregateInput: AggregateInput) -> [String] {
+func containsOnly(_ words: [String], _ aggregateInput: AggregateInput) async -> [String] {
     
     var input = ""
     for letter in EnglishAlphabet.allCases {
@@ -17,7 +10,16 @@ func containsOnlyWords(_ words: [String], _ aggregateInput: AggregateInput) -> [
         
     var output = [String]()
     
+    var p = 0
+    
     for word in words {
+        
+        // Introduce pause for async
+        p += 1
+        if p.isMultiple(of: 100) {
+            await Task.yield()
+        }
+        
         if word.lowercased() == word.lowercased().filter({ input.contains($0) }) {
             output.append(word)
         }

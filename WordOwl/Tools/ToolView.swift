@@ -17,7 +17,12 @@ struct ToolView: View {
     
     @StateObject var aggregateInput = AggregateInput()
     
+    @State private var results = [String]()
     @State private var showingResults = false
+    
+    var filters: [Filter] {
+        return [Filter(id: UUID(), tool: tool, aggregateInput: aggregateInput)]
+    }
     
     var body: some View {
         ZStack {
@@ -57,38 +62,28 @@ struct ToolView: View {
                         //.navigationTitle("Additional Detail")
                     }
                 }
-                
-                Section {
-                    HStack {
-                        Spacer()
-                        Button("Search for words") {
-                            initiateSearch()
-                        }
-                        .disabled(searchDisabled)
-                        Spacer()
-                    }
-                }
+                SearchButton(filters: filters, selectedSorting: selectedSorting, selectedResultDetailType: selectedResultDetailType, searchDisabled: searchDisabled)
             }
-            NavigationLink(
-                destination:
-                    ResultsView(
-                    tool: tool,
-                    dictionary:selectedDictionary,
-                    sorting: selectedSorting,
-                    resultDetailType: selectedResultDetailType,
-                    aggregateInput: aggregateInput,
-                    input: styledAggregateInput(aggregateInput, tool: tool)
-                    ),
-                isActive:
-                    $showingResults
-            ) { EmptyView() }
+//            NavigationLink(
+//                destination:
+//                    ResultsView(
+//                    tool: tool,
+//                    dictionary:selectedDictionary,
+//                    sorting: selectedSorting,
+//                    resultDetailType: selectedResultDetailType,
+//                    aggregateInput: aggregateInput,
+//                    input: styledAggregateInput(aggregateInput, tool: tool)
+//                    ),
+//                isActive:
+//                    $showingResults
+//            ) { EmptyView() }
         }
         .navigationTitle(tool.shortName)        
     }
     
-    func initiateSearch() {
-        self.showingResults = true
-    }
+//    func initiateSearch() {
+//        self.showingResults = true
+//    }
     
     var searchDisabled: Bool {
         get {
@@ -104,19 +99,22 @@ struct ToolView: View {
             case .multipleCharacters:
                 return styledAggregateInput(aggregateInput, tool: tool) == "None"
             case .characterQuantities:
-                return styledAggregateInput(aggregateInput, tool: Tools.containsOnlyTool) == "None"
+                return styledAggregateInput(aggregateInput, tool: Tool.containsOnlyTool) == "None"
+            case .code:
+                return aggregateInput.inputStrings[0] == ""
             default:
                 return false
             }
         }
     }
+    
 }
 
 
 struct ToolView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ToolView(tool: Tools.containsAtLeastTool, selectedSorting: Sortings.list[0], selectedResultDetailType: ResultDetailTypes.list[0])
+            ToolView(tool: Tool.containsAtLeastTool, selectedSorting: Sortings.list[0], selectedResultDetailType: ResultDetailTypes.list[0])
         }
     }
 }

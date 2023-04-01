@@ -7,7 +7,14 @@
 
 import Foundation
 
-class AggregateInput : ObservableObject {
+class AggregateInput : ObservableObject, Equatable {
+    
+    static func == (lhs: AggregateInput, rhs: AggregateInput) -> Bool {
+        return lhs.inputStrings == rhs.inputStrings
+            && lhs.inputInts == rhs.inputInts
+            && lhs.inputBools == rhs.inputBools
+            && lhs.inputCharacters == rhs.inputCharacters
+    }
     
     @Published var inputStrings: [String]
     @Published var inputInts: [Int]
@@ -59,6 +66,15 @@ class AggregateInput : ObservableObject {
         }
         set(input) {
             inputStrings[0] = input
+        }
+    }
+    
+    var y: String {
+        get {
+            return inputStrings[1]
+        }
+        set(input) {
+            inputStrings[1] = input
         }
     }
     

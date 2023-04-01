@@ -28,6 +28,8 @@ struct ToolInputView: View {
             MultipleCharactersView(tool: tool, aggregateInput: aggregateInput)
         case .characterQuantities:
             CharacterQuantitiesView(tool: tool, aggregateInput: aggregateInput)
+        case .code:
+            CodeInputView(tool: tool, aggregateInput: aggregateInput)
         }
     }
 }

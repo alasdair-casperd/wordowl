@@ -32,7 +32,7 @@ struct ToolNodeView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Color.secondary
-            ToolNodeView(tool: Tools.endingStringTool)
+            ToolNodeView(tool: Tool.endingStringTool)
         }
     }
 }

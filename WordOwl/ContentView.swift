@@ -9,17 +9,18 @@ import SwiftUI
 struct ContentView: View {
         
     @State private var showingWelcomeView = false
+    @State private var showingUpdateView = false        
     
     var body: some View {
         TabView {
             ToolsView()
                 .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
+                    Label("Search", systemImage: ToolsView.icon)
                 }
             
             CompoundSearchView()
                 .tabItem {
-                    Label("Compound", systemImage: "slider.horizontal.3")
+                    Label("Compound", systemImage: CompoundSearchView.filledIcon)
                 }
             
 //            DictionariesView()
@@ -27,17 +28,44 @@ struct ContentView: View {
 //                    Label("Dictionaries", systemImage: "books.vertical.fill")
 //                }
             
-            SettingsView(showWelcomeScreen: {showingWelcomeView = true})
+            HelpView()
                 .tabItem {
-                    Label("Settings", systemImage: "gearshape")
+                    Label("User Guide", systemImage: HelpView.filledIcon)
+                }
+            
+            SettingsView(showWelcomeScreen: {showingWelcomeView = true}, showUpdateScreen: {showingUpdateView = true})
+                .tabItem {
+                    Label("Settings", systemImage: SettingsView.icon)
                 }
         }
         .fullScreenCover(isPresented: $showingWelcomeView) {
-            WelcomeView()
+            GreetingView(greeting: Greeting.welcomeToWordOwl)
+        }
+        .fullScreenCover(isPresented: $showingUpdateView) {
+            GreetingView(greeting: Greeting.updateGreeting(WordOwlApp.currentAppVersion))
         }
         .onAppear {
-            showingWelcomeView = !UserDefaults.standard.bool(forKey: "Used-Before")
+            
+            let seenBefore = UserDefaults.standard.bool(forKey: "Used-Before")
             UserDefaults.standard.set(true, forKey: "Used-Before")
+                        
+            let lastVersion = UserDefaults.standard.integer(forKey: "app-version")
+            UserDefaults.standard.set(WordOwlApp.currentAppVersion, forKey: "app-version")
+            
+            if !seenBefore {
+                showingWelcomeView = true
+                showingUpdateView = false
+            }
+            else {
+                showingWelcomeView = false
+                if lastVersion < WordOwlApp.currentAppVersion {
+                    showingUpdateView = true
+                }
+                else {
+                    showingUpdateView = false
+                }
+            }
+            
         }
     }    
 }

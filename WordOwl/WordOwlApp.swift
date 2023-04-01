@@ -10,6 +10,8 @@ import SwiftUI
 @main
 struct WordOwlApp: App {
     
+    static let currentAppVersion = 2
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

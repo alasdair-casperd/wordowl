@@ -11,12 +11,15 @@ import SwiftUI
 
 struct ToolFilterView: View {
     
-    var dismiss: DismissAction
-                    
-    @StateObject var aggregateInput: AggregateInput = AggregateInput()
-    @State var tool: Tool
+    var id: UUID = UUID()
+    var dismiss: () -> ()
+    var buttonText = "Add"
+    var tool: Tool    
+    var preloadingFilter: Filter? = nil
     
-    var addFilter: (Tool, AggregateInput) -> Void
+    @StateObject var aggregateInput: AggregateInput = AggregateInput()
+    @State var inverted: Bool = false
+    var addFilter: (Filter) -> ()
     
     @State private var showingWarning = false
     
@@ -28,6 +31,22 @@ struct ToolFilterView: View {
                 }
                 
                 ToolSettingsView(tool: tool, aggregateInput: aggregateInput)
+                if (
+                    tool == Tool.anagramsTool
+                    || tool == Tool.containsStringTool
+                    || tool == Tool.crosswordSolver
+                    || tool == Tool.endingStringTool
+                    || tool == Tool.firstLetterTool
+                    || tool == Tool.lastLetterTool
+                    || tool == Tool.startingStringTool
+                    || tool == Tool.wordLengthRangeTool
+                    || tool == Tool.wordLengthTool
+                    || tool == Tool.matchesPatternTool
+                ) {
+                    Section(footer: Text("Inverted filters return the opposite of their usual results.")) {
+                        Toggle("Invert Filter", isOn: $inverted)
+                    }
+                }                                
                 
                 // Done button
                 /*
@@ -45,6 +64,15 @@ struct ToolFilterView: View {
                 */
             }
         }
+        .onAppear {
+            if let filter = preloadingFilter {
+                aggregateInput.inputInts = filter.aggregateInput.inputInts
+                aggregateInput.inputBools = filter.aggregateInput.inputBools
+                aggregateInput.inputStrings = filter.aggregateInput.inputStrings
+                aggregateInput.inputCharacters = filter.aggregateInput.inputCharacters                
+                inverted = filter.inverted
+            }
+        }
         .navigationTitle(tool.shortName)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -52,8 +80,8 @@ struct ToolFilterView: View {
             // Add to the current compound search
             
             ToolbarItem() {
-                Button(action: {addFilter(tool, aggregateInput); dismiss()}) {
-                    Text("Add")
+                Button(action: {addFilter(Filter(id: id, tool: tool, aggregateInput: aggregateInput, inverted: inverted)); dismiss()}) {
+                    Text(buttonText)
                         .disabled(doneDisabled)
                 }
             }
@@ -76,7 +104,9 @@ struct ToolFilterView: View {
             case .multipleCharacters:
                 return styledAggregateInput(aggregateInput, tool: tool) == "None"
             case .characterQuantities:
-                return styledAggregateInput(aggregateInput, tool: Tools.containsOnlyTool) == "None"
+                return styledAggregateInput(aggregateInput, tool: Tool.containsOnlyTool) == "None"
+            case .code:
+                return aggregateInput.inputStrings[0] == ""
             default:
                 return false
             }

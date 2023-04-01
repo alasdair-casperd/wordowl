@@ -9,34 +9,21 @@ import SwiftUI
 
 struct ToolsView: View {
     
+    static let icon = "magnifyingglass"
+    
+    @State private var iconStyle = 0
+    
     var body: some View {
         NavigationView {
-            Form {
-                
-                Section(header: Text("Common tools")) {
-                    ToolRowItem(tool: Tools.anagramsTool)
-                    ToolRowItem(tool: Tools.crosswordSolver)
-                    ToolRowItem(tool: Tools.containsStringTool)
-                }
-                
-                Section(header: Text("Search by start")) {
-                    ToolRowItem(tool: Tools.firstLetterTool)
-                    ToolRowItem(tool: Tools.startingStringTool)
-                }
-                Section(header: Text("Search by end")) {
-                    ToolRowItem(tool: Tools.lastLetterTool)
-                    ToolRowItem(tool: Tools.endingStringTool)
-                }
-                
-                Section(header: Text("Search by letters")) {
-                    ToolRowItem(tool: Tools.containsOnlyTool)
-                    ToolRowItem(tool: Tools.containsAtLeastTool)
-                    ToolRowItem(tool: Tools.containsQuantitiesTool)
-                }
-                
-                Section(header: Text("Search by length")) {
-                    ToolRowItem(tool: Tools.wordLengthTool)
-                    ToolRowItem(tool: Tools.wordLengthRangeTool)
+            List {
+                ForEach(Tool.categories) { category in
+                    Section {
+                        ForEach(category.tools) { tool in
+                            SimpleSearchToolRowItem(tool: tool)
+                        }                        
+                    } header: {
+                        Text(category.name)
+                    }
                 }
             }
             .navigationTitle("Search")
@@ -50,9 +37,8 @@ struct ToolsView_Previews: PreviewProvider {
     }
 }
 
-
-struct ToolRowItem: View {
-    
+struct SimpleSearchToolRowItem: View {
+        
     var tool: Tool
     
     @State private var defaultSorting = Sortings.list[UserDefaults.standard.integer(forKey: "selectedSorting")]
@@ -60,22 +46,52 @@ struct ToolRowItem: View {
     
     var body: some View {
         NavigationLink(destination: ToolView(tool: tool, selectedSorting: defaultSorting, selectedResultDetailType: defaultResultDetailType)) {
-            HStack {
-                Image(systemName: tool.symbolName ?? "doc.text.magnifyingglass")
-                    .foregroundColor(.accentColor)
-                    .font(.title2)
-                .frame(width: 30, height: 50, alignment: .center)
-                VStack(alignment: .leading) {
-                    Text(tool.shortName)
-                    Text(tool.shortDescription)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-            }
+            ToolRowItem(tool: tool)
         }
         .onAppear {
             defaultSorting = Sortings.list[UserDefaults.standard.integer(forKey: "selectedSorting")]
             defaultResultDetailType = ResultDetailTypes.list[UserDefaults.standard.integer(forKey: "selectedResultDetailType")]
+        }
+    }
+}
+
+struct ToolRowItem: View {
+        
+    var tool: Tool
+    
+    @State private var simpleIcons = false
+        
+    var background: some View {
+        RoundedRectangle(cornerRadius: 10)
+            .foregroundColor(tool.color)
+            .frame(width: 40, height: 40, alignment: .center)
+    }
+    
+    @State private var defaultSorting = Sortings.list[UserDefaults.standard.integer(forKey: "selectedSorting")]
+    @State private var defaultResultDetailType = ResultDetailTypes.list[UserDefaults.standard.integer(forKey: "selectedResultDetailType")]
+    
+    var body: some View {
+        
+        HStack {
+            Image(systemName: tool.symbolName ?? "doc.text.magnifyingglass")
+                .foregroundColor(!simpleIcons ? .white : .accentColor)
+                .font(.title2)
+                .background {
+                    if !simpleIcons {
+                        background
+                    }
+                }
+            .frame(width: 30, height: 50, alignment: .center)
+            .padding(.trailing, !simpleIcons ? 12 : 8)
+            VStack(alignment: .leading) {
+                Text(tool.shortName)
+                Text(tool.shortDescription)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+        }
+        .onAppear {
+            simpleIcons = UserDefaults.standard.bool(forKey: SettingsView.simpleIconsKey)
         }
     }
 }

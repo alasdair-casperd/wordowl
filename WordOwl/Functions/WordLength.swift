@@ -5,16 +5,24 @@
 //  Created by Alasdair Casperd on 31/01/2022.
 //
 
-func wordLength(_ dictionary: Dictionary, _ aggregateInput: AggregateInput) -> [String] {
-    return baseWordLength(dictionary, aggregateInput.i)
+func wordLength(_ words: [String], _ aggregateInput: AggregateInput) async -> [String] {
+    return await baseWordLength(words, aggregateInput.i)
 }
 
-private func baseWordLength(_ dictionary: Dictionary, _ i: Int) -> [String] {
-    
-    let words = dictionary.words
+private func baseWordLength(_ words: [String], _ i: Int) async -> [String] {
+        
     var output = [String]()
     
+    var p = 0
+    
     for word in words {
+        
+        // Introduce pause for async
+        p += 1
+        if p.isMultiple(of: 100) {
+            await Task.yield()
+        }
+        
         if word.count == i {
             output.append(word)
         }
@@ -24,7 +32,7 @@ private func baseWordLength(_ dictionary: Dictionary, _ i: Int) -> [String] {
 }
 
 // Expected input: e.g. "2,7"
-func wordLengthBetween(_ dictionary: Dictionary, _ aggregateInput: AggregateInput) -> [String] {
+func wordLengthBetween(_ words: [String], _ aggregateInput: AggregateInput) async -> [String] {
     
     let i = aggregateInput.i
     let j = aggregateInput.j
@@ -36,7 +44,7 @@ func wordLengthBetween(_ dictionary: Dictionary, _ aggregateInput: AggregateInpu
     var output = [String]()
     
     for k in j...i {
-        output += baseWordLength(dictionary, k)
+        output += await baseWordLength(words, k)
     }
     
     return output

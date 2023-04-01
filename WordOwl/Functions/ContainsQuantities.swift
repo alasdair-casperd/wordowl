@@ -1,6 +1,7 @@
 
-func containsQuantities(_ dictionary: Dictionary, _ aggregateInput: AggregateInput) -> [String] {
+func containsQuantities(_ inputWords: [String], _ aggregateInput: AggregateInput) async -> [String] {
         
+    var words = inputWords
     var output = [String]()
     var inputQuantities = [Int]()
     var inputBools = [Bool]()
@@ -12,8 +13,6 @@ func containsQuantities(_ dictionary: Dictionary, _ aggregateInput: AggregateInp
         inputQuantities.append(b ? n : 0)
     }
     
-    var words = dictionary.words
-    
     let mode = aggregateInput.inputInts[30]
     let allowOthers = aggregateInput.inputBools[31]
     
@@ -22,13 +21,21 @@ func containsQuantities(_ dictionary: Dictionary, _ aggregateInput: AggregateInp
         
         if (!allowOthers) {
             // Apply contains only to exclude other letters
-            words = containsOnlyWords(words, aggregateInput)
+            words = await containsOnly(words, aggregateInput)
         }
         
         // First apply standard containsAtLeast (this make the search more efficient)
-        words = containsAtLeastWords(words, aggregateInput)
+        words = await containsAtLeast(words, aggregateInput)
+        
+        var p = 0
         
         for word in words {
+            
+            // Introduce pause for async
+            p += 1
+            if p.isMultiple(of: 100) {
+                await Task.yield()
+            }
             
             var including = true
             
@@ -54,13 +61,21 @@ func containsQuantities(_ dictionary: Dictionary, _ aggregateInput: AggregateInp
         
         if (!allowOthers) {
             // Apply contains only to exclude other letters
-            words = containsOnlyWords(words, aggregateInput)
+            words = await containsOnly(words, aggregateInput)
         }
         
         // First apply standard containsAtLeast (this make the search more efficient)
-        words = containsAtLeastWords(words, aggregateInput)
+        words = await containsAtLeast(words, aggregateInput)
+        
+        var p = 0
         
         for word in words {
+            
+            // Introduce pause for async
+            p += 1
+            if p.isMultiple(of: 100) {
+                await Task.yield()
+            }
             
             var including = true
             
@@ -86,10 +101,18 @@ func containsQuantities(_ dictionary: Dictionary, _ aggregateInput: AggregateInp
         
         if (!allowOthers) {
             // Apply contains only to exclude other letters
-            words = containsOnlyWords(words, aggregateInput)
+            words = await containsOnly(words, aggregateInput)
         }
+                
+        var p = 0
         
         for word in words {
+            
+            // Introduce pause for async
+            p += 1
+            if p.isMultiple(of: 100) {
+                await Task.yield()
+            }
             
             var including = true
             

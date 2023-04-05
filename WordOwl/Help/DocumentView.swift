@@ -51,8 +51,17 @@ struct DocumentItemView: View {
                 .padding(.top)
         case .tool:
             if let tool = item.tool {
-                ToolRowItem(tool: tool)
-                    .panelled()
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(tool.shortName)
+                        Text(tool.shortDescription)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    .icon(tool.symbolName ?? "magnifyingglass", color: tool.color, style: .bold)
+                    Spacer()
+                }
+                .panelled()
             }
             else {
                 Text("Missing Tool")
@@ -65,7 +74,7 @@ struct DocumentItemView: View {
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(14)
-                    .shadow(color: .black.opacity(0.2), radius: 7)
+                    .shadow(color: .black.opacity(0.05), radius: 7)
                     .padding(.top)
             }
             else {
@@ -74,8 +83,8 @@ struct DocumentItemView: View {
         case .filter:
             Group {
                 if let filter = item.filter {
-                    VStack{
-                        DetailsPair(parameter: filter.tool.promptName, value: styledAggregateInput(filter.aggregateInput, tool: filter.tool))
+                    VStack(spacing: 20) {
+                        DetailsPair(parameter: filter.tool.promptName, value: filter.inputDescription)
                         ToolResultsDetailsView(tool: filter.tool, aggregateInput: filter.aggregateInput)
                     }
                 }
@@ -84,8 +93,32 @@ struct DocumentItemView: View {
                 }
             }
             .panelled()
-        case .filterList:
-            Text("Work in Progress")
+        case .filters:
+            VStack(alignment: .leading) {
+                if let filters = item.filters {
+                    ForEach(filters) { filter in
+                        HStack {
+                            Text("\((filters.firstIndex(of: filter) ?? 0) + 1)")
+                                .foregroundColor(.accentColor)
+                                .foregroundColor(.accentColor)
+                                .padding(.trailing)
+                            
+                            VStack(alignment: .leading) {
+                                Text(filter.tool.name.uppercased())
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                Text(filter.description)
+                            }
+                            Spacer()
+                        }
+                        .padding(.leading, 6)
+                        if filters.firstIndex(of: filter)! + 1 != filters.count {
+                            Divider()
+                        }
+                    }
+                }
+            }
+            .panelled()
         case .results:
             VStack(alignment: .leading) {
                 Text("Search Results")
@@ -121,7 +154,7 @@ struct DocumentItemView: View {
 struct DocumentView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            DocumentView(document: Document.crosswordSolverGuide)
+            DocumentView(document: Document.compoundSearchIntroduction)
         }
     }
 }

@@ -11,18 +11,16 @@ struct DictionariesView: View {
     var body: some View {
         NavigationView {
             Form {
-                ForEach(Dictionaries.list) { dictionary in
+                ForEach(Dictionary.mainDictionaries) { dictionary in
                     NavigationLink(destination: DictionaryView(dictionary: dictionary))
                     {
-                        HStack {
-                            Image(systemName: dictionary.symbolName ?? "text.book.closed.fill")
-                                .foregroundColor(.accentColor)
-                                .font(.title2)
-                            .frame(width: 35, height: 50, alignment: .center)
+                        VStack(alignment: .leading) {
                             Text(dictionary.name)
-                            Spacer()
-                            
+                                .font(.headline)
+                            Text("\(dictionary.wordCount ?? "?") Words")
+                                .foregroundColor(.secondary)
                         }
+                        .icon(dictionary.symbolName ?? "book.closed", style: .bold)
                     }                    
                 }
             }

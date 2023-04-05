@@ -15,6 +15,8 @@
 		BD19008A29D8997100AB270F /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19008929D8997100AB270F /* DocumentView.swift */; };
 		BD19008C29D899C900AB270F /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19008B29D899C900AB270F /* Document.swift */; };
 		BD19008E29D89EA600AB270F /* Color Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19008D29D89EA600AB270F /* Color Extensions.swift */; };
+		BD19009029D986A000AB270F /* PageResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19008F29D986A000AB270F /* PageResultsView.swift */; };
+		BD19009229D9B4F000AB270F /* Enable.json in Resources */ = {isa = PBXBuildFile; fileRef = BD19009129D9B4F000AB270F /* Enable.json */; };
 		BD22718F27B12B390016468B /* InputStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD22718E27B12B390016468B /* InputStyles.swift */; };
 		BD22719127B13EAC0016468B /* MultipleCharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD22719027B13EAC0016468B /* MultipleCharactersView.swift */; };
 		BD22719327B151BC0016468B /* ContainsOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD22719227B151BC0016468B /* ContainsOnly.swift */; };
@@ -42,15 +44,18 @@
 		BDB83F8D27972FB7006DD718 /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB83F8C27972FB7006DD718 /* ToolView.swift */; };
 		BDB83F9127973335006DD718 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB83F9027973335006DD718 /* ResultsView.swift */; };
 		BDBA79422864757900CA21EC /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA79412864757900CA21EC /* GreetingView.swift */; };
+		BDC2680829DB304A00B0FFAD /* Example Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2680729DB304A00B0FFAD /* Example Filters.swift */; };
+		BDC2680A29DB4C7000B0FFAD /* ToolList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2680929DB4C7000B0FFAD /* ToolList.swift */; };
+		BDC2680C29DB4C8C00B0FFAD /* Documentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2680B29DB4C8C00B0FFAD /* Documentation.swift */; };
+		BDC2680E29DB4FF100B0FFAD /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2680D29DB4FF100B0FFAD /* Tools.swift */; };
 		BDC7B293285F7F9E0043CB85 /* ToolPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC7B292285F7F9E0043CB85 /* ToolPickerView.swift */; };
 		BDD665A627AC7B66008C6D3A /* CoreDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD665A527AC7B66008C6D3A /* CoreDataTestView.swift */; };
 		BDD665F327B0490D008C6D3A /* Animals.json in Resources */ = {isa = PBXBuildFile; fileRef = BDD665F227B0490D008C6D3A /* Animals.json */; };
 		BDD665F527B04913008C6D3A /* ChemicalElements.json in Resources */ = {isa = PBXBuildFile; fileRef = BDD665F427B04913008C6D3A /* ChemicalElements.json */; };
 		BDD665F727B058C5008C6D3A /* AggregateInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD665F627B058C5008C6D3A /* AggregateInput.swift */; };
 		BDD665F927B064DF008C6D3A /* ToolInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD665F827B064DF008C6D3A /* ToolInputView.swift */; };
-		BDD665FB27B067AD008C6D3A /* StyleAggregateInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD665FA27B067AD008C6D3A /* StyleAggregateInput.swift */; };
 		BDDB90B3285F5DEF001D16A8 /* CompoundSearchRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB90B2285F5DEF001D16A8 /* CompoundSearchRowView.swift */; };
-		BDDB90B5285F73DB001D16A8 /* ToolList and Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB90B4285F73DB001D16A8 /* ToolList and Filter.swift */; };
+		BDDB90B5285F73DB001D16A8 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB90B4285F73DB001D16A8 /* Filter.swift */; };
 		BDDF05A32795E006000BEF85 /* WordOwlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDF05A22795E006000BEF85 /* WordOwlApp.swift */; };
 		BDDF05A52795E006000BEF85 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDF05A42795E006000BEF85 /* ContentView.swift */; };
 		BDDF05A72795E007000BEF85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDDF05A62795E007000BEF85 /* Assets.xcassets */; };
@@ -62,6 +67,7 @@
 		BDE8957027B8270C00E22139 /* ContainsAtLeast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE8956F27B8270C00E22139 /* ContainsAtLeast.swift */; };
 		BDE97EB127BD4C8400B22608 /* ToolNodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE97EB027BD4C8400B22608 /* ToolNodeView.swift */; };
 		BDE97EB427BEE3F500B22608 /* AsynchronousSearchTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE97EB327BEE3F500B22608 /* AsynchronousSearchTestView.swift */; };
+		BDF049EB29DA1CBD00F810AF /* ContainsLetters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF049EA29DA1CBD00F810AF /* ContainsLetters.swift */; };
 		BDFC2CE227A9646C003EEB06 /* ResultDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC2CE127A9646C003EEB06 /* ResultDetail.swift */; };
 		BDFC2CE427A965EC003EEB06 /* CharacterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC2CE327A965EC003EEB06 /* CharacterExtensions.swift */; };
 		BDFC2CE727AAA46D003EEB06 /* SpacesInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC2CE627AAA46D003EEB06 /* SpacesInputView.swift */; };
@@ -84,6 +90,8 @@
 		BD19008929D8997100AB270F /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
 		BD19008B29D899C900AB270F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		BD19008D29D89EA600AB270F /* Color Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color Extensions.swift"; sourceTree = "<group>"; };
+		BD19008F29D986A000AB270F /* PageResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageResultsView.swift; sourceTree = "<group>"; };
+		BD19009129D9B4F000AB270F /* Enable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Enable.json; sourceTree = "<group>"; };
 		BD22718E27B12B390016468B /* InputStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStyles.swift; sourceTree = "<group>"; };
 		BD22719027B13EAC0016468B /* MultipleCharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleCharactersView.swift; sourceTree = "<group>"; };
 		BD22719227B151BC0016468B /* ContainsOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainsOnly.swift; sourceTree = "<group>"; };
@@ -111,15 +119,18 @@
 		BDB83F8C27972FB7006DD718 /* ToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolView.swift; sourceTree = "<group>"; };
 		BDB83F9027973335006DD718 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		BDBA79412864757900CA21EC /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
+		BDC2680729DB304A00B0FFAD /* Example Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Example Filters.swift"; sourceTree = "<group>"; };
+		BDC2680929DB4C7000B0FFAD /* ToolList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolList.swift; sourceTree = "<group>"; };
+		BDC2680B29DB4C8C00B0FFAD /* Documentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Documentation.swift; sourceTree = "<group>"; };
+		BDC2680D29DB4FF100B0FFAD /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		BDC7B292285F7F9E0043CB85 /* ToolPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolPickerView.swift; sourceTree = "<group>"; };
 		BDD665A527AC7B66008C6D3A /* CoreDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTestView.swift; sourceTree = "<group>"; };
 		BDD665F227B0490D008C6D3A /* Animals.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Animals.json; sourceTree = "<group>"; };
 		BDD665F427B04913008C6D3A /* ChemicalElements.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ChemicalElements.json; sourceTree = "<group>"; };
 		BDD665F627B058C5008C6D3A /* AggregateInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregateInput.swift; sourceTree = "<group>"; };
 		BDD665F827B064DF008C6D3A /* ToolInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolInputView.swift; sourceTree = "<group>"; };
-		BDD665FA27B067AD008C6D3A /* StyleAggregateInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleAggregateInput.swift; sourceTree = "<group>"; };
 		BDDB90B2285F5DEF001D16A8 /* CompoundSearchRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundSearchRowView.swift; sourceTree = "<group>"; };
-		BDDB90B4285F73DB001D16A8 /* ToolList and Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ToolList and Filter.swift"; sourceTree = "<group>"; };
+		BDDB90B4285F73DB001D16A8 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		BDDF059F2795E006000BEF85 /* WordOwl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordOwl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDDF05A22795E006000BEF85 /* WordOwlApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordOwlApp.swift; sourceTree = "<group>"; };
 		BDDF05A42795E006000BEF85 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -132,6 +143,7 @@
 		BDE8956F27B8270C00E22139 /* ContainsAtLeast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainsAtLeast.swift; sourceTree = "<group>"; };
 		BDE97EB027BD4C8400B22608 /* ToolNodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolNodeView.swift; sourceTree = "<group>"; };
 		BDE97EB327BEE3F500B22608 /* AsynchronousSearchTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynchronousSearchTestView.swift; sourceTree = "<group>"; };
+		BDF049EA29DA1CBD00F810AF /* ContainsLetters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainsLetters.swift; sourceTree = "<group>"; };
 		BDFC2CE127A9646C003EEB06 /* ResultDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetail.swift; sourceTree = "<group>"; };
 		BDFC2CE327A965EC003EEB06 /* CharacterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterExtensions.swift; sourceTree = "<group>"; };
 		BDFC2CE627AAA46D003EEB06 /* SpacesInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacesInputView.swift; sourceTree = "<group>"; };
@@ -174,6 +186,7 @@
 				BDB83F8C27972FB7006DD718 /* ToolView.swift */,
 				BDAFA17529D6EB3B000C7A02 /* SearchButton.swift */,
 				BDB83F9027973335006DD718 /* ResultsView.swift */,
+				BD19008F29D986A000AB270F /* PageResultsView.swift */,
 				BDAFA17329D6E875000C7A02 /* ResultsListView.swift */,
 				BD59E40127BFB96D008FB0D8 /* ChecklistView.swift */,
 				BDE97EB327BEE3F500B22608 /* AsynchronousSearchTestView.swift */,
@@ -203,7 +216,10 @@
 			isa = PBXGroup;
 			children = (
 				BD97113727A69DDC006A6C09 /* Tool.swift */,
-				BDDB90B4285F73DB001D16A8 /* ToolList and Filter.swift */,
+				BDC2680D29DB4FF100B0FFAD /* Tools.swift */,
+				BDDB90B4285F73DB001D16A8 /* Filter.swift */,
+				BDC2680929DB4C7000B0FFAD /* ToolList.swift */,
+				BDC2680729DB304A00B0FFAD /* Example Filters.swift */,
 				BD97113127A5BCC0006A6C09 /* Dictionary.swift */,
 				BD97115627A6C704006A6C09 /* Sorting.swift */,
 				BDFC2CE127A9646C003EEB06 /* ResultDetail.swift */,
@@ -220,6 +236,7 @@
 				BD13F47A27A70915004950E1 /* Anagrams.swift */,
 				BDE44A3D27A8121E004951E0 /* WordLength.swift */,
 				BDE44A3F27A85092004951E0 /* ContainsString.swift */,
+				BDF049EA29DA1CBD00F810AF /* ContainsLetters.swift */,
 				BDFEF85D27AAEA3A00E84B2F /* MatchesSpaces.swift */,
 				BD22719227B151BC0016468B /* ContainsOnly.swift */,
 				BDE8956F27B8270C00E22139 /* ContainsAtLeast.swift */,
@@ -233,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				BD97114127A6A2B5006A6C09 /* TinySampleDictionary.json */,
+				BD19009129D9B4F000AB270F /* Enable.json */,
 				BD97114C27A6B3AE006A6C09 /* SmallSampleDictionary.json */,
 				BD13F47827A706E3004950E1 /* SmallEnglishDictionary.json */,
 				BD003B0E290C5DEA00CB2362 /* LargeEnglishDictionary.json */,
@@ -312,6 +330,7 @@
 				BD19008729D8613000AB270F /* HelpView.swift */,
 				BD19008929D8997100AB270F /* DocumentView.swift */,
 				BD19008B29D899C900AB270F /* Document.swift */,
+				BDC2680B29DB4C8C00B0FFAD /* Documentation.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -327,7 +346,6 @@
 				BDFC2CE627AAA46D003EEB06 /* SpacesInputView.swift */,
 				BD22719027B13EAC0016468B /* MultipleCharactersView.swift */,
 				BD2271B527B301F60016468B /* CharacterQuantitiesView.swift */,
-				BDD665FA27B067AD008C6D3A /* StyleAggregateInput.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -396,6 +414,7 @@
 				BDD665F327B0490D008C6D3A /* Animals.json in Resources */,
 				BDFEF86027AC301C00E84B2F /* Countries.json in Resources */,
 				BDDF05AA2795E007000BEF85 /* Preview Assets.xcassets in Resources */,
+				BD19009229D9B4F000AB270F /* Enable.json in Resources */,
 				BD97114D27A6B3AF006A6C09 /* SmallSampleDictionary.json in Resources */,
 				BDDF05A72795E007000BEF85 /* Assets.xcassets in Resources */,
 				BD97114227A6A2B5006A6C09 /* TinySampleDictionary.json in Resources */,
@@ -424,11 +443,12 @@
 				BD49770827C67F43003824B7 /* ToolFilterView.swift in Sources */,
 				BD97114B27A6B227006A6C09 /* StringExtensions.swift in Sources */,
 				BDDF05B12795E057000BEF85 /* ToolsView.swift in Sources */,
+				BDC2680829DB304A00B0FFAD /* Example Filters.swift in Sources */,
 				BDB83F9127973335006DD718 /* ResultsView.swift in Sources */,
-				BDD665FB27B067AD008C6D3A /* StyleAggregateInput.swift in Sources */,
 				BDD665F727B058C5008C6D3A /* AggregateInput.swift in Sources */,
 				BDDF05B32795E064000BEF85 /* SettingsView.swift in Sources */,
 				BD6FCF9627B937CA00149AC7 /* BugFixView.swift in Sources */,
+				BDC2680C29DB4C8C00B0FFAD /* Documentation.swift in Sources */,
 				BDC7B293285F7F9E0043CB85 /* ToolPickerView.swift in Sources */,
 				BD97113E27A6A21D006A6C09 /* StartingString.swift in Sources */,
 				BDD665A627AC7B66008C6D3A /* CoreDataTestView.swift in Sources */,
@@ -449,18 +469,22 @@
 				BD2271B627B301F60016468B /* CharacterQuantitiesView.swift in Sources */,
 				BD22719327B151BC0016468B /* ContainsOnly.swift in Sources */,
 				BD97114F27A6B7E2006A6C09 /* EndingString.swift in Sources */,
+				BDF049EB29DA1CBD00F810AF /* ContainsLetters.swift in Sources */,
 				BDAFA17829D74C19000C7A02 /* Haptics.swift in Sources */,
 				BDDF05A52795E006000BEF85 /* ContentView.swift in Sources */,
 				BD13F47B27A70915004950E1 /* Anagrams.swift in Sources */,
 				BDFC2CE227A9646C003EEB06 /* ResultDetail.swift in Sources */,
 				BDE44A3E27A8121E004951E0 /* WordLength.swift in Sources */,
+				BD19009029D986A000AB270F /* PageResultsView.swift in Sources */,
 				BDE8957027B8270C00E22139 /* ContainsAtLeast.swift in Sources */,
 				BDFEF85E27AAEA3A00E84B2F /* MatchesSpaces.swift in Sources */,
 				BD97115327A6BB00006A6C09 /* DetailsPair.swift in Sources */,
 				BD19008E29D89EA600AB270F /* Color Extensions.swift in Sources */,
 				BDFC2CE427A965EC003EEB06 /* CharacterExtensions.swift in Sources */,
-				BDDB90B5285F73DB001D16A8 /* ToolList and Filter.swift in Sources */,
+				BDDB90B5285F73DB001D16A8 /* Filter.swift in Sources */,
 				BDE97EB427BEE3F500B22608 /* AsynchronousSearchTestView.swift in Sources */,
+				BDC2680A29DB4C7000B0FFAD /* ToolList.swift in Sources */,
+				BDC2680E29DB4FF100B0FFAD /* Tools.swift in Sources */,
 				BDE44A4027A85092004951E0 /* ContainsString.swift in Sources */,
 				BDDF05A32795E006000BEF85 /* WordOwlApp.swift in Sources */,
 				BDFC2CEF27AAA494003EEB06 /* RangeInputView.swift in Sources */,

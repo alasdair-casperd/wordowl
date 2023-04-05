@@ -40,7 +40,7 @@ struct AsynchronousSearchTestView: View {
                     aggregateInput.inputInts[30] = 0
                     aggregateInput.inputBools[31] = true
                     Task {
-                        results = await containsQuantities(Dictionaries.list[1].words, aggregateInput)
+                        results = await containsQuantities(Dictionary.mainDictionaries[1].words, aggregateInput)
                     }
                 }
                 .icon("slider.horizontal.3")
@@ -48,7 +48,7 @@ struct AsynchronousSearchTestView: View {
                     let aggregateInput = AggregateInput()
                     aggregateInput.x = "a"
                     Task {
-                        results = await containsString(Dictionaries.list[1].words, aggregateInput)
+                        results = await containsString(Dictionary.mainDictionaries[1].words, aggregateInput)
                     }
                 }
                 .icon("textformat")

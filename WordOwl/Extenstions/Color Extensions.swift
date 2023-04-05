@@ -10,4 +10,5 @@ import SwiftUI
 extension Color {
     static let backgroundColor = Color(UIColor.systemGroupedBackground)
     static let panelColor = Color(UIColor.secondarySystemGroupedBackground)
+    static let secondaryBackgroundColor = Color(UIColor.tertiarySystemFill)
 }

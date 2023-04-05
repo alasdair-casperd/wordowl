@@ -20,15 +20,11 @@ struct ResultDetailType: Identifiable, Hashable {
     let name: String
     
     let detail: (String) -> String
-}
-
-class ResultDetailTypes {
     
-    static let list = [
-        ResultDetailType(id: 0, name: "None", detail: {_ in return ""}),
-        ResultDetailType(id: 1, name: "Word Length", detail: {string in return "\(string.count)"}),
-        ResultDetailType(id: 2, name: "Scrabble Score", detail: {string in return "\(string.scrabbleScore)"}),
-        ResultDetailType(id: 3, name: "Words With Friends Score", detail: {string in return "\(string.wordsWithFriendsScore)"})
-    ]
+    static let none = ResultDetailType(id: 0, name: "None", detail: {_ in return ""})
+    static let wordLength = ResultDetailType(id: 1, name: "Word Length", detail: {string in return "\(string.count)"})
+    static let scrabbleScore = ResultDetailType(id: 2, name: "Scrabble Score", detail: {string in return "\(string.scrabbleScore)"})
+    static let wordsWithFriendsScore = ResultDetailType(id: 3, name: "Words With Friends Score", detail: {string in return "\(string.wordsWithFriendsScore)"})
     
+    static let allResultDetailTypes = [none, wordLength, scrabbleScore, wordsWithFriendsScore]
 }

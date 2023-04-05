@@ -71,7 +71,7 @@ struct ChecklistView: View {
 struct ChecklistView_Previews: PreviewProvider {
     static var previews: some View {
         Form {
-            ChecklistView(results: Dictionaries.list[2].words)
+            ChecklistView(results: Dictionary.mainDictionaries[1].words)
         }
     }
 }

@@ -38,7 +38,7 @@ struct ResultsListView: View {
 struct ResultsListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ResultsListView(results: [String](), resultDetailType: ResultDetailTypes.list[0])
+            ResultsListView(results: [String](), resultDetailType: ResultDetailType.allResultDetailTypes[0])
         }
     }
 }

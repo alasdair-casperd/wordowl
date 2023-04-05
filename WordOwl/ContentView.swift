@@ -23,9 +23,9 @@ struct ContentView: View {
                     Label("Compound", systemImage: CompoundSearchView.filledIcon)
                 }
             
-//            DictionariesView()
+//            DictionariesView
 //                .tabItem {
-//                    Label("Dictionaries", systemImage: "books.vertical.fill")
+//                    Label("Dictionary", systemImage: "books.vertical.fill")
 //                }
             
             HelpView()

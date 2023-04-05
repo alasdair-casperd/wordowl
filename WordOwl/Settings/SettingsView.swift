@@ -31,15 +31,15 @@ struct SettingsView: View {
             Form {
                 Section(header: Text("Defaults")) {
                     Picker("Default Ordering", selection: $selectedSorting) {
-                        ForEach(0...(Sortings.list.count-1), id: \.self) {i in
-                            Text(Sortings.list[i].name).tag(i)
+                        ForEach(0...(Sorting.allSortings.count-1), id: \.self) {i in
+                            Text(Sorting.allSortings[i].name).tag(i)
                         }
                         //.navigationBarTitle("Default Ordering")
                         //.navigationBarTitleDisplayMode(.inline)
                     }
                     Picker("Default Detail", selection: $selectedResultDetailType) {
-                        ForEach(0...(ResultDetailTypes.list.count-1), id: \.self) {i in
-                            Text(ResultDetailTypes.list[i].name).tag(i)
+                        ForEach(0...(ResultDetailType.allResultDetailTypes.count-1), id: \.self) {i in
+                            Text(ResultDetailType.allResultDetailTypes[i].name).tag(i)
                         }
                         //.navigationBarTitle("Default Ordering")
                         //.navigationBarTitleDisplayMode(.inline)
@@ -114,6 +114,10 @@ struct SettingsView: View {
         addNewLines = true
         selectedSorting = 0
         selectedResultDetailType = 0
+        simpleIcons = false
+        hapticsDisabled = false
+        UserDefaults.standard.set(true, forKey: "wheelCharacterInput")
+        UserDefaults.standard.set(true, forKey: "visualInput")
     }
 }
 

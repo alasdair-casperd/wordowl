@@ -102,9 +102,9 @@ struct ToolFilterView: View {
                 }
                 return !output
             case .multipleCharacters:
-                return styledAggregateInput(aggregateInput, tool: tool) == "None"
+                return aggregateInput.styledFor(tool: tool) == "None"
             case .characterQuantities:
-                return styledAggregateInput(aggregateInput, tool: Tool.containsOnlyTool) == "None"
+                return aggregateInput.styledFor(tool: tool) == "None"
             case .code:
                 return aggregateInput.inputStrings[0] == ""
             default:

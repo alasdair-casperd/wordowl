@@ -10,13 +10,7 @@ import SwiftUI
 struct CompoundSearchRowView: View {
     
     var order: Int
-    var tool: Tool
-    var aggregateInput: AggregateInput
-    var inverted: Bool
-    
-    var text: String {
-        return styledAggregateInputForFilterDisplay(aggregateInput, tool: tool, inverted: inverted)
-    }
+    var filter: Filter
     
     var initiateEdit: () -> ()
     
@@ -28,10 +22,10 @@ struct CompoundSearchRowView: View {
                 .padding(.trailing)
             
             VStack(alignment: .leading) {
-                Text(tool.name.uppercased())
+                Text(filter.tool.name.uppercased())
                     .font(.caption)
                     .foregroundColor(.secondary)                
-                Text(text)
+                Text(filter.description)
             }
             
             Spacer()

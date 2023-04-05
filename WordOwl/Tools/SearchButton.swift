@@ -11,7 +11,7 @@ struct SearchButton: View {
     
     var filters: [Filter]
     
-    var selectedDictionary = Dictionaries.list[0]
+    var selectedDictionary: Dictionary
     var selectedSorting: Sorting
     var selectedResultDetailType: ResultDetailType
             
@@ -52,7 +52,7 @@ struct SearchButton: View {
                     ResultsView(
                         results: results,
                         filters: filters,
-                        dictionary:selectedDictionary,
+                        dictionary: selectedDictionary,
                         sorting: selectedSorting,
                         resultDetailType: selectedResultDetailType
                         ),
@@ -61,10 +61,10 @@ struct SearchButton: View {
             }
         }
         .alert("No Search Results", isPresented: $showingAlert) {
-            Button("Ok") {}
+            Button("OK") {}
         } message: {
-            if selectedDictionary == Dictionaries.list[0] {
-                Text("You may have more luck with the large dictionary.")
+            if selectedDictionary == Dictionary.small {
+                Text("Consider searching the main dictionary.")
             }
             else {
                 EmptyView()

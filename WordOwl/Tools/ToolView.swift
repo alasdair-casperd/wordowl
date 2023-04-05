@@ -11,7 +11,7 @@ struct ToolView: View {
     
     var tool: Tool
     
-    @State private var selectedDictionary = Dictionaries.list[0]
+    @State private var selectedDictionary = Dictionary.mainDictionaries[0]
     @State var selectedSorting: Sorting
     @State var selectedResultDetailType: ResultDetailType
     
@@ -35,9 +35,9 @@ struct ToolView: View {
                 
                 Section(header: Text("Search Options")) {
                     Picker("Dictionary", selection: $selectedDictionary) {
-                        ForEach(Dictionaries.list) { dictionary in
+                        ForEach(Dictionary.mainDictionaries) { dictionary in
                             
-                            Text(dictionary.name)
+                            Text(dictionary.shortName)
 //                            HStack {
 //                                Image(systemName: dictionary.symbolName ?? "text.book.closed.fill")
 //                                Text(dictionary.name)
@@ -50,19 +50,19 @@ struct ToolView: View {
                 
                 Section(header: Text("Display Options")) {
                     Picker("Sort Words", selection: $selectedSorting) {
-                        ForEach(Sortings.list) {sorting in
+                        ForEach(Sorting.allSortings) {sorting in
                             Text(sorting.name).tag(sorting)
                         }
                         //.navigationTitle("Sort Words")
                     }
                     Picker("Additional Detail", selection: $selectedResultDetailType) {
-                        ForEach(ResultDetailTypes.list) { resultDetailType in
+                        ForEach(ResultDetailType.allResultDetailTypes) { resultDetailType in
                             Text(resultDetailType.name).tag(resultDetailType)
                         }
                         //.navigationTitle("Additional Detail")
                     }
                 }
-                SearchButton(filters: filters, selectedSorting: selectedSorting, selectedResultDetailType: selectedResultDetailType, searchDisabled: searchDisabled)
+                SearchButton(filters: filters, selectedDictionary: selectedDictionary, selectedSorting: selectedSorting, selectedResultDetailType: selectedResultDetailType, searchDisabled: searchDisabled)
             }
 //            NavigationLink(
 //                destination:
@@ -97,9 +97,9 @@ struct ToolView: View {
                 }
                 return !output
             case .multipleCharacters:
-                return styledAggregateInput(aggregateInput, tool: tool) == "None"
+                return aggregateInput.styledFor(tool: tool) == "None"
             case .characterQuantities:
-                return styledAggregateInput(aggregateInput, tool: Tool.containsOnlyTool) == "None"
+                return aggregateInput.styledFor(tool: tool) == "None"
             case .code:
                 return aggregateInput.inputStrings[0] == ""
             default:
@@ -114,7 +114,7 @@ struct ToolView: View {
 struct ToolView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ToolView(tool: Tool.containsAtLeastTool, selectedSorting: Sortings.list[0], selectedResultDetailType: ResultDetailTypes.list[0])
+            ToolView(tool: Tool.containsAtLeastTool, selectedSorting: Sorting.allSortings[0], selectedResultDetailType: ResultDetailType.allResultDetailTypes[0])
         }
     }
 }

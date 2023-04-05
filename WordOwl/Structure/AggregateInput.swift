@@ -86,4 +86,68 @@ class AggregateInput : ObservableObject, Equatable {
             inputCharacters[0] = input
         }
     }
+    
+    func styledFor(tool: Tool) -> String {
+        switch tool.input {
+        case .string:
+            if x.count > 0 {
+                return "\"" + x.lowercased().capitalizingFirstLetter() + "\""
+            }
+            else {
+                return "None"
+            }
+        case .number:
+            return "\(i)"
+        case .range:
+            return "\(j) to \(i)"
+        case .character:
+            return a.rawValue
+        case .spaces:
+            var output = inputStrings[9].lowercased()
+            if output.isEmpty {
+                for i in 1...i {
+                    let c = inputStrings[i-1].uppercased()
+                    output += c == "" ? "?" : c
+                    output += " "
+                }
+            }
+            return output
+        case .multipleCharacters:
+            var output = ""
+            var first = true
+            for letter in EnglishAlphabet.allCases {
+                if inputBools[EnglishAlphabet.allCases.firstIndex(of: letter)!] {
+                    if !first {
+                        output += ", "
+                    }
+                    output += letter.rawValue
+                    first = false
+                }
+            }
+            output = output.isEmpty ? "None" : output
+            return output
+        case .characterQuantities:
+            var output = ""
+            var first = true
+            for letter in EnglishAlphabet.allCases {
+                if inputBools[EnglishAlphabet.allCases.firstIndex(of: letter)!] {
+                    if !first {
+                        output += ", "
+                    }
+                    output += "\(inputInts[EnglishAlphabet.allCases.firstIndex(of: letter)!]) X "
+                    output += letter.rawValue
+                    first = false
+                }
+            }
+            output = output.isEmpty ? "None" : output
+            return output
+        case .code:
+            if x.count > 0 {
+                return "\"" + x.lowercased() + "\""
+            }
+            else {
+                return "None"
+            }
+        }
+    }        
 }

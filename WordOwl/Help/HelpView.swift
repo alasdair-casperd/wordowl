@@ -15,13 +15,18 @@ struct HelpView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Tools")) {
-                    ForEach(Document.toolGuides) { document in
+                Section(header: Text("General")) {
+                    ForEach(Document.generalGuides) { document in
                         DocumentRowView(document: document)
                     }
                 }
                 Section(header: Text("Compound Search")) {
                     ForEach(Document.compoundSearchDocuments) { document in
+                        DocumentRowView(document: document)
+                    }
+                }
+                Section(header: Text("Tools")) {
+                    ForEach(Document.toolGuides) { document in
                         DocumentRowView(document: document)
                     }
                 }

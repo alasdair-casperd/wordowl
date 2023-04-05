@@ -46,8 +46,8 @@ struct Greeting {
             Item(
                 icon: HelpView.icon,
                 iconColor: Color("WordOwl Yellow"),
-                title: "User Manual",
-                description: "Confused by any of our tools? You'll find help in our comphrehensive manual."
+                title: "User Guide",
+                description: "Confused by any of our tools? You'll find help in our comprehensive manual."
             ),
         ]
     )
@@ -69,8 +69,8 @@ struct Greeting {
             Item(
                 icon: HelpView.icon,
                 iconColor: Color("WordOwl Yellow"),
-                title: "User Manual",
-                description: "Confused by any of our tools? We've added a comphrehensive manual."
+                title: "User Guide",
+                description: "Confused by any of our tools? We've added a comprehensive manual."
             ),
             Item(
                 icon: "square.and.pencil",
@@ -124,7 +124,7 @@ struct GreetingView: View {
             Spacer()
         }
         .overlay {
-            LinearGradient(colors: [.white.opacity(0), .white], startPoint: UnitPoint(x: 0.5, y: 0.8), endPoint: .bottom)
+            LinearGradient(colors: [Color("Inverse Primary").opacity(0), Color("Inverse Primary")], startPoint: UnitPoint(x: 0.5, y: 0.8), endPoint: .bottom)
                 .allowsHitTesting(false)
             
         }

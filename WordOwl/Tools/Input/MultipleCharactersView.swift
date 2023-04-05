@@ -17,7 +17,7 @@ struct MultipleCharactersView: View {
             HStack {
                 Text("Characters")
                 Spacer()
-                Text(styledAggregateInput(aggregateInput, tool: tool))
+                Text(aggregateInput.styledFor(tool: tool))
                     .foregroundColor(.secondary)
             }
         }
@@ -36,7 +36,7 @@ struct MultipleCharactersDetailView: View {
                 HStack {
                     Text("Selected Characters")
                     Spacer()
-                    Text(styledAggregateInput(aggregateInput, tool: tool))
+                    Text(aggregateInput.styledFor(tool: tool))
                         .foregroundColor(.secondary)
                 }
             }

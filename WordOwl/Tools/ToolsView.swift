@@ -41,16 +41,16 @@ struct SimpleSearchToolRowItem: View {
         
     var tool: Tool
     
-    @State private var defaultSorting = Sortings.list[UserDefaults.standard.integer(forKey: "selectedSorting")]
-    @State private var defaultResultDetailType = ResultDetailTypes.list[UserDefaults.standard.integer(forKey: "selectedResultDetailType")]
+    @State private var defaultSorting = Sorting.allSortings[UserDefaults.standard.integer(forKey: "selectedSorting")]
+    @State private var defaultResultDetailType = ResultDetailType.allResultDetailTypes[UserDefaults.standard.integer(forKey: "selectedResultDetailType")]
     
     var body: some View {
         NavigationLink(destination: ToolView(tool: tool, selectedSorting: defaultSorting, selectedResultDetailType: defaultResultDetailType)) {
             ToolRowItem(tool: tool)
         }
         .onAppear {
-            defaultSorting = Sortings.list[UserDefaults.standard.integer(forKey: "selectedSorting")]
-            defaultResultDetailType = ResultDetailTypes.list[UserDefaults.standard.integer(forKey: "selectedResultDetailType")]
+            defaultSorting = Sorting.allSortings[UserDefaults.standard.integer(forKey: "selectedSorting")]
+            defaultResultDetailType = ResultDetailType.allResultDetailTypes[UserDefaults.standard.integer(forKey: "selectedResultDetailType")]
         }
     }
 }
@@ -60,36 +60,19 @@ struct ToolRowItem: View {
     var tool: Tool
     
     @State private var simpleIcons = false
-        
-    var background: some View {
-        RoundedRectangle(cornerRadius: 10)
-            .foregroundColor(tool.color)
-            .frame(width: 40, height: 40, alignment: .center)
-    }
     
-    @State private var defaultSorting = Sortings.list[UserDefaults.standard.integer(forKey: "selectedSorting")]
-    @State private var defaultResultDetailType = ResultDetailTypes.list[UserDefaults.standard.integer(forKey: "selectedResultDetailType")]
+    @State private var defaultSorting = Sorting.allSortings[UserDefaults.standard.integer(forKey: "selectedSorting")]
+    @State private var defaultResultDetailType = ResultDetailType.allResultDetailTypes[UserDefaults.standard.integer(forKey: "selectedResultDetailType")]
     
     var body: some View {
         
-        HStack {
-            Image(systemName: tool.symbolName ?? "doc.text.magnifyingglass")
-                .foregroundColor(!simpleIcons ? .white : .accentColor)
-                .font(.title2)
-                .background {
-                    if !simpleIcons {
-                        background
-                    }
-                }
-            .frame(width: 30, height: 50, alignment: .center)
-            .padding(.trailing, !simpleIcons ? 12 : 8)
-            VStack(alignment: .leading) {
-                Text(tool.shortName)
-                Text(tool.shortDescription)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
+        VStack(alignment: .leading) {
+            Text(tool.shortName)
+            Text(tool.shortDescription)
+                .font(.caption)
+                .foregroundColor(.secondary)
         }
+        .icon(tool.symbolName ?? "magnifyingglass", color: simpleIcons ? .accentColor : tool.color, style: simpleIcons ? .large : .bold)
         .onAppear {
             simpleIcons = UserDefaults.standard.bool(forKey: SettingsView.simpleIconsKey)
         }

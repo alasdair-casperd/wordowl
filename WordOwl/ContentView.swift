@@ -11,6 +11,12 @@ struct ContentView: View {
     @State private var showingWelcomeView = false
     @State private var showingUpdateView = false        
     
+    @State private var showingDictionaryTab = UserDefaults.standard.bool(forKey: "showingDictionaryTab")
+    
+    func updateDictionaryTabVisibility(_ input: Bool) {
+        showingDictionaryTab = input
+    }
+    
     var body: some View {
         TabView {
             ToolsView()
@@ -18,26 +24,31 @@ struct ContentView: View {
                     Label("Search", systemImage: ToolsView.icon)
                 }
             
-            CompoundSearchView()
+            NavigationView {
+                CompoundSearchView()
+            }
                 .tabItem {
                     Label("Compound", systemImage: CompoundSearchView.filledIcon)
                 }
             
-//            DictionariesView
-//                .tabItem {
-//                    Label("Dictionary", systemImage: "books.vertical.fill")
-//                }
+            if showingDictionaryTab {
+                MainDictionaryView()
+                    .tabItem {
+                        Label("Dictionary", systemImage: "book.closed.fill")
+                    }
+            }
             
             HelpView()
                 .tabItem {
                     Label("User Guide", systemImage: HelpView.filledIcon)
                 }
             
-            SettingsView(showWelcomeScreen: {showingWelcomeView = true}, showUpdateScreen: {showingUpdateView = true})
+            SettingsView(showWelcomeScreen: {showingWelcomeView = true}, showUpdateScreen: {showingUpdateView = true}, updateDictionaryTabVisibility: updateDictionaryTabVisibility)
                 .tabItem {
                     Label("Settings", systemImage: SettingsView.icon)
                 }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .fullScreenCover(isPresented: $showingWelcomeView) {
             GreetingView(greeting: Greeting.welcomeToWordOwl)
         }

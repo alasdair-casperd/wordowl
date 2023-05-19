@@ -1,12 +1,16 @@
 import Foundation
 import SwiftUI
 
-struct Tool: Identifiable, Equatable {
+struct Tool: Identifiable, Equatable, Hashable {
     
     struct Category: Identifiable {
         var id: UUID = UUID()
         var name: String
         var tools: [Tool]
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
     
     static func == (lhs: Tool, rhs: Tool) -> Bool {

@@ -12,6 +12,8 @@ struct HelpView: View {
     static let filledIcon = "book.fill"
     static let icon = "book"
     
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         NavigationView {
             Form {
@@ -32,6 +34,15 @@ struct HelpView: View {
                 }
             }
             .navigationTitle("User Guide")
+            .toolbar {
+                ToolbarItem() {
+                    if iPadVersion {
+                        Button("Done") {
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -41,7 +52,7 @@ struct DocumentRowView: View {
     var document: Document
     
     var body: some View {
-        NavigationLink(destination: DocumentView(document: document)){
+        NavigationLink(destination: DocumentView(document: document).navigationTitle(document.name).navigationBarTitleDisplayMode(.inline)){
             Text(document.name)
                 .icon(document.icon)
         }

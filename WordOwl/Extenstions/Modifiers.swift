@@ -12,6 +12,7 @@ struct Icon: ViewModifier {
     enum Style {
         case small
         case large
+        case smallBold
         case bold
     }
     
@@ -28,6 +29,7 @@ struct Icon: ViewModifier {
                     .frame(width: 20)
                     .padding(.trailing, 5)
                     .foregroundColor(color)
+                    .accessibilityHidden(true)
                 content
             }
         case .large:
@@ -37,6 +39,22 @@ struct Icon: ViewModifier {
                     .font(.title2)
                     .frame(width: 30, height: 50, alignment: .center)
                     .padding(.trailing, 12)
+                    .accessibilityHidden(true)
+                content
+            }
+        case .smallBold:
+            HStack {
+                Image(systemName: systemName)
+                    .foregroundColor(.white)
+                    .font(.body)
+                    .background {
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundColor(color)
+                            .frame(width: 28, height: 28, alignment: .center)
+                    }
+                    .accessibilityHidden(true)
+                .frame(width: 20, height: 20, alignment: .center)
+                .padding(.trailing, 8)
                 content
             }
         case .bold:
@@ -49,10 +67,26 @@ struct Icon: ViewModifier {
                             .foregroundColor(color)
                             .frame(width: 40, height: 40, alignment: .center)
                     }
+                    .accessibilityHidden(true)
                 .frame(width: 30, height: 50, alignment: .center)
                 .padding(.trailing, 8)
                 content
             }
+        }
+    }
+}
+
+struct Extensions_Previews: PreviewProvider {
+    static var previews: some View {
+        List {
+            Text("Small")
+                .icon("person", style: .small)
+            Text("Large")
+                .icon("person", style: .large)
+            Text("Small Bold")
+                .icon("person", style: .smallBold)
+            Text("Bold")
+                .icon("person", style: .bold)
         }
     }
 }
@@ -80,6 +114,10 @@ extension View {
     
     func panelled() -> some View {
         modifier(PanelBackground())
+    }
+    
+    var iPadVersion: Bool {        
+        return UIDevice.current.userInterfaceIdiom == .pad
     }
 }
 

@@ -30,7 +30,7 @@ struct Dictionary: Identifiable, Hashable {
         id: "Small",
         name: "Small Dictionary",
         shortName: "Small",
-        titleName: "Small", description: "A relatively small dictionary containing the most common English words.",
+        titleName: "Small", description: "The Small Dictionary is a relatively small word list containing the most common English words. This dictionary aims to include only words that most English speakers would know.",
         path: "SmallEnglishDictionary.json",
         symbolName: nil,
         wordCount: "65,000")
@@ -39,7 +39,7 @@ struct Dictionary: Identifiable, Hashable {
         id: "Large",
         name: "Large Dictionary",
         shortName: "Large",
-        titleName: "Large", description: "A large dictionary containing even the most obscure English words.",
+        titleName: "Large", description: "The Large Dictionary is a large word list containing even the most obscure English words.",
         path: "LargeEnglishDictionary.json",
         symbolName: nil)
     
@@ -47,7 +47,7 @@ struct Dictionary: Identifiable, Hashable {
         id: "WordOwl",
         name: "WordOwl Dictionary",
         shortName: "WordOwl",
-        titleName: "WordOwl", description: "A large dictionary containing even the most obscure English words.",
+        titleName: "WordOwl", description: "The WordOwl Dictionary is a large word list containing even the most obscure English words. Beware that not all of the words in this dictionary will be valid in your favourite word games.",
         path: "Enable.json",
         symbolName: nil,
         wordCount: "173,000")

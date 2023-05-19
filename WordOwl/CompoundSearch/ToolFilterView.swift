@@ -16,12 +16,14 @@ struct ToolFilterView: View {
     var buttonText = "Add"
     var tool: Tool    
     var preloadingFilter: Filter? = nil
+    @State private var filterLoaded = false // used to prevent overriding filter again when navigating back to this view
     
     @StateObject var aggregateInput: AggregateInput = AggregateInput()
     @State var inverted: Bool = false
     var addFilter: (Filter) -> ()
     
     @State private var showingWarning = false
+    @State private var showingHelpSheet = false
     
     var body: some View {
         ZStack {
@@ -66,18 +68,30 @@ struct ToolFilterView: View {
         }
         .onAppear {
             if let filter = preloadingFilter {
-                aggregateInput.inputInts = filter.aggregateInput.inputInts
-                aggregateInput.inputBools = filter.aggregateInput.inputBools
-                aggregateInput.inputStrings = filter.aggregateInput.inputStrings
-                aggregateInput.inputCharacters = filter.aggregateInput.inputCharacters                
-                inverted = filter.inverted
+                if !filterLoaded {
+                    print("Preloading Filter")
+                    aggregateInput.inputInts = filter.aggregateInput.inputInts
+                    aggregateInput.inputBools = filter.aggregateInput.inputBools
+                    aggregateInput.inputStrings = filter.aggregateInput.inputStrings
+                    aggregateInput.inputCharacters = filter.aggregateInput.inputCharacters
+                    inverted = filter.inverted
+                    filterLoaded = true
+                }
             }
         }
         .navigationTitle(tool.shortName)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             
-            // Add to the current compound search
+            // Help Button
+            
+            ToolbarItem() {
+                if let guide = Document.documentForTool(tool) {
+                    HelpButton(document: guide, suffix: " Guide")
+                }
+            }
+            
+            // Add Button
             
             ToolbarItem() {
                 Button(action: {addFilter(Filter(id: id, tool: tool, aggregateInput: aggregateInput, inverted: inverted)); dismiss()}) {

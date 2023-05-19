@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import StoreKit
 
 struct ToolsView: View {
     
@@ -26,8 +27,31 @@ struct ToolsView: View {
                     }
                 }
             }
+            .overlay {
+                if #available(iOS 16, *) {
+                    AskForReviewView()
+                }
+            }
             .navigationTitle("Search")
         }
+    }
+}
+
+@available(iOS 16.0, *)
+struct AskForReviewView: View {
+    @Environment(\.requestReview) var requestReview
+    var body: some View {
+        VStack {}
+            .onAppear {
+                print(UserDefaults.standard.integer(forKey: "totalSearches"))
+                let reviewKey = "userHasBeenAskedForReview"
+                if !UserDefaults.standard.bool(forKey: reviewKey) && UserDefaults.standard.integer(forKey: "totalSearches") > 4 {
+                    UserDefaults.standard.set(true, forKey: reviewKey)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                        requestReview()
+                    }
+                }
+            }
     }
 }
 
@@ -38,7 +62,7 @@ struct ToolsView_Previews: PreviewProvider {
 }
 
 struct SimpleSearchToolRowItem: View {
-        
+            
     var tool: Tool
     
     @State private var defaultSorting = Sorting.allSortings[UserDefaults.standard.integer(forKey: "selectedSorting")]
@@ -67,12 +91,17 @@ struct ToolRowItem: View {
     var body: some View {
         
         VStack(alignment: .leading) {
-            Text(tool.shortName)
-            Text(tool.shortDescription)
-                .font(.caption)
-                .foregroundColor(.secondary)
+            if iPadVersion {
+                Text(tool.shortName)                
+            }
+            else {
+                Text(tool.shortName)
+                Text(tool.shortDescription)
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
         }
-        .icon(tool.symbolName ?? "magnifyingglass", color: simpleIcons ? .accentColor : tool.color, style: simpleIcons ? .large : .bold)
+        .icon(tool.symbolName ?? "magnifyingglass", color: simpleIcons ? .accentColor : tool.color, style: simpleIcons ? (iPadVersion ? .small : .large) : (iPadVersion ? .smallBold : .bold))
         .onAppear {
             simpleIcons = UserDefaults.standard.bool(forKey: SettingsView.simpleIconsKey)
         }

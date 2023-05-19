@@ -94,7 +94,8 @@ struct SearchButton: View {
     
     func initiateSearch() async {
         
-        // print("Commencing search with \(filters.count) filters.")
+        let key = "totalSearches"
+        UserDefaults.standard.set(UserDefaults.standard.integer(forKey: key) + 1, forKey: key)
         
         var words = selectedDictionary.words
         searchInitiated = true

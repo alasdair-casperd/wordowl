@@ -9,6 +9,8 @@ import SwiftUI
 
 struct PageResultsView: View {
     
+    @Environment(\.openURL) var openURL
+    
     static let resultsPerPage = 100;
     static let backToTopMinimum = 25;
     
@@ -22,6 +24,9 @@ struct PageResultsView: View {
     
     @State private var currentPage = 0
     @State private var selections = [String: Bool]()
+    
+    @State private var showingDefinition = false
+    @State private var wordToDefine = ""
     
     var canEnterChecklistView: Bool {
         return results.count < 500
@@ -150,6 +155,17 @@ struct PageResultsView: View {
                                     Label("Enter Checklist Mode", systemImage: "checkmark.circle")
                                 }
                             }
+                            Button {
+                                if UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: result) {
+                                    wordToDefine = result
+                                    showingDefinition = true
+                                }
+                                else {
+                                    openURL(URL(string: "https://www.google.com/search?q=" + result)!)
+                                }
+                            } label: {
+                                Label("Define", systemImage: "text.magnifyingglass")
+                            }
                         }
                         if showingChecklistView {
                             Button {
@@ -212,7 +228,13 @@ struct PageResultsView: View {
                 }
             }
         }
-        .onAppear(perform: setTextToExport)
+        .sheet(isPresented: $showingDefinition) {
+            DefinitionView(word: $wordToDefine)
+        }
+        .onAppear {
+            setTextToExport()
+            wordToDefine = ""
+        }
     }
 }
 

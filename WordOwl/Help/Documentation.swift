@@ -9,6 +9,38 @@ import SwiftUI
 
 extension Document {
     
+    static func documentForTool(_ tool: Tool) -> Document? {
+        switch tool {
+        case .anagramsTool:
+            return .anagramsGuide
+        case .crosswordSolver:
+            return .crosswordSolverGuide
+        case .containsStringTool:
+            return .containsStringGuide
+        case .firstLetterTool:
+            return .firstLetterGuide
+        case .lastLetterTool:
+            return .lastLetterGuide
+        case .startingStringTool:
+            return .startingStringGuide
+        case .endingStringTool:
+            return .endingStringGuide
+        case .containsOnlyTool:
+            return .containsOnlyGuide
+        case .containsAtLeastTool:
+            return .containsAtLeastGuide
+        case .containsQuantitiesTool:
+            return .containsQuantitiesGuide
+        case .wordLengthTool:
+            return .wordLengthGuide
+        case .wordLengthRangeTool:
+            return .wordLengthRangeGuide
+        case .matchesPatternTool:
+            return .matchesPatternGuide
+        default: return nil
+        }
+    }
+    
     static let generalGuides = [
         checklistMode, exportingResults, dictionarySelection, orderingResults, resultDetail
     ]

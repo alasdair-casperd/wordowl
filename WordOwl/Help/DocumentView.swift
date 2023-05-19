@@ -24,8 +24,7 @@ struct DocumentView: View {
         .background {
             Color.backgroundColor
                 .edgesIgnoringSafeArea(.all)
-        }
-        .navigationTitle(document.name)
+        }        
     }
     
     var body: some View {

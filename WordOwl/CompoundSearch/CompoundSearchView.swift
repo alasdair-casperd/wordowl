@@ -39,99 +39,103 @@ struct CompoundSearchView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Form {
-                    Section(
-                        header: Text("Use multiple filters simultaneously to perform compound searches.")
-                            .textCase(nil)
-                            .font(.footnote)
-                            .multilineTextAlignment(.leading)
-                            .padding(.bottom)
-                    ) {
-                        ForEach(toolList.filters) { filter in
+        ZStack {
+            Form {
+                Section(
+                    header: Text("Use multiple filters simultaneously to perform compound searches.")
+                        .textCase(nil)
+                        .font(.footnote)
+                        .multilineTextAlignment(.leading)
+                        .padding(.bottom)
+                ) {
+                    ForEach(toolList.filters) { filter in
 //                            NavigationLink(destination:
 //                                            ToolFilterView(dismiss: {showingToolEditor = false}, aggregateInput: filter.aggregateInput, tool: filter.tool, addFilter: addFilter)
 //                                    .navigationTitle(filter.tool.shortName)) {
-                            CompoundSearchRowView(order: (toolList.filters.firstIndex(of: filter) ?? 0) + 1, filter: filter, initiateEdit: {initiateEdit(filter: filter)})
+                        CompoundSearchRowView(order: (toolList.filters.firstIndex(of: filter) ?? 0) + 1, filter: filter, initiateEdit: {initiateEdit(filter: filter)})
 //                            }
-                        }
-                        .onDelete(perform: onDelete)
-                        .onMove(perform: toolList.moveFilter)
-                        
-                        // Add filter
-                        
-                        Button(action: { showingToolPicker = true }) {
-                            HStack {
-                                Image(systemName: "plus.circle")
-                                    .foregroundColor(.accentColor)
-                                    .font(.title3)
-                                Text("Add Filter")
-                                Spacer()
-                            }
-                        }
                     }
+                    .onDelete(perform: onDelete)
+                    .onMove(perform: toolList.moveFilter)
                     
-                    // Settings
+                    // Add filter
                     
-                    Section(header: Text("Search Options")) {
-                        Picker("Dictionary", selection: $selectedDictionary) {
-                            ForEach(Dictionary.mainDictionaries) { dictionary in
-                                
-                                Text(dictionary.shortName)
-                                .tag(dictionary)
-                            }
+                    Button(action: { showingToolPicker = true }) {
+                        HStack {
+                            Image(systemName: "plus.circle")
+                                .foregroundColor(.accentColor)
+                                .font(.title3)
+                            Text("Add Filter")
+                            Spacer()
                         }
-                    }
-                    
-                    Section(header: Text("Display Options")) {
-                        Picker("Sort Words", selection: $selectedSorting) {
-                            ForEach(Sorting.allSortings) {sorting in
-                                Text(sorting.name).tag(sorting)
-                            }
-                            //.navigationTitle("Sort Words")
-                        }
-                        Picker("Additional Detail", selection: $selectedResultDetailType) {
-                            ForEach(ResultDetailType.allResultDetailTypes) { resultDetailType in
-                                Text(resultDetailType.name).tag(resultDetailType)
-                            }
-                            //.navigationTitle("Additional Detail")
-                        }
-                    }
-                    
-                    // Search button
-                    
-                    SearchButton(filters: toolList.filters, selectedDictionary: selectedDictionary, selectedSorting: selectedSorting, selectedResultDetailType: selectedResultDetailType, searchDisabled: searchDisabled)                    
-                }
-                .environment(\.editMode, .constant(editMode).animation(.spring()))
-                .navigationBarTitle("Compound Search")
-                .toolbar {
-                    ToolbarItem() {
-//                        EditButton()
-                        Button(editMode == .active ? "Done" : "Edit") {
-                            if editMode == .active {
-                                withAnimation {
-                                    editMode = .inactive
-                                }
-                            }
-                            else {
-                                withAnimation {
-                                    editMode = .active
-                                }
-                            }
-                        }
-                        .disabled(toolList.filters.count == 0)
                     }
                 }
-                .onAppear {
-                    if toolList.filters.count == 0 {
-                        selectedSorting = Sorting.allSortings[UserDefaults.standard.integer(forKey: "selectedSorting")]
-                        selectedResultDetailType = ResultDetailType.allResultDetailTypes[UserDefaults.standard.integer(forKey: "selectedResultDetailType")]
+                
+                // Settings
+                
+                Section(header: Text("Search Options")) {
+                    Picker("Dictionary", selection: $selectedDictionary) {
+                        ForEach(Dictionary.mainDictionaries) { dictionary in
+                            
+                            Text(dictionary.shortName)
+                            .tag(dictionary)
+                        }
                     }
                 }
-
+                
+                Section(header: Text("Display Options")) {
+                    Picker("Sort Words", selection: $selectedSorting) {
+                        ForEach(Sorting.allSortings) {sorting in
+                            Text(sorting.name).tag(sorting)
+                        }
+                        //.navigationTitle("Sort Words")
+                    }
+                    Picker("Additional Detail", selection: $selectedResultDetailType) {
+                        ForEach(ResultDetailType.allResultDetailTypes) { resultDetailType in
+                            Text(resultDetailType.name).tag(resultDetailType)
+                        }
+                        //.navigationTitle("Additional Detail")
+                    }
+                }
+                
+                // Search button
+                
+                SearchButton(filters: toolList.filters, selectedDictionary: selectedDictionary, selectedSorting: selectedSorting, selectedResultDetailType: selectedResultDetailType, searchDisabled: searchDisabled)
             }
+            .environment(\.editMode, .constant(editMode).animation(.spring()))
+            .navigationBarTitle("Compound Search")
+            .toolbar {
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    HelpButton(document: .compoundSearchIntroduction)
+                }
+                
+                ToolbarItem() {
+//                        EditButton()
+                    Button(editMode == .active ? "Done" : "Edit") {
+                        if editMode == .active {
+                            withAnimation {
+                                editMode = .inactive
+                            }
+                        }
+                        else {
+                            withAnimation {
+                                editMode = .active
+                            }
+                        }
+                    }
+                    .disabled(toolList.filters.count == 0)
+                }
+            }
+            .onAppear {
+                if toolList.filters.count == 0 {
+                    selectedSorting = Sorting.allSortings[UserDefaults.standard.integer(forKey: "selectedSorting")]
+                    selectedResultDetailType = ResultDetailType.allResultDetailTypes[UserDefaults.standard.integer(forKey: "selectedResultDetailType")]
+                }
+            }
+
         }
+        
         .sheet(isPresented: $showingToolPicker) {
             ToolPickerView(addFilter: addFilter)
         }
@@ -163,6 +167,8 @@ struct CompoundSearchView: View {
 struct CompoundSearchView_Previews: PreviewProvider {
     
     static var previews: some View {
-        CompoundSearchView()
+        NavigationView {
+            CompoundSearchView()
+        }
     }
 }

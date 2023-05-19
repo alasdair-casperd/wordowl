@@ -36,7 +36,7 @@ struct ToolPickerView: View {
             .navigationTitle("Select Tool")
             .toolbar {
                 // Cancel
-                ToolbarItem() {
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: { dismiss() }) {
                         Text("Cancel")
                     }

@@ -10,11 +10,16 @@ import SwiftUI
 @main
 struct WordOwlApp: App {
     
-    static let currentAppVersion = 2
+    static let currentAppVersion = 3
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                iPadContentView()
+            }
+            else {
+                ContentView()
+            }
 //                .statusBar(hidden: true)
         }
     }

@@ -21,7 +21,10 @@ struct Greeting {
     var items: [Greeting.Item]
     
     static func updateGreeting(_ versionNumber: Int) -> Greeting {
-        if versionNumber == 2 {
+        if versionNumber == 3 {
+            return version3
+        }
+        else if versionNumber == 2 {
             return version2
         }
         else {
@@ -89,6 +92,41 @@ struct Greeting {
                 iconColor: Color("WordOwl Red"),
                 title: "Visual Overhaul",
                 description: "We've updated our app icon and added new visual customisation options."
+            ),
+        ]
+    )
+    
+    private static let version3 = Greeting(
+        title: "What's New in this Update?", items: [
+            Item(
+                icon: "text.magnifyingglass",
+                iconColor: Color("WordOwl Cold Blue"),
+                title: "New Definition Function",
+                description: "Not sure what one of your results means? Long-press it to find out!"
+            ),
+            Item(
+                icon: "speaker.wave.2",
+                iconColor: Color("WordOwl Purple"),
+                title: "Improved VoiceOver Support",
+                description: "We've improved existing support for VoiceOver users."
+            ),
+            Item(
+                icon: "book.closed",
+                iconColor: Color("WordOwl Yellow"),
+                title: "Dictionary Tab",
+                description: "You can now enable a Dictionary tab from the Settings menu."
+            ),
+            Item(
+                icon: "questionmark.circle",
+                iconColor: Color("WordOwl Green"),
+                title: "Added Help Button",
+                description: "You'll find a new help button on several screens around the app."
+            ),
+            Item(
+                icon: "ant",
+                iconColor: Color("WordOwl Orange"),
+                title: "Bug Fixes",
+                description: "We've fixed various bugs surrounding Compound Search."
             ),
         ]
     )
@@ -160,7 +198,7 @@ struct GreetingView: View {
 
 struct GreetingView_Previews: PreviewProvider {
     static var previews: some View {
-        GreetingView(greeting: Greeting.updateGreeting(2))
+        GreetingView(greeting: Greeting.updateGreeting(3))
         GreetingView(greeting: Greeting.welcomeToWordOwl)
     }
 }
@@ -176,7 +214,7 @@ struct GreetingViewDetailView: View {
                 .frame(width: 50, alignment: .center)
                 .foregroundColor(item.iconColor)
                     .padding(.trailing)
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 3) {
                 Text(item.title)
                     .font(.body.weight(.bold))
                 Text(item.description)

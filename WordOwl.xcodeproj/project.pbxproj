@@ -16,7 +16,6 @@
 		BD19008C29D899C900AB270F /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19008B29D899C900AB270F /* Document.swift */; };
 		BD19008E29D89EA600AB270F /* Color Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19008D29D89EA600AB270F /* Color Extensions.swift */; };
 		BD19009029D986A000AB270F /* PageResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD19008F29D986A000AB270F /* PageResultsView.swift */; };
-		BD19009229D9B4F000AB270F /* Enable.json in Resources */ = {isa = PBXBuildFile; fileRef = BD19009129D9B4F000AB270F /* Enable.json */; };
 		BD22718F27B12B390016468B /* InputStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD22718E27B12B390016468B /* InputStyles.swift */; };
 		BD22719127B13EAC0016468B /* MultipleCharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD22719027B13EAC0016468B /* MultipleCharactersView.swift */; };
 		BD22719327B151BC0016468B /* ContainsOnly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD22719227B151BC0016468B /* ContainsOnly.swift */; };
@@ -47,13 +46,14 @@
 		BDC2680829DB304A00B0FFAD /* Example Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2680729DB304A00B0FFAD /* Example Filters.swift */; };
 		BDC2680A29DB4C7000B0FFAD /* ToolList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2680929DB4C7000B0FFAD /* ToolList.swift */; };
 		BDC2680C29DB4C8C00B0FFAD /* Documentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2680B29DB4C8C00B0FFAD /* Documentation.swift */; };
-		BDC2680E29DB4FF100B0FFAD /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC2680D29DB4FF100B0FFAD /* Tools.swift */; };
 		BDC7B293285F7F9E0043CB85 /* ToolPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC7B292285F7F9E0043CB85 /* ToolPickerView.swift */; };
 		BDD665A627AC7B66008C6D3A /* CoreDataTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD665A527AC7B66008C6D3A /* CoreDataTestView.swift */; };
 		BDD665F327B0490D008C6D3A /* Animals.json in Resources */ = {isa = PBXBuildFile; fileRef = BDD665F227B0490D008C6D3A /* Animals.json */; };
 		BDD665F527B04913008C6D3A /* ChemicalElements.json in Resources */ = {isa = PBXBuildFile; fileRef = BDD665F427B04913008C6D3A /* ChemicalElements.json */; };
 		BDD665F727B058C5008C6D3A /* AggregateInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD665F627B058C5008C6D3A /* AggregateInput.swift */; };
 		BDD665F927B064DF008C6D3A /* ToolInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD665F827B064DF008C6D3A /* ToolInputView.swift */; };
+		BDD81B9F2A12C86200098CCE /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD81B9E2A12C86200098CCE /* Tools.swift */; };
+		BDD81BA52A12CA2400098CCE /* Enable.json in Resources */ = {isa = PBXBuildFile; fileRef = BDD81BA42A12CA2300098CCE /* Enable.json */; };
 		BDDB90B3285F5DEF001D16A8 /* CompoundSearchRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB90B2285F5DEF001D16A8 /* CompoundSearchRowView.swift */; };
 		BDDB90B5285F73DB001D16A8 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDB90B4285F73DB001D16A8 /* Filter.swift */; };
 		BDDF05A32795E006000BEF85 /* WordOwlApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDF05A22795E006000BEF85 /* WordOwlApp.swift */; };
@@ -75,6 +75,10 @@
 		BDFC2CEB27AAA481003EEB06 /* CharacterInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC2CEA27AAA481003EEB06 /* CharacterInputView.swift */; };
 		BDFC2CED27AAA48B003EEB06 /* StringInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC2CEC27AAA48B003EEB06 /* StringInputView.swift */; };
 		BDFC2CEF27AAA494003EEB06 /* RangeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFC2CEE27AAA494003EEB06 /* RangeInputView.swift */; };
+		BDFD3C6A2A13D4BD00FB9EE5 /* HelpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFD3C692A13D4BD00FB9EE5 /* HelpButton.swift */; };
+		BDFD3C6C2A13EE6200FB9EE5 /* DefinitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFD3C6B2A13EE6200FB9EE5 /* DefinitionView.swift */; };
+		BDFD3C6E2A1401CA00FB9EE5 /* MainDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFD3C6D2A1401CA00FB9EE5 /* MainDictionaryView.swift */; };
+		BDFD3C702A17751700FB9EE5 /* iPadContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFD3C6F2A17751700FB9EE5 /* iPadContentView.swift */; };
 		BDFEF85E27AAEA3A00E84B2F /* MatchesSpaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFEF85D27AAEA3A00E84B2F /* MatchesSpaces.swift */; };
 		BDFEF86027AC301C00E84B2F /* Countries.json in Resources */ = {isa = PBXBuildFile; fileRef = BDFEF85F27AC301C00E84B2F /* Countries.json */; };
 		BDFFA42629D5ADE70025D8A5 /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFFA42529D5ADE70025D8A5 /* Modifiers.swift */; };
@@ -82,7 +86,6 @@
 
 /* Begin PBXFileReference section */
 		BD003B0E290C5DEA00CB2362 /* LargeEnglishDictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = LargeEnglishDictionary.json; sourceTree = "<group>"; };
-		BD003B10290C758100CB2362 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BD13F47827A706E3004950E1 /* SmallEnglishDictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SmallEnglishDictionary.json; sourceTree = "<group>"; };
 		BD13F47A27A70915004950E1 /* Anagrams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anagrams.swift; sourceTree = "<group>"; };
 		BD19008529D83C5400AB270F /* MatchesPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesPattern.swift; sourceTree = "<group>"; };
@@ -91,7 +94,6 @@
 		BD19008B29D899C900AB270F /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		BD19008D29D89EA600AB270F /* Color Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color Extensions.swift"; sourceTree = "<group>"; };
 		BD19008F29D986A000AB270F /* PageResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageResultsView.swift; sourceTree = "<group>"; };
-		BD19009129D9B4F000AB270F /* Enable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Enable.json; sourceTree = "<group>"; };
 		BD22718E27B12B390016468B /* InputStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStyles.swift; sourceTree = "<group>"; };
 		BD22719027B13EAC0016468B /* MultipleCharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleCharactersView.swift; sourceTree = "<group>"; };
 		BD22719227B151BC0016468B /* ContainsOnly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainsOnly.swift; sourceTree = "<group>"; };
@@ -122,13 +124,15 @@
 		BDC2680729DB304A00B0FFAD /* Example Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Example Filters.swift"; sourceTree = "<group>"; };
 		BDC2680929DB4C7000B0FFAD /* ToolList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolList.swift; sourceTree = "<group>"; };
 		BDC2680B29DB4C8C00B0FFAD /* Documentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Documentation.swift; sourceTree = "<group>"; };
-		BDC2680D29DB4FF100B0FFAD /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
 		BDC7B292285F7F9E0043CB85 /* ToolPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolPickerView.swift; sourceTree = "<group>"; };
 		BDD665A527AC7B66008C6D3A /* CoreDataTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataTestView.swift; sourceTree = "<group>"; };
 		BDD665F227B0490D008C6D3A /* Animals.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Animals.json; sourceTree = "<group>"; };
 		BDD665F427B04913008C6D3A /* ChemicalElements.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ChemicalElements.json; sourceTree = "<group>"; };
 		BDD665F627B058C5008C6D3A /* AggregateInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AggregateInput.swift; sourceTree = "<group>"; };
 		BDD665F827B064DF008C6D3A /* ToolInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolInputView.swift; sourceTree = "<group>"; };
+		BDD81B9E2A12C86200098CCE /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		BDD81BA42A12CA2300098CCE /* Enable.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Enable.json; sourceTree = "<group>"; };
+		BDD81BA62A12CA2C00098CCE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDDB90B2285F5DEF001D16A8 /* CompoundSearchRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompoundSearchRowView.swift; sourceTree = "<group>"; };
 		BDDB90B4285F73DB001D16A8 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		BDDF059F2795E006000BEF85 /* WordOwl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordOwl.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +155,10 @@
 		BDFC2CEA27AAA481003EEB06 /* CharacterInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInputView.swift; sourceTree = "<group>"; };
 		BDFC2CEC27AAA48B003EEB06 /* StringInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringInputView.swift; sourceTree = "<group>"; };
 		BDFC2CEE27AAA494003EEB06 /* RangeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeInputView.swift; sourceTree = "<group>"; };
+		BDFD3C692A13D4BD00FB9EE5 /* HelpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpButton.swift; sourceTree = "<group>"; };
+		BDFD3C6B2A13EE6200FB9EE5 /* DefinitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefinitionView.swift; sourceTree = "<group>"; };
+		BDFD3C6D2A1401CA00FB9EE5 /* MainDictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDictionaryView.swift; sourceTree = "<group>"; };
+		BDFD3C6F2A17751700FB9EE5 /* iPadContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iPadContentView.swift; sourceTree = "<group>"; };
 		BDFEF85D27AAEA3A00E84B2F /* MatchesSpaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesSpaces.swift; sourceTree = "<group>"; };
 		BDFEF85F27AC301C00E84B2F /* Countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Countries.json; sourceTree = "<group>"; };
 		BDFFA42529D5ADE70025D8A5 /* Modifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
@@ -207,7 +215,9 @@
 			isa = PBXGroup;
 			children = (
 				BD97115027A6B981006A6C09 /* DictionariesView.swift */,
+				BDFD3C6B2A13EE6200FB9EE5 /* DefinitionView.swift */,
 				BD97115427A6BB9C006A6C09 /* DictionaryView.swift */,
+				BDFD3C6D2A1401CA00FB9EE5 /* MainDictionaryView.swift */,
 			);
 			path = Dictionaries;
 			sourceTree = "<group>";
@@ -216,7 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				BD97113727A69DDC006A6C09 /* Tool.swift */,
-				BDC2680D29DB4FF100B0FFAD /* Tools.swift */,
+				BDD81B9E2A12C86200098CCE /* Tools.swift */,
 				BDDB90B4285F73DB001D16A8 /* Filter.swift */,
 				BDC2680929DB4C7000B0FFAD /* ToolList.swift */,
 				BDC2680729DB304A00B0FFAD /* Example Filters.swift */,
@@ -249,8 +259,8 @@
 		BD97114827A6A61E006A6C09 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				BDD81BA42A12CA2300098CCE /* Enable.json */,
 				BD97114127A6A2B5006A6C09 /* TinySampleDictionary.json */,
-				BD19009129D9B4F000AB270F /* Enable.json */,
 				BD97114C27A6B3AE006A6C09 /* SmallSampleDictionary.json */,
 				BD13F47827A706E3004950E1 /* SmallEnglishDictionary.json */,
 				BD003B0E290C5DEA00CB2362 /* LargeEnglishDictionary.json */,
@@ -295,9 +305,10 @@
 		BDDF05A12795E006000BEF85 /* WordOwl */ = {
 			isa = PBXGroup;
 			children = (
-				BD003B10290C758100CB2362 /* Info.plist */,
+				BDD81BA62A12CA2C00098CCE /* Info.plist */,
 				BDDF05A22795E006000BEF85 /* WordOwlApp.swift */,
 				BDDF05A42795E006000BEF85 /* ContentView.swift */,
+				BDFD3C6F2A17751700FB9EE5 /* iPadContentView.swift */,
 				BDD665A527AC7B66008C6D3A /* CoreDataTestView.swift */,
 				BD97115227A6BB00006A6C09 /* DetailsPair.swift */,
 				BD97114327A6A5DC006A6C09 /* Tools */,
@@ -328,6 +339,7 @@
 			children = (
 				BDBA79412864757900CA21EC /* GreetingView.swift */,
 				BD19008729D8613000AB270F /* HelpView.swift */,
+				BDFD3C692A13D4BD00FB9EE5 /* HelpButton.swift */,
 				BD19008929D8997100AB270F /* DocumentView.swift */,
 				BD19008B29D899C900AB270F /* Document.swift */,
 				BDC2680B29DB4C8C00B0FFAD /* Documentation.swift */,
@@ -414,7 +426,7 @@
 				BDD665F327B0490D008C6D3A /* Animals.json in Resources */,
 				BDFEF86027AC301C00E84B2F /* Countries.json in Resources */,
 				BDDF05AA2795E007000BEF85 /* Preview Assets.xcassets in Resources */,
-				BD19009229D9B4F000AB270F /* Enable.json in Resources */,
+				BDD81BA52A12CA2400098CCE /* Enable.json in Resources */,
 				BD97114D27A6B3AF006A6C09 /* SmallSampleDictionary.json in Resources */,
 				BDDF05A72795E007000BEF85 /* Assets.xcassets in Resources */,
 				BD97114227A6A2B5006A6C09 /* TinySampleDictionary.json in Resources */,
@@ -436,6 +448,7 @@
 				BDFC2CED27AAA48B003EEB06 /* StringInputView.swift in Sources */,
 				BDAFA17629D6EB3B000C7A02 /* SearchButton.swift in Sources */,
 				BD19008829D8613000AB270F /* HelpView.swift in Sources */,
+				BDFD3C702A17751700FB9EE5 /* iPadContentView.swift in Sources */,
 				BD19008A29D8997100AB270F /* DocumentView.swift in Sources */,
 				BDFC2CEB27AAA481003EEB06 /* CharacterInputView.swift in Sources */,
 				BD97115727A6C704006A6C09 /* Sorting.swift in Sources */,
@@ -446,6 +459,7 @@
 				BDC2680829DB304A00B0FFAD /* Example Filters.swift in Sources */,
 				BDB83F9127973335006DD718 /* ResultsView.swift in Sources */,
 				BDD665F727B058C5008C6D3A /* AggregateInput.swift in Sources */,
+				BDD81B9F2A12C86200098CCE /* Tools.swift in Sources */,
 				BDDF05B32795E064000BEF85 /* SettingsView.swift in Sources */,
 				BD6FCF9627B937CA00149AC7 /* BugFixView.swift in Sources */,
 				BDC2680C29DB4C8C00B0FFAD /* Documentation.swift in Sources */,
@@ -460,6 +474,7 @@
 				BDFC2CE927AAA476003EEB06 /* NumberInputView.swift in Sources */,
 				BD19008629D83C5400AB270F /* MatchesPattern.swift in Sources */,
 				BDE97EB127BD4C8400B22608 /* ToolNodeView.swift in Sources */,
+				BDFD3C6C2A13EE6200FB9EE5 /* DefinitionView.swift in Sources */,
 				BD97113227A5BCC0006A6C09 /* Dictionary.swift in Sources */,
 				BD97115127A6B981006A6C09 /* DictionariesView.swift in Sources */,
 				BD97113827A69DDC006A6C09 /* Tool.swift in Sources */,
@@ -467,6 +482,8 @@
 				BD22719A27B1AFB90016468B /* CompoundSearchView.swift in Sources */,
 				BD6FCF9827B93C8D00149AC7 /* ContainsQuantities.swift in Sources */,
 				BD2271B627B301F60016468B /* CharacterQuantitiesView.swift in Sources */,
+				BDFD3C6E2A1401CA00FB9EE5 /* MainDictionaryView.swift in Sources */,
+				BDFD3C6A2A13D4BD00FB9EE5 /* HelpButton.swift in Sources */,
 				BD22719327B151BC0016468B /* ContainsOnly.swift in Sources */,
 				BD97114F27A6B7E2006A6C09 /* EndingString.swift in Sources */,
 				BDF049EB29DA1CBD00F810AF /* ContainsLetters.swift in Sources */,
@@ -484,7 +501,6 @@
 				BDDB90B5285F73DB001D16A8 /* Filter.swift in Sources */,
 				BDE97EB427BEE3F500B22608 /* AsynchronousSearchTestView.swift in Sources */,
 				BDC2680A29DB4C7000B0FFAD /* ToolList.swift in Sources */,
-				BDC2680E29DB4FF100B0FFAD /* Tools.swift in Sources */,
 				BDE44A4027A85092004951E0 /* ContainsString.swift in Sources */,
 				BDDF05A32795E006000BEF85 /* WordOwlApp.swift in Sources */,
 				BDFC2CEF27AAA494003EEB06 /* RangeInputView.swift in Sources */,
@@ -628,13 +644,14 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = casperd.WordOwl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -663,13 +680,14 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = casperd.WordOwl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SettingsView: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
     static let simpleIconsKey = "simpleIcons"
     static let icon = "gearshape"
     
@@ -18,17 +20,27 @@ struct SettingsView: View {
     @AppStorage("addNewLines") private var addNewLines = true
     @AppStorage("selectedSorting") private var selectedSorting = 0
     @AppStorage("selectedResultDetailType") private var selectedResultDetailType = 0
+    @AppStorage("hideHelpButtons") private var hideHelpButtons = false
     @AppStorage(simpleIconsKey) private var simpleIcons = false
     @AppStorage(HapticsController.settingString) private var hapticsDisabled = false
+    @AppStorage("showingDictionaryTab") private var showingDictionaryTab = false
     
     @State var showingAlert = false
     
     var showWelcomeScreen: () -> ()
     var showUpdateScreen: () -> ()
+    var updateDictionaryTabVisibility: (Bool) -> ()
     
     var body: some View {
         NavigationView {
             Form {
+                Section(header: Text("Dictionary Tab")) {
+                    Toggle("Show Dictionary Tab", isOn: $showingDictionaryTab.animation())
+                        .onChange(of: showingDictionaryTab) { newValue in
+                            updateDictionaryTabVisibility(newValue)
+                        }
+                }
+                
                 Section(header: Text("Defaults")) {
                     Picker("Default Ordering", selection: $selectedSorting) {
                         ForEach(0...(Sorting.allSortings.count-1), id: \.self) {i in
@@ -49,6 +61,7 @@ struct SettingsView: View {
                 Section(header: Text("Export")) {
                     HStack {
                         Text("Export Styling")
+                            .accessibilityLabel("Export styling: The options are 1. Lowercase, 2. Capitalised or 3. Uppercase")
                         Spacer()
                         Picker("Export Styling", selection: $selectedExportStyling) {
                             ForEach(exportStylings, id: \.self) {
@@ -70,8 +83,13 @@ struct SettingsView: View {
                 }
                 
                 Section {
-                    Toggle("Fewer Rainbows", isOn: $simpleIcons)
-                    Toggle("Disable Haptics", isOn: $hapticsDisabled.animation())
+                    if !iPadVersion {
+                        Toggle("Fewer Rainbows", isOn: $simpleIcons)
+                    }
+                    if !iPadVersion {
+                        Toggle("Disable Haptics", isOn: $hapticsDisabled.animation())
+                    }
+                    Toggle("Hide Help Buttons", isOn: $hideHelpButtons)
                 } header: { Text("Customisation") } footer: {
                     if hapticsDisabled {
                         Text("Some in-app haptics will be disabled. The rest are controlled through your device's settings.")
@@ -85,27 +103,45 @@ struct SettingsView: View {
 //                    Button("Test Console") {print("Testing console.")}
 //                }
                 
-                Section(footer: MadeWithHeartView()) {
-                    Button("Show Welcome Screen") {
-                        showWelcomeScreen()
+                if !iPadVersion {
+                    Section(footer: MadeWithHeartView()) {
+                        Button("Show Welcome Screen") {
+                            showWelcomeScreen()
+                        }
+                        .icon("hand.wave")
+                        
+                        Button("What's New in this Update?") {
+                            showUpdateScreen()
+                        }
+                        .icon("sparkles")
+                        
+                        Button("Reset Settings to Defaults") { showingAlert = true }
+                            .icon("arrow.counterclockwise")
+    //                    Button("Submit feedback") {}
                     }
-                    .icon("hand.wave")
-                    
-                    Button("What's New in this Update?") {
-                        showUpdateScreen()
-                    }
-                    .icon("sparkles")
-                    
-                    Button("Reset Settings to Defaults") { showingAlert = true }
-                        .icon("arrow.counterclockwise")
-                    .alert("Reset App Settings?", isPresented: $showingAlert) {
-                        Button("Reset", role: .destructive) { resetSettings() }
-                        Button("Cancel", role: .cancel) { }
-                    }
-//                    Button("Submit feedback") {}
                 }
             }
+            .alert("Reset App Settings?", isPresented: $showingAlert) {
+                Button("Reset", role: .destructive) { resetSettings() }
+                Button("Cancel", role: .cancel) { }
+            }
             .navigationTitle("Settings")
+            .toolbar {
+                ToolbarItem() {
+                    if iPadVersion {
+                        Button("Done") {
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    if iPadVersion {
+                        Button(action: {showingAlert = true}) {
+                            Image(systemName: "arrow.counterclockwise")
+                        }
+                    }
+                }
+            }
         }
     }
     
@@ -116,6 +152,8 @@ struct SettingsView: View {
         selectedResultDetailType = 0
         simpleIcons = false
         hapticsDisabled = false
+        showingDictionaryTab = false
+        hideHelpButtons = false
         UserDefaults.standard.set(true, forKey: "wheelCharacterInput")
         UserDefaults.standard.set(true, forKey: "visualInput")
     }
@@ -123,7 +161,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(showWelcomeScreen: {}, showUpdateScreen: {})
+        SettingsView(showWelcomeScreen: {}, showUpdateScreen: {}, updateDictionaryTabVisibility: {_ in })
     }
 }
 

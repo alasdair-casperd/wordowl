@@ -20,6 +20,8 @@ struct ToolView: View {
     @State private var results = [String]()
     @State private var showingResults = false
     
+    @State private var showingHelpSheet = false
+    
     var filters: [Filter] {
         return [Filter(id: UUID(), tool: tool, aggregateInput: aggregateInput)]
     }
@@ -78,7 +80,14 @@ struct ToolView: View {
 //                    $showingResults
 //            ) { EmptyView() }
         }
-        .navigationTitle(tool.shortName)        
+        .navigationTitle(tool.shortName)
+        .toolbar {
+            ToolbarItem() {
+                if let guide = Document.documentForTool(tool) {
+                    HelpButton(document: guide, suffix: " Guide")
+                }
+            }
+        }
     }
     
 //    func initiateSearch() {
@@ -114,7 +123,7 @@ struct ToolView: View {
 struct ToolView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ToolView(tool: Tool.containsAtLeastTool, selectedSorting: Sorting.allSortings[0], selectedResultDetailType: ResultDetailType.allResultDetailTypes[0])
+            ToolView(tool: Tool.containsStringTool, selectedSorting: Sorting.allSortings[0], selectedResultDetailType: ResultDetailType.allResultDetailTypes[0])
         }
     }
 }

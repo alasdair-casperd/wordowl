@@ -145,12 +145,13 @@ struct Filter: Identifiable, Equatable {
                 return output
             }
         }
-        else if tool == Tool.matchesPatternTool {
+        
+        if tool == Tool.matchesPatternTool {
             if inverted {
-                return "Does not conform to \"\(aggregateInput.x)\""
+                return "Does not match pattern '\(aggregateInput.x)'"
             }
             else {
-                return "Conforms to \"\(aggregateInput.x)\""
+                return "Matches pattern '\(aggregateInput.x)'"
             }
         }
         

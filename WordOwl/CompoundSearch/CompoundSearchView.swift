@@ -44,9 +44,11 @@ struct CompoundSearchView: View {
                 Section(
                     header: Text("Use multiple filters simultaneously to perform compound searches.")
                         .textCase(nil)
-                        .font(.footnote)
+                        .font(.body)
                         .multilineTextAlignment(.leading)
                         .padding(.bottom)
+                        .listRowInsets(EdgeInsets())
+                        .foregroundColor(.primary)
                 ) {
                     ForEach(toolList.filters) { filter in
 //                            NavigationLink(destination:
@@ -83,7 +85,7 @@ struct CompoundSearchView: View {
                     }
                 }
                 
-                Section(header: Text("Display Options")) {
+                Section {
                     Picker("Sort Words", selection: $selectedSorting) {
                         ForEach(Sorting.allSortings) {sorting in
                             Text(sorting.name).tag(sorting)
@@ -96,17 +98,19 @@ struct CompoundSearchView: View {
                         }
                         //.navigationTitle("Additional Detail")
                     }
+                } header: {
+                    Text("Display Options")
+                } footer: {
+                    SearchButton(filters: toolList.filters, selectedDictionary: selectedDictionary, selectedSorting: selectedSorting, selectedResultDetailType: selectedResultDetailType, searchDisabled: searchDisabled)
+                        .padding(.top, 40)
                 }
                 
-                // Search button
-                
-                SearchButton(filters: toolList.filters, selectedDictionary: selectedDictionary, selectedSorting: selectedSorting, selectedResultDetailType: selectedResultDetailType, searchDisabled: searchDisabled)
             }
             .environment(\.editMode, .constant(editMode).animation(.spring()))
             .navigationBarTitle("Compound Search")
             .toolbar {
                 
-                ToolbarItem(placement: .navigationBarLeading) {
+                ToolbarItem(placement: iPadVersion ? .navigationBarTrailing : .navigationBarLeading) {
                     HelpButton(document: .compoundSearchIntroduction)
                 }
                 

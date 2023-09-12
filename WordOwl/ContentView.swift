@@ -32,7 +32,10 @@ struct ContentView: View {
                 }
             
             if showingDictionaryTab {
-                MainDictionaryView()
+                NavigationView {
+                    MainDictionaryView()
+                        .navigationTitle("Dictionary")
+                }
                     .tabItem {
                         Label("Dictionary", systemImage: "book.closed.fill")
                     }

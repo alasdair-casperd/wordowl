@@ -7,6 +7,7 @@ struct Tool: Identifiable, Equatable, Hashable {
         var id: UUID = UUID()
         var name: String
         var tools: [Tool]
+        var compoundable: Bool = true
     }
     
     func hash(into hasher: inout Hasher) {
@@ -26,13 +27,15 @@ struct Tool: Identifiable, Equatable, Hashable {
     
     let searchFunction: ([String], AggregateInput) async -> [String]
     
-    let symbolName: String?
+    var icon: Icon.VariableIcon
     
     let input: InputType
     let prompt: [String]
     let promptName : String
     
     let color: Color
+    
+    var compoundable: Bool = true
 }
 
 enum InputType {
@@ -44,5 +47,7 @@ enum InputType {
     case spaces
     case multipleCharacters
     case characterQuantities
+    case twoStrings
+    case wordle
 }
 

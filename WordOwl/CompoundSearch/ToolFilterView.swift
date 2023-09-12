@@ -26,46 +26,26 @@ struct ToolFilterView: View {
     @State private var showingHelpSheet = false
     
     var body: some View {
-        ZStack {
-            Form {
-                Section(footer: Text(tool.description)) {
-                    ToolInputView(tool: tool, aggregateInput: aggregateInput)
+        Form {
+            ToolInputView(tool: tool, aggregateInput: aggregateInput)
+            ToolSettingsView(tool: tool, aggregateInput: aggregateInput)
+            if (
+                tool == Tool.anagramsTool
+                || tool == Tool.containsStringTool
+                || tool == Tool.crosswordSolver
+                || tool == Tool.endingStringTool
+                || tool == Tool.firstLetterTool
+                || tool == Tool.lastLetterTool
+                || tool == Tool.startingStringTool
+                || tool == Tool.wordLengthRangeTool
+                || tool == Tool.wordLengthTool
+                || tool == Tool.matchesPatternTool
+            ) {
+                Section(header: Text("Further Options"), footer: Text("Inverted filters return the opposite of their usual results.")) {
+                    Toggle("Invert Filter", isOn: $inverted)
                 }
-                
-                ToolSettingsView(tool: tool, aggregateInput: aggregateInput)
-                if (
-                    tool == Tool.anagramsTool
-                    || tool == Tool.containsStringTool
-                    || tool == Tool.crosswordSolver
-                    || tool == Tool.endingStringTool
-                    || tool == Tool.firstLetterTool
-                    || tool == Tool.lastLetterTool
-                    || tool == Tool.startingStringTool
-                    || tool == Tool.wordLengthRangeTool
-                    || tool == Tool.wordLengthTool
-                    || tool == Tool.matchesPatternTool
-                ) {
-                    Section(footer: Text("Inverted filters return the opposite of their usual results.")) {
-                        Toggle("Invert Filter", isOn: $inverted)
-                    }
-                }                                
-                
-                // Done button
-                /*
-                Section {
-                    HStack {
-                        Spacer()
-                        Button("Add") { dismiss() }
-                        .disabled(doneDisabled)
-                        .alert("No Words Found", isPresented: $showingWarning) {
-                            Button("Ok", role: .cancel) { }
-                        }
-                        Spacer()
-                    }
-                }
-                */
             }
-        }
+        }        
         .onAppear {
             if let filter = preloadingFilter {
                 if !filterLoaded {

@@ -57,7 +57,7 @@ struct DocumentItemView: View {
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
-                    .icon(tool.symbolName ?? "magnifyingglass", color: tool.color, style: .bold)
+                    .icon(tool.icon, color: tool.color, style: .bold)
                     Spacer()
                 }
                 .panelled()

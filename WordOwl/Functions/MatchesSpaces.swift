@@ -20,7 +20,12 @@ func matchesSpaces(_ words: [String], _ aggregateInput: AggregateInput) async ->
         }
     }
     
-    let n = letters.count    
+    return await baseMatchesSpaces(words, letters)
+}
+
+func baseMatchesSpaces(_ words: [String], _ letters: [String]) async -> [String] {
+    
+    let n = letters.count
     
     var output = [String]()
     
@@ -55,5 +60,5 @@ func matchesSpaces(_ words: [String], _ aggregateInput: AggregateInput) async ->
     }
     
     return output
+    
 }
-

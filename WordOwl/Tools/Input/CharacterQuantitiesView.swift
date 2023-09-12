@@ -11,23 +11,75 @@ struct CharacterQuantitiesView: View {
     
     var tool: Tool
     @ObservedObject var aggregateInput: AggregateInput
+    @State private var inputText = ""
+    @AppStorage("characterQuantitiesInputStyle") private var inputSyle = 1
     
     var body: some View {
-        ForEach(0...25, id: \.self) { i in
-            if aggregateInput.inputBools[i] {
-                HStack {
-                    Text("\(EnglishAlphabet.allCases[i].rawValue)")
-                    + Text(" X \(aggregateInput.inputInts[i])")
-                        .foregroundColor(.secondary)
-                    Spacer()
-                    Stepper("", value: $aggregateInput.inputInts[i], in: 1...10)
+        Section {
+            if inputSyle == 1 {
+                ForEach(0...25, id: \.self) { i in
+                    if aggregateInput.inputBools[i] {
+                        HStack {
+                            Text("\(EnglishAlphabet.allCases[i].rawValue)")
+                            + Text(" X \(aggregateInput.inputInts[i])")
+                                .foregroundColor(.secondary)
+                            Spacer()
+                            Stepper("", value: $aggregateInput.inputInts[i], in: 1...10)
+                        }
+                    }
+                }
+                .onDelete(perform: removeRows)
+                .onDisappear {
+                    styleTextForAggregateInput()
+                }
+                NavigationLink(destination: MultipleCharactersDetailView(tool: Tool.containsOnlyTool, aggregateInput: aggregateInput)) {
+                    Text(listNonEmpty() ? "Select Characters" : "Add Characters")
+                }
+            }
+            else {
+                TextField(tool.prompt[0], text: $inputText)
+                    .onChange(of: inputText) { newValue in
+                        styleAggregateInputForString(input: newValue)
+                    }
+            }
+        } header: {
+            VStack(alignment: .leading, spacing: 0) {
+                ToolInstructionsView(tool: tool)
+                Picker("Input Style", selection: $inputSyle) {
+                    Text("Plain Text Input").tag(0)
+                    Text("Character Picker").tag(1)
+                }
+                .onChange(of: inputSyle, perform: {_ in})
+                .padding(.bottom)
+                .textCase(.none)
+                .pickerStyle(SegmentedPickerStyle())
+            }
+            .listRowInsets(EdgeInsets.none)
+        }
+        .onAppear {
+            aggregateInput.inputInts[30] = UserDefaults.standard.integer(forKey: "quantityMode")
+        }
+    }
+
+    func styleAggregateInputForString(input: String) {
+        for c in EnglishAlphabet.allCases {
+            let i = EnglishAlphabet.allCases.firstIndex(of: c)!
+            aggregateInput.inputBools[i] = input.uppercased().contains(where: {a in return String(a) == c.rawValue})
+            aggregateInput.inputInts[i] = input.uppercased().filter({String($0) == c.rawValue}).count
+        }
+    }
+        
+    func styleTextForAggregateInput() {
+        var output = ""
+        for c in EnglishAlphabet.allCases {
+            let i = EnglishAlphabet.allCases.firstIndex(of: c)!
+            if (aggregateInput.inputBools[i]) {
+                for _ in 1...aggregateInput.inputInts[i] {
+                    output += c.rawValue
                 }
             }
         }
-        .onDelete(perform: removeRows)
-        NavigationLink(destination: MultipleCharactersDetailView(tool: Tool.containsOnlyTool, aggregateInput: aggregateInput)) {
-            Text(listNonEmpty() ? "Select Characters" : "Add Characters")
-        }
+        inputText = output
     }
     
     func removeRows(at offsets: IndexSet) {
@@ -52,10 +104,14 @@ struct CharacterQuantitiesSettingsView: View {
     
     var tool: Tool
     @ObservedObject var aggregateInput: AggregateInput
+    @AppStorage("allowOtherLetters") private var allowOtherLetters = false
     
     var body: some View {
         Section(header: Text("Tool Settings")) {
-            Toggle("Allow Other Letters", isOn: $aggregateInput.inputBools[31])
+            Toggle("Allow Other Letters", isOn: $allowOtherLetters)
+                .onChange(of: allowOtherLetters) { newValue in
+                    aggregateInput.inputBools[31] = newValue
+                }
             NavigationLink(destination: CharacterQuantitiesSettingsDetailView(tool: tool, aggregateInput: aggregateInput)) {
                 HStack {
                     Text("Quantity Mode")
@@ -64,6 +120,9 @@ struct CharacterQuantitiesSettingsView: View {
                         .foregroundColor(.secondary)
                 }
             }
+        }
+        .onAppear {
+            aggregateInput.inputBools[31] = allowOtherLetters
         }
     }
 }
@@ -75,6 +134,7 @@ struct CharacterQuantitiesSettingsDetailView: View {
     
     @ObservedObject var aggregateInput: AggregateInput
     @Environment(\.dismiss) var dismiss
+    @AppStorage("quantityMode") private var quantityMode = 0
     
     let labels = ["Minimum", "Exact", "Maximum"]
     
@@ -95,6 +155,7 @@ struct CharacterQuantitiesSettingsDetailView: View {
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
+                        quantityMode = i
                         aggregateInput.inputInts[30] = i
                         dismiss()
                     }
@@ -113,5 +174,13 @@ struct CharacterQuantitiesResultsView: View {
     var body: some View {
         DetailsPair(parameter: "Quantity Mode", value: ["Minimum", "Exact", "Maximum"][aggregateInput.inputInts[30]])
         DetailsPair(parameter: "Allow Other Letters", value: aggregateInput.inputBools[31] ? "Yes" : "No")
+    }
+}
+
+struct CharacterQuantitiesView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            ToolView(tool: Tool.containsQuantitiesTool, selectedSorting: Sorting.allSortings[0], selectedResultDetailType: ResultDetailType.allResultDetailTypes[0])
+        }
     }
 }

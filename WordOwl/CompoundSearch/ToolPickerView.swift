@@ -24,12 +24,16 @@ struct ToolPickerView: View {
         NavigationView {
             Form {
                 ForEach(Tool.categories) { category in
-                    Section {
-                        ForEach(category.tools) { tool in
-                            ToolPickerRowItem(addFilter: addFilter, dismiss: dismiss, tool: tool)
+                    if category.compoundable {
+                        Section {
+                            ForEach(category.tools) { tool in
+                                if tool.compoundable {
+                                    ToolPickerRowItem(addFilter: addFilter, dismiss: dismiss, tool: tool)
+                                }
+                            }
+                        } header: {
+                            Text(category.name)
                         }
-                    } header: {
-                        Text(category.name)
                     }
                 }
             }

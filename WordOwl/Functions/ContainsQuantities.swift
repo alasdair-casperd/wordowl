@@ -135,3 +135,23 @@ func containsQuantities(_ inputWords: [String], _ aggregateInput: AggregateInput
     
     return output
 }
+
+func containsQuantitiesAggregateInputFromString(string: String, quantityMode: Int, allowOtherLetters: Bool) -> AggregateInput {
+    
+    let A = AggregateInput()
+    
+    for c in EnglishAlphabet.allCases {
+        let i = EnglishAlphabet.allCases.firstIndex(of: c)!
+        A.inputBools[i] = string.uppercased().contains(where: {a in return String(a) == c.rawValue})
+        A.inputInts[i] = string.uppercased().filter({String($0) == c.rawValue}).count
+    }
+    
+    A.inputInts[30] = quantityMode
+    A.inputBools[31] = allowOtherLetters
+    
+    return A
+}
+func containsQuantities(_ inputWords: [String], string: String, quantityMode: Int, allowOtherLetters: Bool) async -> [String] {
+    return await containsQuantities(inputWords, containsQuantitiesAggregateInputFromString(string: string, quantityMode: quantityMode, allowOtherLetters: allowOtherLetters))
+}
+

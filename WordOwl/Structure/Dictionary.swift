@@ -52,6 +52,15 @@ struct Dictionary: Identifiable, Hashable {
         symbolName: nil,
         wordCount: "173,000")
     
+//    static let wordOwl100 = Dictionary(
+//        id: "WordOwl First 100",
+//        name: "WordOwl Dictionary First 100",
+//        shortName: "WordOwl First 100",
+//        titleName: "WordOwl First 100", description: "The WordOwl Dictionary is a large word list containing even the most obscure English words. Beware that not all of the words in this dictionary will be valid in your favourite word games.",
+//        path: "(First 100) Enable.json",
+//        symbolName: nil,
+//        wordCount: "173,000")
+    
     static func testWords(_ length: Int = 100) -> [String] {
         var words = [String]()
         for i in 1...length {words.append("Word \(i)")}

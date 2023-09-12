@@ -21,19 +21,125 @@ struct Greeting {
     var items: [Greeting.Item]
     
     static func updateGreeting(_ versionNumber: Int) -> Greeting {
-        if versionNumber == 3 {
-            return version3
+        
+        if versionNumber == 4 {
+            return Greeting(
+                title: "What's New in this Update?", items: [
+                    Item(
+                        icon: "ipad.and.iphone",
+                        iconColor: Color("WordOwl Cold Blue"),
+                        title: "WordOwl on iPad",
+                        description: "We hope you'll love using our new iPad app!"
+                    ),
+                    Item(
+                        icon: "circle.hexagongrid",
+                        iconColor: Color("WordOwl Yellow"),
+                        title: "3 New Search Tools",
+                        description: "Solve Wordles, word wheels and Domingo puzzles with new tools!"
+                    ),
+                    Item(
+                        icon: "character.textbox",
+                        iconColor: Color("WordOwl Purple"),
+                        title: "Plain Text Character Selection",
+                        description: "We've added a new, faster way to select characters in several tools."
+                    ),
+                    Item(
+                        icon: "wand.and.stars.inverse",
+                        iconColor: Color("WordOwl Red"),
+                        title: "UI Improvements",
+                        description: "We've cleaned up our UI with bolder buttons and clearer instructions."
+                    ),
+                ]
+            )
         }
+        
+        else if versionNumber == 3 {
+            return Greeting(
+                title: "What's New in this Update?", items: [
+                    Item(
+                        icon: "text.magnifyingglass",
+                        iconColor: Color("WordOwl Cold Blue"),
+                        title: "New Definition Function",
+                        description: "Not sure what one of your results means? Long-press it to find out!"
+                    ),
+                    Item(
+                        icon: "speaker.wave.2",
+                        iconColor: Color("WordOwl Purple"),
+                        title: "Improved VoiceOver Support",
+                        description: "We've improved existing support for VoiceOver users."
+                    ),
+                    Item(
+                        icon: "book.closed",
+                        iconColor: Color("WordOwl Yellow"),
+                        title: UIDevice.current.userInterfaceIdiom == .pad ? "Dictionary View" : "Dictionary Tab",
+                        description: "You can now enable a Dictionary \(UIDevice.current.userInterfaceIdiom == .pad ? "view" : "tab") from the Settings menu."
+                    ),
+                    Item(
+                        icon: "questionmark.circle",
+                        iconColor: Color("WordOwl Green"),
+                        title: "Added Help Button",
+                        description: "You'll find a new help button on several screens around the app."
+                    ),
+                    Item(
+                        icon: "ant",
+                        iconColor: Color("WordOwl Orange"),
+                        title: "Bug Fixes",
+                        description: "We've fixed various bugs surrounding Compound Search."
+                    ),
+                ]
+            )
+        }
+        
         else if versionNumber == 2 {
-            return version2
+            return Greeting(
+                title: "What's New in this Update?", items: [
+                    Item(
+                        icon: "ellipsis.curlybraces",
+                        iconColor: Color("WordOwl Cold Blue"),
+                        title: "Matches Pattern Tool",
+                        description: "Perform more advanced searches than ever with this powerful tool."
+                    ),
+                    Item(
+                        icon: "square.3.layers.3d.down.backward",
+                        iconColor: Color("WordOwl Purple"),
+                        title: "Result Pages",
+                        description: "Long lists of results are now spread over multiple pages, improving performance."
+                    ),
+                    Item(
+                        icon: HelpView.icon,
+                        iconColor: Color("WordOwl Yellow"),
+                        title: "User Guide",
+                        description: "Confused by any of our tools? We've added a comprehensive manual."
+                    ),
+                    Item(
+                        icon: "square.and.pencil",
+                        iconColor: Color("WordOwl Green"),
+                        title: "Editable Filters",
+                        description: "Compound search filters can now be edited after creation."
+                    ),
+                    Item(
+                        icon: "circle.lefthalf.filled",
+                        iconColor: Color("WordOwl Warm Blue"),
+                        title: "Inverted Searches",
+                        description: "Compound search filters can be inverted to search with negated criteria."
+                    ),
+                    Item(
+                        icon: "paintbrush",
+                        iconColor: Color("WordOwl Red"),
+                        title: "Visual Overhaul",
+                        description: "We've updated our app icon and added new visual customisation options."
+                    ),
+                ]
+            )
         }
+        
         else {
             return welcomeToWordOwl
         }
     }
     
     static let welcomeToWordOwl = Greeting(
-        title: "Welcome to\nWordOwl", items: [
+        title: UIDevice.current.userInterfaceIdiom == .pad ? "Welcome to WordOwl for iPad" : "Welcome to\nWordOwl", items: [
             Item(
                 icon: ToolsView.icon,
                 iconColor: Color("WordOwl Cold Blue"),
@@ -51,82 +157,6 @@ struct Greeting {
                 iconColor: Color("WordOwl Yellow"),
                 title: "User Guide",
                 description: "Confused by any of our tools? You'll find help in our comprehensive manual."
-            ),
-        ]
-    )
-    
-    private static let version2 = Greeting(
-        title: "What's New in this Update?", items: [
-            Item(
-                icon: "ellipsis.curlybraces",
-                iconColor: Color("WordOwl Cold Blue"),
-                title: "Matches Pattern Tool",
-                description: "Perform more advanced searches than ever with this powerful tool."
-            ),
-            Item(
-                icon: "square.3.layers.3d.down.backward",
-                iconColor: Color("WordOwl Purple"),
-                title: "Result Pages",
-                description: "Long lists of results are now spread over multiple pages, improving performance."
-            ),
-            Item(
-                icon: HelpView.icon,
-                iconColor: Color("WordOwl Yellow"),
-                title: "User Guide",
-                description: "Confused by any of our tools? We've added a comprehensive manual."
-            ),
-            Item(
-                icon: "square.and.pencil",
-                iconColor: Color("WordOwl Green"),
-                title: "Editable Filters",
-                description: "Compound search filters can now be edited after creation."
-            ),
-            Item(
-                icon: "circle.lefthalf.filled",
-                iconColor: Color("WordOwl Warm Blue"),
-                title: "Inverted Searches",
-                description: "Compound search filters can be inverted to search with negated criteria."
-            ),
-            Item(
-                icon: "paintbrush",
-                iconColor: Color("WordOwl Red"),
-                title: "Visual Overhaul",
-                description: "We've updated our app icon and added new visual customisation options."
-            ),
-        ]
-    )
-    
-    private static let version3 = Greeting(
-        title: "What's New in this Update?", items: [
-            Item(
-                icon: "text.magnifyingglass",
-                iconColor: Color("WordOwl Cold Blue"),
-                title: "New Definition Function",
-                description: "Not sure what one of your results means? Long-press it to find out!"
-            ),
-            Item(
-                icon: "speaker.wave.2",
-                iconColor: Color("WordOwl Purple"),
-                title: "Improved VoiceOver Support",
-                description: "We've improved existing support for VoiceOver users."
-            ),
-            Item(
-                icon: "book.closed",
-                iconColor: Color("WordOwl Yellow"),
-                title: "Dictionary Tab",
-                description: "You can now enable a Dictionary tab from the Settings menu."
-            ),
-            Item(
-                icon: "questionmark.circle",
-                iconColor: Color("WordOwl Green"),
-                title: "Added Help Button",
-                description: "You'll find a new help button on several screens around the app."
-            ),
-            Item(
-                icon: "ant",
-                iconColor: Color("WordOwl Orange"),
-                title: "Bug Fixes",
-                description: "We've fixed various bugs surrounding Compound Search."
             ),
         ]
     )
@@ -157,6 +187,7 @@ struct GreetingView: View {
                     GreetingViewDetailView(item: $0)
                 }
             }
+            .frame(maxWidth: 600)
             .padding(.bottom, 100)
             
             Spacer()
@@ -198,7 +229,7 @@ struct GreetingView: View {
 
 struct GreetingView_Previews: PreviewProvider {
     static var previews: some View {
-        GreetingView(greeting: Greeting.updateGreeting(3))
+        GreetingView(greeting: Greeting.updateGreeting(4))
         GreetingView(greeting: Greeting.welcomeToWordOwl)
     }
 }

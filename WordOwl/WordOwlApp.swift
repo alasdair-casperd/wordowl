@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct WordOwlApp: App {
     
-    static let currentAppVersion = 3
+    static let currentAppVersion = 4
     
     var body: some Scene {
         WindowGroup {
@@ -19,8 +19,7 @@ struct WordOwlApp: App {
             }
             else {
                 ContentView()
-            }
-//                .statusBar(hidden: true)
+            }                
         }
     }
 }

@@ -34,11 +34,12 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Dictionary Tab")) {
-                    Toggle("Show Dictionary Tab", isOn: $showingDictionaryTab.animation())
+                Section(header: Text(iPadVersion ? "Dictionary View" : "Dictionary Tab")) {
+                    Toggle(iPadVersion ? "Show Dictionary View" : "Show Dictionary Tab", isOn: $showingDictionaryTab.animation())
                         .onChange(of: showingDictionaryTab) { newValue in
                             updateDictionaryTabVisibility(newValue)
                         }
+                        .icon("book.closed")
                 }
                 
                 Section(header: Text("Defaults")) {
@@ -49,6 +50,7 @@ struct SettingsView: View {
                         //.navigationBarTitle("Default Ordering")
                         //.navigationBarTitleDisplayMode(.inline)
                     }
+                    .icon("list.number")
                     Picker("Default Detail", selection: $selectedResultDetailType) {
                         ForEach(0...(ResultDetailType.allResultDetailTypes.count-1), id: \.self) {i in
                             Text(ResultDetailType.allResultDetailTypes[i].name).tag(i)
@@ -56,6 +58,7 @@ struct SettingsView: View {
                         //.navigationBarTitle("Default Ordering")
                         //.navigationBarTitleDisplayMode(.inline)
                     }
+                    .icon("info.circle")
                 }
                 
                 Section(header: Text("Export")) {
@@ -71,25 +74,32 @@ struct SettingsView: View {
                         .frame(width: 150)
                         .pickerStyle(SegmentedPickerStyle())
                     }
+                    .icon("paintbrush")
                     Toggle("Use Multiple Lines", isOn: $addNewLines)
+                        .icon("arrow.up.and.down.text.horizontal")
                 }
                 Section(header: Text("Input")) {
                     NavigationLink(destination: SingleCharacterInputSettingsView()) {
                         Text("Character Input")
+                            .icon("textformat")
                     }
                     NavigationLink(destination: SpacesInputSettingsView()) {
                         Text("Crossword Solver Input")
+                            .icon("newspaper")
                     }
                 }
                 
                 Section {
                     if !iPadVersion {
-                        Toggle("Fewer Rainbows", isOn: $simpleIcons)
-                    }
-                    if !iPadVersion {
-                        Toggle("Disable Haptics", isOn: $hapticsDisabled.animation())
+                        Toggle("Reduce Colours", isOn: $simpleIcons)
+                            .icon("paintpalette")
                     }
                     Toggle("Hide Help Buttons", isOn: $hideHelpButtons)
+                        .icon(hideHelpButtons ? "circle.slash" : "questionmark.circle")
+                    if !iPadVersion {
+                        Toggle("Disable Haptics", isOn: $hapticsDisabled.animation())
+                            .icon("hand.tap")
+                    }
                 } header: { Text("Customisation") } footer: {
                     if hapticsDisabled {
                         Text("Some in-app haptics will be disabled. The rest are controlled through your device's settings.")
@@ -136,8 +146,8 @@ struct SettingsView: View {
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     if iPadVersion {
-                        Button(action: {showingAlert = true}) {
-                            Image(systemName: "arrow.counterclockwise")
+                        Button("Reset") {
+                            showingAlert = true
                         }
                     }
                 }
@@ -162,6 +172,7 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView(showWelcomeScreen: {}, showUpdateScreen: {}, updateDictionaryTabVisibility: {_ in })
+            .navigationViewStyle(.stack)
     }
 }
 

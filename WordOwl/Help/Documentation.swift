@@ -37,6 +37,12 @@ extension Document {
             return .wordLengthRangeGuide
         case .matchesPatternTool:
             return .matchesPatternGuide
+        case .wordleSolver:
+            return .wordleSolverGuide
+        case .domingoSolver:
+            return .domingoSolverGuide
+        case .wordWheelSolver:
+            return .wordWheelSolverGuide
         default: return nil
         }
     }
@@ -46,7 +52,8 @@ extension Document {
     ]
     
     static let toolGuides = [
-        anagramsGuide, crosswordSolverGuide, containsStringGuide, firstLetterGuide, startingStringGuide, lastLetterGuide, endingStringGuide, containsOnlyGuide, containsAtLeastGuide, containsQuantitiesGuide, wordLengthGuide, wordLengthRangeGuide, matchesPatternGuide
+        anagramsGuide, crosswordSolverGuide, containsStringGuide, firstLetterGuide, startingStringGuide, lastLetterGuide, endingStringGuide, containsOnlyGuide, containsAtLeastGuide, containsQuantitiesGuide, wordLengthGuide, wordLengthRangeGuide,
+        wordleSolverGuide, domingoSolverGuide, wordWheelSolverGuide, matchesPatternGuide
     ]
     
     static let compoundSearchDocuments = [
@@ -56,7 +63,7 @@ extension Document {
     // General Guides
     
     static let checklistMode = Document(
-        icon: "checkmark.circle",
+        icon: Icon.VariableIcon.image("checkmark.circle"),
         name: "Checklist Mode",
         items: [
             Item(
@@ -84,7 +91,7 @@ extension Document {
     )
     
     static let exportingResults = Document(
-        icon: "square.and.arrow.up",
+        icon: Icon.VariableIcon.image("square.and.arrow.up"),
         name: "Exporting Results",
         items: [
             Item(
@@ -102,8 +109,8 @@ extension Document {
     )
     
     static let dictionarySelection = Document(
-        icon: "book.closed",
-        name: "Dictionary Selection",
+        icon: Icon.VariableIcon.image("book.closed"),
+        name: "Dictionaries",
         items: [
             Item(
                 type: .paragraph,
@@ -118,7 +125,7 @@ extension Document {
     )
     
     static let orderingResults = Document(
-        icon: "arrow.up.arrow.down",
+        icon: Icon.VariableIcon.image("arrow.up.arrow.down"),
         name: "Sorting Results",
         items: [
             Item(
@@ -135,7 +142,7 @@ extension Document {
     )
     
     static let resultDetail = Document(
-        icon: "info.circle",
+        icon: Icon.VariableIcon.image("info.circle"),
         name: "Additional Detail",
         items: [
             Item(
@@ -158,7 +165,7 @@ extension Document {
     // Tool Guides
     
     static let anagramsGuide = Document(
-        icon: Tool.anagramsTool.symbolName ?? "doc",
+        icon: Tool.anagramsTool.icon,
         name: Tool.anagramsTool.name,
         items: [
             Item(type: .tool, tool: Tool.anagramsTool),
@@ -173,7 +180,7 @@ extension Document {
     )
     
     static let crosswordSolverGuide = Document(
-        icon: Tool.crosswordSolver.symbolName ?? "doc",
+        icon: Tool.crosswordSolver.icon,
         name: Tool.crosswordSolver.name,
         items: [
             Item(type: .tool, tool: Tool.crosswordSolver),
@@ -199,7 +206,7 @@ extension Document {
     )
     
     static let containsStringGuide = Document(
-        icon: Tool.containsStringTool.symbolName ?? "doc",
+        icon: Tool.containsStringTool.icon,
         name: Tool.containsStringTool.name,
         items: [
             Item(type: .tool, tool: Tool.containsStringTool),
@@ -218,7 +225,7 @@ extension Document {
     )
     
     static let firstLetterGuide = Document(
-        icon: Tool.firstLetterTool.symbolName ?? "doc",
+        icon: Tool.firstLetterTool.icon,
         name: Tool.firstLetterTool.name,
         items: [
             Item(type: .tool, tool: Tool.firstLetterTool),
@@ -233,7 +240,7 @@ extension Document {
     )
     
     static let lastLetterGuide = Document(
-        icon: Tool.lastLetterTool.symbolName ?? "doc",
+        icon: Tool.lastLetterTool.icon,
         name: Tool.lastLetterTool.name,
         items: [
             Item(type: .tool, tool: Tool.lastLetterTool),
@@ -248,7 +255,7 @@ extension Document {
     )
     
     static let startingStringGuide = Document(
-        icon: Tool.startingStringTool.symbolName ?? "doc",
+        icon: Tool.startingStringTool.icon,
         name: Tool.startingStringTool.name,
         items: [
             Item(type: .tool, tool: Tool.startingStringTool),
@@ -263,7 +270,7 @@ extension Document {
     )
     
     static let endingStringGuide = Document(
-        icon: Tool.endingStringTool.symbolName ?? "doc",
+        icon: Tool.endingStringTool.icon,
         name: Tool.endingStringTool.name,
         items: [
             Item(type: .tool, tool: Tool.endingStringTool),
@@ -278,13 +285,13 @@ extension Document {
     )
     
     static let containsOnlyGuide = Document(
-        icon: Tool.containsOnlyTool.symbolName ?? "doc",
+        icon: Tool.containsOnlyTool.icon,
         name: Tool.containsOnlyTool.name,
         items: [
             Item(type: .tool, tool: Tool.containsOnlyTool),
             Item(
                 type: .paragraph,
-                text: "The **Contains Only** tool is used to search for words which only contains letters from a specified list. The returned words may contain these letters multiple times. Before searching, select which letters to allow from the 'Characters' menu."
+                text: "The **Contains Only** tool is used to search for words which only contains letters from a specified list. The returned words may contain these letters multiple times. If the *Character Picker* input mode is chosen, select which letters to allow from the 'Characters' menu. If the *Plain Text Input* mode is chosen, simply type in the desired letters."
             ),
             Item(type: .header, text: "Example"),
             Item(type: .filter, filter: Filter.exampleContainsAtLeastFilter()),
@@ -293,13 +300,13 @@ extension Document {
     )
     
     static let containsAtLeastGuide = Document(
-        icon: Tool.containsAtLeastTool.symbolName ?? "doc",
+        icon: Tool.containsAtLeastTool.icon,
         name: Tool.containsAtLeastTool.name,
         items: [
             Item(type: .tool, tool: Tool.containsAtLeastTool),
             Item(
                 type: .paragraph,
-                text: "The **Contains At Least** tool is used to search for words contain certain letters. To use the tool, select which letters to require from the 'Characters' menu. The words returned may contain additional letters, but must contain the letters you specify."
+                text: "The **Contains At Least** tool is used to search for words contain certain letters. If the *Character Picker* input mode is chosen, select which letters to require from the 'Characters' menu. If the *Plain Text Input* mode is chosen, simply type in the desired letters. The words returned may contain additional letters, but must contain the letters you specify."
             ),
             Item(type: .header, text: "Example"),
             Item(type: .filter, filter: Filter.exampleContainsAtLeastFilter()),
@@ -308,7 +315,7 @@ extension Document {
     )
     
     static let containsQuantitiesGuide = Document(
-        icon: Tool.containsQuantitiesTool.symbolName ?? "doc",
+        icon: Tool.containsQuantitiesTool.icon,
         name: Tool.containsQuantitiesTool.name,
         items: [
             Item(type: .tool, tool: Tool.containsQuantitiesTool),
@@ -319,7 +326,7 @@ extension Document {
             Item(type: .header, text: "Selecting Characters"),
             Item(
                 type: .paragraph,
-                text: "To use the tool, begin by selecting a list of letters under 'Add Characters'. The search will only return words that contain these characters. When you exit this view, you will be able to assign a quantity to each selected letter with the plus (+) and minus (-) buttons. You can also swipe to delete a character you no longer want to include."
+                text: "There are two options for selecting characters. If you use the *Plain Text Input* mode, simply type the characters you want, repeating characters to indicate quantities. Alternatively, you can use the *Character Picker* input mode. To use this mode, begin by selecting a list of letters under 'Add Characters'. The search will only return words that contain these characters. When you exit this view, you will be able to assign a quantity to each selected letter with the plus (+) and minus (-) buttons. You can also swipe to delete a character you no longer want to include."
             ),
             Item(type: .image, image: Image("Docs Contains Quantities")),
             Item(type: .header, text: "Allowing Other Letters"),
@@ -339,7 +346,7 @@ extension Document {
     )
     
     static let wordLengthGuide = Document(
-        icon: Tool.wordLengthTool.symbolName ?? "doc",
+        icon: Tool.wordLengthTool.icon,
         name: Tool.wordLengthTool.name,
         items: [
             Item(type: .tool, tool: Tool.wordLengthTool),
@@ -354,7 +361,7 @@ extension Document {
     )
     
     static let wordLengthRangeGuide = Document(
-        icon: Tool.wordLengthRangeTool.symbolName ?? "doc",
+        icon: Tool.wordLengthRangeTool.icon,
         name: Tool.wordLengthRangeTool.name,
         items: [
             Item(type: .tool, tool: Tool.wordLengthRangeTool),
@@ -369,7 +376,7 @@ extension Document {
     )
     
     static let matchesPatternGuide = Document(
-        icon: Tool.matchesPatternTool.symbolName ?? "doc",
+        icon: Tool.matchesPatternTool.icon,
         name: Tool.matchesPatternTool.name,
         items: [
             Item(type: .tool, tool: Tool.matchesPatternTool),
@@ -415,11 +422,63 @@ extension Document {
         ]
     )
     
+    static let wordleSolverGuide = Document(
+        icon: Tool.wordleSolver.icon,
+        name: Tool.wordleSolver.name,
+        items: [
+            Item(type: .tool, tool: Tool.wordleSolver),
+            Item(
+                type: .paragraph,
+                text: "The **Wordle Solver** tool can be used to help solve Wordle puzzles. Once you have made a number of guesses, open the tool and enter each of your guesses on a new line as shown below."
+            ),
+            Item(type: .image, image: Image("Docs Wordle Guesses")),
+            Item(
+                type: .paragraph,
+                text: "Your guesses will now appear in the form of a grid in the space below your entries. You can now input letter colours by tapping on the letters to cycle through grey, yellow and green. Take care to match all of the colours correctly."
+            ),
+            Item(type: .image, image: Image("Docs Wordle Colours")),
+            Item(
+                type: .paragraph,
+                text: "When you are ready, hit the search button to reveal all possible solutions."
+            ),
+        ]
+    )
+    
+    static let domingoSolverGuide = Document(
+        icon: Tool.domingoSolver.icon,
+        name: Tool.domingoSolver.name,
+        items: [
+            Item(type: .tool, tool: Tool.domingoSolver),
+            Item(
+                type: .paragraph,
+                text: "The **Domingo Solver** can be used to help solve puzzles from the iOS puzzle game *Domingo*. To use the tool, enter the starting letters (those preceding the '❖') and the ending letters (those following the '❖'). The tool will return all possible words which match these letters, allowing you to search through the results for candidate solutions to the puzzle."
+            ),
+            Item(type: .header, text: "Example"),
+            Item(type: .filter, filter: Filter.exampleDomingoFilter()),
+            Item(type: .results, results: ["Volcanoes", "Volleys", "Volunteers"]),
+        ]
+    )
+    
+    static let wordWheelSolverGuide = Document(
+        icon: Tool.wordWheelSolver.icon,
+        name: Tool.wordWheelSolver.name,
+        items: [
+            Item(type: .tool, tool: Tool.wordWheelSolver),
+            Item(
+                type: .paragraph,
+                text: "The **Word Wheel Solver** can be used to help solve 'word wheel' puzzles that challenge you to list as many words as possible which are made up of only certain letters (usually arranged in a wheel). To use the tool, enter these 'allowed letters' in the first input box. To solve word wheels in which a central letter must be included in all words, enter this letter into the second input box."
+            ),
+            Item(type: .header, text: "Example"),
+            Item(type: .filter, filter: Filter.exampleWordWheelFilter()),
+            Item(type: .results, results: ["Impalpable", "Amiable", "Imbalm"]),
+        ]
+    )
+    
     // Compound Search
     
     static let compoundSearchIntroduction = Document(
-        icon: CompoundSearchView.icon,
-        name: "Using Compound Search",
+        icon: Icon.VariableIcon.image(CompoundSearchView.icon),
+        name: "Compound Search",
         items: [
             Item(
                 type: .paragraph,
@@ -470,7 +529,7 @@ extension Document {
     )
     
     static let invertedFilters = Document(
-        icon: "exclamationmark.arrow.triangle.2.circlepath",
+        icon: Icon.VariableIcon.image("exclamationmark.arrow.triangle.2.circlepath"),
         name: "Inverting Filters",
         items: [
             Item(

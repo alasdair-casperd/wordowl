@@ -130,6 +130,20 @@ extension Filter {
         return Filter(id: UUID(), tool: Tool.matchesPatternTool, aggregateInput: aggregateInput, inverted: false)
     }
     
+    static func exampleDomingoFilter() -> Filter {
+        let aggregateInput = AggregateInput()
+        aggregateInput.x = "Vol"
+        aggregateInput.y = "s"
+        return Filter(id: UUID(), tool: Tool.domingoSolver, aggregateInput: aggregateInput, inverted: false)
+    }
+    
+    static func exampleWordWheelFilter() -> Filter {
+        let aggregateInput = AggregateInput()
+        aggregateInput.x = "abelmp"
+        aggregateInput.y = "i"
+        return Filter(id: UUID(), tool: Tool.wordWheelSolver, aggregateInput: aggregateInput, inverted: false)
+    }
+    
     static func exampleCompoundSearchFilters1() -> [Filter] {
         
         let a1 = AggregateInput()

@@ -9,7 +9,7 @@ func wordLength(_ words: [String], _ aggregateInput: AggregateInput) async -> [S
     return await baseWordLength(words, aggregateInput.i)
 }
 
-private func baseWordLength(_ words: [String], _ i: Int) async -> [String] {
+func baseWordLength(_ words: [String], _ i: Int) async -> [String] {
         
     var output = [String]()
     

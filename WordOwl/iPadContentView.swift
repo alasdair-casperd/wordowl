@@ -67,6 +67,23 @@ struct iPadContentView: View {
                     }
                 }
             }
+            VStack {
+                Spacer()
+                Image(systemName: "ipad.landscape")
+                    .font(.largeTitle)
+                    .foregroundColor(.accentColor)
+                HStack {
+                    Spacer()
+                    Text("To start, select a tool from the sidebar or rotate your device to the landscape orientation.")
+                        .multilineTextAlignment(.center)
+                        .frame(maxWidth: 380)
+                        .padding()
+                    Spacer()
+                }
+                Spacer()
+            }
+            .foregroundColor(.secondary)
+            .background(Color.backgroundColor).edgesIgnoringSafeArea(.all)
         }
         
         
@@ -93,7 +110,7 @@ struct iPadContentView: View {
         .fullScreenCover(isPresented: $showingCompoundSearchView) {
             CompoundSearchView()
         }
-        .fullScreenCover(isPresented: $showingWelcomeView) {
+        .sheet(isPresented: $showingWelcomeView) {
             GreetingView(greeting: Greeting.welcomeToWordOwl)
         }
         .fullScreenCover(isPresented: $showingUpdateView) {

@@ -10,8 +10,7 @@ import SwiftUI
 struct ToolInputView: View {
     
     var tool: Tool
-    @ObservedObject var aggregateInput: AggregateInput
-    
+    @ObservedObject var aggregateInput: AggregateInput    
     var body: some View {
         switch tool.input {
         case .character:
@@ -30,6 +29,10 @@ struct ToolInputView: View {
             CharacterQuantitiesView(tool: tool, aggregateInput: aggregateInput)
         case .code:
             CodeInputView(tool: tool, aggregateInput: aggregateInput)
+        case .twoStrings:
+            DoubleStringInputView(tool: tool, aggregateInput: aggregateInput)
+        case .wordle:
+            WordleInputView(tool: tool, aggregateInput: aggregateInput)
         }
     }
 }

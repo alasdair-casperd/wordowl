@@ -148,6 +148,44 @@ class AggregateInput : ObservableObject, Equatable {
             else {
                 return "None"
             }
+        case .twoStrings:
+            if tool == .domingoSolver {
+                if x == "" {
+                    return "❖ \(y.lowercased())"
+                }
+                else {
+                    return "\(x.capitalized) ❖ \(y.lowercased())"
+                }
+            }
+            else {
+                return "\(x.uppercased()), \(y.uppercased())"
+            }
+        case .wordle:
+            var guessCount = 0
+            var i = 0
+            while i < 6 {
+                if inputStrings[i] == "" {
+                    break
+                }
+                guessCount += 1
+                i += 1
+            }
+            if guessCount == 0 {
+                return "None"
+            }
+            else if guessCount < 3 {
+                var output = ""
+                for j in 0..<i {
+                    output += inputStrings[j]
+                    if j + 1 < i {
+                        output += ", "
+                    }
+                }
+                return output
+            }
+            else {
+                return "\(guessCount)"
+            }
         }
     }        
 }

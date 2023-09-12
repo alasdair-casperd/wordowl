@@ -37,9 +37,14 @@
 		BD97115327A6BB00006A6C09 /* DetailsPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD97115227A6BB00006A6C09 /* DetailsPair.swift */; };
 		BD97115527A6BB9C006A6C09 /* DictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD97115427A6BB9C006A6C09 /* DictionaryView.swift */; };
 		BD97115727A6C704006A6C09 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD97115627A6C704006A6C09 /* Sorting.swift */; };
+		BD9C67532A1A12BF003DB722 /* DomingoSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9C67522A1A12BF003DB722 /* DomingoSolver.swift */; };
+		BD9C67552A1A20D3003DB722 /* WordWheelSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9C67542A1A20D3003DB722 /* WordWheelSolver.swift */; };
+		BD9C67572A1A7C9B003DB722 /* WordleInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9C67562A1A7C9B003DB722 /* WordleInputView.swift */; };
+		BD9C67592A1BD003003DB722 /* WordleSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9C67582A1BD003003DB722 /* WordleSolver.swift */; };
 		BDAFA17429D6E875000C7A02 /* ResultsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAFA17329D6E875000C7A02 /* ResultsListView.swift */; };
 		BDAFA17629D6EB3B000C7A02 /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAFA17529D6EB3B000C7A02 /* SearchButton.swift */; };
 		BDAFA17829D74C19000C7A02 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAFA17729D74C19000C7A02 /* Haptics.swift */; };
+		BDB76DFE2A191FE000177F18 /* ToolInstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB76DFD2A191FE000177F18 /* ToolInstructionsView.swift */; };
 		BDB83F8D27972FB7006DD718 /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB83F8C27972FB7006DD718 /* ToolView.swift */; };
 		BDB83F9127973335006DD718 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB83F9027973335006DD718 /* ResultsView.swift */; };
 		BDBA79422864757900CA21EC /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBA79412864757900CA21EC /* GreetingView.swift */; };
@@ -115,9 +120,14 @@
 		BD97115227A6BB00006A6C09 /* DetailsPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPair.swift; sourceTree = "<group>"; };
 		BD97115427A6BB9C006A6C09 /* DictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryView.swift; sourceTree = "<group>"; };
 		BD97115627A6C704006A6C09 /* Sorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sorting.swift; sourceTree = "<group>"; };
+		BD9C67522A1A12BF003DB722 /* DomingoSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomingoSolver.swift; sourceTree = "<group>"; };
+		BD9C67542A1A20D3003DB722 /* WordWheelSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordWheelSolver.swift; sourceTree = "<group>"; };
+		BD9C67562A1A7C9B003DB722 /* WordleInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleInputView.swift; sourceTree = "<group>"; };
+		BD9C67582A1BD003003DB722 /* WordleSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleSolver.swift; sourceTree = "<group>"; };
 		BDAFA17329D6E875000C7A02 /* ResultsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsListView.swift; sourceTree = "<group>"; };
 		BDAFA17529D6EB3B000C7A02 /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		BDAFA17729D74C19000C7A02 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		BDB76DFD2A191FE000177F18 /* ToolInstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolInstructionsView.swift; sourceTree = "<group>"; };
 		BDB83F8C27972FB7006DD718 /* ToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolView.swift; sourceTree = "<group>"; };
 		BDB83F9027973335006DD718 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		BDBA79412864757900CA21EC /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
@@ -243,6 +253,9 @@
 			children = (
 				BD97113D27A6A21D006A6C09 /* StartingString.swift */,
 				BD97114E27A6B7E2006A6C09 /* EndingString.swift */,
+				BD9C67522A1A12BF003DB722 /* DomingoSolver.swift */,
+				BD9C67542A1A20D3003DB722 /* WordWheelSolver.swift */,
+				BD9C67582A1BD003003DB722 /* WordleSolver.swift */,
 				BD13F47A27A70915004950E1 /* Anagrams.swift */,
 				BDE44A3D27A8121E004951E0 /* WordLength.swift */,
 				BDE44A3F27A85092004951E0 /* ContainsString.swift */,
@@ -350,14 +363,16 @@
 		BDFC2CE527AAA45C003EEB06 /* Input */ = {
 			isa = PBXGroup;
 			children = (
+				BDB76DFD2A191FE000177F18 /* ToolInstructionsView.swift */,
 				BDD665F827B064DF008C6D3A /* ToolInputView.swift */,
-				BDFC2CEA27AAA481003EEB06 /* CharacterInputView.swift */,
 				BDFC2CEC27AAA48B003EEB06 /* StringInputView.swift */,
+				BDFC2CEA27AAA481003EEB06 /* CharacterInputView.swift */,
 				BDFC2CE827AAA476003EEB06 /* NumberInputView.swift */,
 				BDFC2CEE27AAA494003EEB06 /* RangeInputView.swift */,
 				BDFC2CE627AAA46D003EEB06 /* SpacesInputView.swift */,
 				BD22719027B13EAC0016468B /* MultipleCharactersView.swift */,
 				BD2271B527B301F60016468B /* CharacterQuantitiesView.swift */,
+				BD9C67562A1A7C9B003DB722 /* WordleInputView.swift */,
 			);
 			path = Input;
 			sourceTree = "<group>";
@@ -445,10 +460,12 @@
 				BD59E40227BFB96D008FB0D8 /* ChecklistView.swift in Sources */,
 				BDD665F927B064DF008C6D3A /* ToolInputView.swift in Sources */,
 				BD19008C29D899C900AB270F /* Document.swift in Sources */,
+				BDB76DFE2A191FE000177F18 /* ToolInstructionsView.swift in Sources */,
 				BDFC2CED27AAA48B003EEB06 /* StringInputView.swift in Sources */,
 				BDAFA17629D6EB3B000C7A02 /* SearchButton.swift in Sources */,
 				BD19008829D8613000AB270F /* HelpView.swift in Sources */,
 				BDFD3C702A17751700FB9EE5 /* iPadContentView.swift in Sources */,
+				BD9C67532A1A12BF003DB722 /* DomingoSolver.swift in Sources */,
 				BD19008A29D8997100AB270F /* DocumentView.swift in Sources */,
 				BDFC2CEB27AAA481003EEB06 /* CharacterInputView.swift in Sources */,
 				BD97115727A6C704006A6C09 /* Sorting.swift in Sources */,
@@ -461,11 +478,13 @@
 				BDD665F727B058C5008C6D3A /* AggregateInput.swift in Sources */,
 				BDD81B9F2A12C86200098CCE /* Tools.swift in Sources */,
 				BDDF05B32795E064000BEF85 /* SettingsView.swift in Sources */,
+				BD9C67592A1BD003003DB722 /* WordleSolver.swift in Sources */,
 				BD6FCF9627B937CA00149AC7 /* BugFixView.swift in Sources */,
 				BDC2680C29DB4C8C00B0FFAD /* Documentation.swift in Sources */,
 				BDC7B293285F7F9E0043CB85 /* ToolPickerView.swift in Sources */,
 				BD97113E27A6A21D006A6C09 /* StartingString.swift in Sources */,
 				BDD665A627AC7B66008C6D3A /* CoreDataTestView.swift in Sources */,
+				BD9C67552A1A20D3003DB722 /* WordWheelSolver.swift in Sources */,
 				BD97113427A5BD14006A6C09 /* Bundle-Decodable.swift in Sources */,
 				BD22719127B13EAC0016468B /* MultipleCharactersView.swift in Sources */,
 				BDDB90B3285F5DEF001D16A8 /* CompoundSearchRowView.swift in Sources */,
@@ -483,6 +502,7 @@
 				BD6FCF9827B93C8D00149AC7 /* ContainsQuantities.swift in Sources */,
 				BD2271B627B301F60016468B /* CharacterQuantitiesView.swift in Sources */,
 				BDFD3C6E2A1401CA00FB9EE5 /* MainDictionaryView.swift in Sources */,
+				BD9C67572A1A7C9B003DB722 /* WordleInputView.swift in Sources */,
 				BDFD3C6A2A13D4BD00FB9EE5 /* HelpButton.swift in Sources */,
 				BD22719327B151BC0016468B /* ContainsOnly.swift in Sources */,
 				BD97114F27A6B7E2006A6C09 /* EndingString.swift in Sources */,

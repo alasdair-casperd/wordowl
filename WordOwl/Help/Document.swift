@@ -26,7 +26,31 @@ struct Document: Identifiable {
     }
     
     let id: UUID = UUID()
-    let icon: String
+    let icon: Icon.VariableIcon
     let name: String
     let items: [Item]
+    
+    var description: LocalizedStringKey {
+        var output: LocalizedStringKey = ""
+        for item in items {
+            if item.type == .paragraph {
+                output = item.text ?? ""
+                break
+            }
+        }
+        if output != "" {
+            return output
+        }
+        return "Empty page."
+    }
+    
+    var tool: Tool? {
+        var output: Tool? = nil
+        for item in items {
+            if item.type == .tool {
+                output = item.tool
+            }
+        }
+        return output
+    }
 }

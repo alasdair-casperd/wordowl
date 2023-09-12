@@ -45,7 +45,7 @@ struct AskForReviewView: View {
             .onAppear {
                 print(UserDefaults.standard.integer(forKey: "totalSearches"))
                 let reviewKey = "userHasBeenAskedForReview"
-                if !UserDefaults.standard.bool(forKey: reviewKey) && UserDefaults.standard.integer(forKey: "totalSearches") > 4 {
+                if !UserDefaults.standard.bool(forKey: reviewKey) && UserDefaults.standard.integer(forKey: "totalSearches") > 8 {
                     UserDefaults.standard.set(true, forKey: reviewKey)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                         requestReview()
@@ -101,7 +101,7 @@ struct ToolRowItem: View {
                     .foregroundColor(.secondary)
             }
         }
-        .icon(tool.symbolName ?? "magnifyingglass", color: simpleIcons ? .accentColor : tool.color, style: simpleIcons ? (iPadVersion ? .small : .large) : (iPadVersion ? .smallBold : .bold))
+        .icon(tool.icon, color: simpleIcons ? .accentColor : tool.color, style: simpleIcons ? (iPadVersion ? .small : .large) : (iPadVersion ? .smallBold : .mediumBold))        
         .onAppear {
             simpleIcons = UserDefaults.standard.bool(forKey: SettingsView.simpleIconsKey)
         }

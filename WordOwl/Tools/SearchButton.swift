@@ -25,28 +25,35 @@ struct SearchButton: View {
     @State private var showingAlert = false
     
     var body: some View {
-        Section {
-            HStack {
-                Spacer()
-                Button {
-                    Task {
-                        await initiateSearch()
-                    }
-                } label: {
-                    HStack {
-                        ProgressView()
-                            .opacity(0)
-                        Spacer()
-                        Text("Search for Words")
-                        Spacer()
-                        ProgressView()
-                            .opacity(searchInitiated ? 1 : 0)
-                    }
+        HStack {
+            Spacer()
+            Button {
+                Task {
+                    await initiateSearch()
                 }
-                .disabled(searchDisabled || searchInitiated)
-                Spacer()
+            } label: {
+                HStack {
+                    ProgressView()
+                        .opacity(0)
+                    Spacer()
+                    Text(Image(systemName: "magnifyingglass")) + Text(" Search for Words")
+                    Spacer()
+                    ProgressView()
+                        .opacity(searchInitiated ? 1 : 0)
+                }
             }
-        } footer: {
+            .disabled(searchDisabled || searchInitiated)
+            Spacer()
+        }
+        .foregroundColor(.white)
+        .padding(.horizontal)
+        .padding(.vertical, 14)
+        .background {
+            RoundedRectangle(cornerRadius: 14)
+                .foregroundColor((searchDisabled || searchInitiated) ? Color(uiColor: .systemGray4) : .accentColor)
+        }
+        .padding(.bottom, 20)
+        .overlay {
             NavigationLink(
                 destination:
                     ResultsView(
@@ -70,6 +77,7 @@ struct SearchButton: View {
                 EmptyView()
             }
         }
+        .listRowInsets(EdgeInsets())
     }
     
     func filteredResults(_ filter: Filter, input inputWords: [String]) async -> [String] {
@@ -117,8 +125,10 @@ struct SearchButton: View {
     }
 }
 
-//struct SearchButton_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SearchButton()
-//    }
-//}
+struct SearchButton_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            ToolView(tool: Tool.containsStringTool, selectedSorting: Sorting.allSortings[0], selectedResultDetailType: ResultDetailType.allResultDetailTypes[0])
+        }
+    }
+}

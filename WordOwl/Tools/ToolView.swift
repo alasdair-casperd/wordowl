@@ -27,59 +27,41 @@ struct ToolView: View {
     }
     
     var body: some View {
-        ZStack {
-            Form {
-                Section(footer: Text(tool.description)) {
-                    ToolInputView(tool: tool, aggregateInput: aggregateInput)
-                }
-                
-                ToolSettingsView(tool: tool, aggregateInput: aggregateInput)
-                
-                Section(header: Text("Search Options")) {
-                    Picker("Dictionary", selection: $selectedDictionary) {
-                        ForEach(Dictionary.mainDictionaries) { dictionary in
-                            
-                            Text(dictionary.shortName)
-//                            HStack {
-//                                Image(systemName: dictionary.symbolName ?? "text.book.closed.fill")
-//                                Text(dictionary.name)
-//                            }
+
+        Form {
+            
+            ToolInputView(tool: tool, aggregateInput: aggregateInput)
+            ToolSettingsView(tool: tool, aggregateInput: aggregateInput)
+            
+            Section(header: Text("Search Options")) {
+                Picker("Dictionary", selection: $selectedDictionary) {
+                    ForEach(Dictionary.mainDictionaries) { dictionary in
+                        Text(dictionary.shortName)
                             .tag(dictionary)
-                        }
-                        //.navigationTitle("Dictionary")
                     }
                 }
-                
-                Section(header: Text("Display Options")) {
-                    Picker("Sort Words", selection: $selectedSorting) {
-                        ForEach(Sorting.allSortings) {sorting in
-                            Text(sorting.name).tag(sorting)
-                        }
-                        //.navigationTitle("Sort Words")
-                    }
-                    Picker("Additional Detail", selection: $selectedResultDetailType) {
-                        ForEach(ResultDetailType.allResultDetailTypes) { resultDetailType in
-                            Text(resultDetailType.name).tag(resultDetailType)
-                        }
-                        //.navigationTitle("Additional Detail")
-                    }
-                }
-                SearchButton(filters: filters, selectedDictionary: selectedDictionary, selectedSorting: selectedSorting, selectedResultDetailType: selectedResultDetailType, searchDisabled: searchDisabled)
             }
-//            NavigationLink(
-//                destination:
-//                    ResultsView(
-//                    tool: tool,
-//                    dictionary:selectedDictionary,
-//                    sorting: selectedSorting,
-//                    resultDetailType: selectedResultDetailType,
-//                    aggregateInput: aggregateInput,
-//                    input: styledAggregateInput(aggregateInput, tool: tool)
-//                    ),
-//                isActive:
-//                    $showingResults
-//            ) { EmptyView() }
+            
+            Section {
+                Picker("Sort Words", selection: $selectedSorting) {
+                    ForEach(Sorting.allSortings) {sorting in
+                        Text(sorting.name).tag(sorting)
+                    }
+                }
+                Picker("Additional Detail", selection: $selectedResultDetailType) {
+                    ForEach(ResultDetailType.allResultDetailTypes) { resultDetailType in
+                        Text(resultDetailType.name).tag(resultDetailType)
+                    }                    
+                }
+            } header: {
+                Text("Display Options")
+                
+            } footer: {
+                SearchButton(filters: filters, selectedDictionary: selectedDictionary, selectedSorting: selectedSorting, selectedResultDetailType: selectedResultDetailType, searchDisabled: searchDisabled)
+                    .padding(.top, 40)
+            }
         }
+
         .navigationTitle(tool.shortName)
         .toolbar {
             ToolbarItem() {
@@ -111,6 +93,21 @@ struct ToolView: View {
                 return aggregateInput.styledFor(tool: tool) == "None"
             case .code:
                 return aggregateInput.inputStrings[0] == ""
+            case .twoStrings:
+                return aggregateInput.x == "" && aggregateInput.y == ""
+            case .wordle:
+                var correctLengths = true
+                var allEmpty = true
+                for i in 0...5 {
+                    let l = aggregateInput.inputStrings[i].count
+                    if !(l == 0 || l == 5) {
+                        correctLengths = false
+                    }
+                    else if l == 5 {
+                        allEmpty = false
+                    }
+                }
+                return !correctLengths || allEmpty
             default:
                 return false
             }
@@ -123,7 +120,7 @@ struct ToolView: View {
 struct ToolView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ToolView(tool: Tool.containsStringTool, selectedSorting: Sorting.allSortings[0], selectedResultDetailType: ResultDetailType.allResultDetailTypes[0])
+            ToolView(tool: Tool.wordleSolver, selectedSorting: Sorting.allSortings[0], selectedResultDetailType: ResultDetailType.allResultDetailTypes[0])
         }
     }
 }

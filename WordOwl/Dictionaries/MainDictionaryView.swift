@@ -38,16 +38,18 @@ struct MainDictionaryView: View {
                                     Label("Copy", systemImage: "doc.on.doc")
                                 }
 
-                                Button {
-                                    if UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: result) {
-                                        wordToDefine = result
-                                        showingDefinition = true
+                                if !iPadVersion {
+                                    Button {
+                                        if UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: result) {
+                                            wordToDefine = result
+                                            showingDefinition = true
+                                        }
+                                        else {
+                                            openURL(URL(string: "https://www.google.com/search?q=" + result)!)
+                                        }
+                                    } label: {
+                                        Label("Define", systemImage: "text.magnifyingglass")
                                     }
-                                    else {
-                                        openURL(URL(string: "https://www.google.com/search?q=" + result)!)
-                                    }
-                                } label: {
-                                    Label("Define", systemImage: "text.magnifyingglass")
                                 }
                             }
                         }
@@ -64,14 +66,13 @@ struct MainDictionaryView: View {
                                     .tag(dictionary)
                             }
                         }
-                        .onChange(of: dictionary) { _ in
-                            if searchString.count > 0 {
-                                Task {
-                                    await searchDictionary()
-                                }
+                        .onChange(of: dictionary) { newDictionary in
+                            searchString = ""
+                            if newDictionary == .wordOwl {
+                                searchResults = wordOwl100
                             }
                             else {
-                                searchResults = Array(dictionary.words.prefix(maxLength + 1))
+                                searchResults = small100
                             }
                         }
                         .pickerStyle(SegmentedPickerStyle())
@@ -107,8 +108,8 @@ struct MainDictionaryView: View {
                     }
                     .textCase(.none)
                     .font(.body)
-                    .padding(.horizontal, -14)
                     .padding(.bottom)
+                    .listRowInsets(EdgeInsets.none)
                     
                 } footer: {
                     if searchResults.count >= maxLength - 1 {
@@ -120,7 +121,7 @@ struct MainDictionaryView: View {
             .navigationTitle("Dictionary")
         }
         .onAppear {
-            searchResults = Array(dictionary.words.prefix(maxLength + 1))
+            searchResults = wordOwl100 //Array(dictionary.words.prefix(maxLength + 1))
             wordToDefine = ""
         }
         .sheet(isPresented: $showingDefinition) {
@@ -136,6 +137,212 @@ struct MainDictionaryView: View {
         await searchResults = Tool.startingStringTool.searchFunction(dictionary.words, aggregateInput)
         searchInProgress = false
     }
+    
+    let wordOwl100 = [
+        "a",
+        "aa",
+        "aah",
+        "aahed",
+        "aahing",
+        "aahs",
+        "aal",
+        "aalii",
+        "aaliis",
+        "aals",
+        "aardvark",
+        "aardvarks",
+        "aardwolf",
+        "aardwolves",
+        "aargh",
+        "aarrgh",
+        "aarrghh",
+        "aas",
+        "aasvogel",
+        "aasvogels",
+        "ab",
+        "aba",
+        "abaca",
+        "abacas",
+        "abaci",
+        "aback",
+        "abacterial",
+        "abacus",
+        "abacuses",
+        "abaft",
+        "abaka",
+        "abakas",
+        "abalone",
+        "abalones",
+        "abamp",
+        "abampere",
+        "abamperes",
+        "abamps",
+        "abandon",
+        "abandoned",
+        "abandoner",
+        "abandoners",
+        "abandoning",
+        "abandonment",
+        "abandonments",
+        "abandons",
+        "abapical",
+        "abas",
+        "abase",
+        "abased",
+        "abasedly",
+        "abasement",
+        "abasements",
+        "abaser",
+        "abasers",
+        "abases",
+        "abash",
+        "abashed",
+        "abashes",
+        "abashing",
+        "abashment",
+        "abashments",
+        "abasia",
+        "abasias",
+        "abasing",
+        "abatable",
+        "abate",
+        "abated",
+        "abatement",
+        "abatements",
+        "abater",
+        "abaters",
+        "abates",
+        "abating",
+        "abatis",
+        "abatises",
+        "abator",
+        "abators",
+        "abattis",
+        "abattises",
+        "abattoir",
+        "abattoirs",
+        "abaxial",
+        "abaxile",
+        "abba",
+        "abbacies",
+        "abbacy",
+        "abbas",
+        "abbatial",
+        "abbe",
+        "abbes",
+        "abbess",
+        "abbesses",
+        "abbey",
+        "abbeys",
+        "abbot",
+        "abbotcies",
+        "abbotcy",
+        "abbots",
+        "abbreviate"
+    ]
+    
+    let small100 = [
+        "a",
+        "aachen",
+        "aardvark",
+        "aardvarks",
+        "aaron",
+        "aback",
+        "abacus",
+        "abacuses",
+        "abaft",
+        "abalone",
+        "abandon",
+        "abandoned",
+        "abandoning",
+        "abandonment",
+        "abandons",
+        "abase",
+        "abased",
+        "abasement",
+        "abases",
+        "abash",
+        "abashed",
+        "abasing",
+        "abate",
+        "abated",
+        "abatement",
+        "abatements",
+        "abates",
+        "abating",
+        "abattoir",
+        "abattoirs",
+        "abbess",
+        "abbesses",
+        "abbey",
+        "abbeys",
+        "abbot",
+        "abbots",
+        "abbotsbury",
+        "abbreviate",
+        "abbreviated",
+        "abbreviates",
+        "abbreviating",
+        "abbreviation",
+        "abbreviations",
+        "abdicant",
+        "abdicants",
+        "abdicate",
+        "abdicated",
+        "abdicates",
+        "abdicating",
+        "abdication",
+        "abdications",
+        "abdomen",
+        "abdomens",
+        "abdominal",
+        "abdominally",
+        "abduct",
+        "abducted",
+        "abducting",
+        "abduction",
+        "abductions",
+        "abductor",
+        "abductors",
+        "abducts",
+        "abe",
+        "abeam",
+        "abearances",
+        "abed",
+        "abel",
+        "aberaeron",
+        "aberavon",
+        "aberdare",
+        "aberdaron",
+        "aberdeen",
+        "aberdonian",
+        "aberdonians",
+        "aberdovey",
+        "aberfeldy",
+        "abergele",
+        "aberrance",
+        "aberrances",
+        "aberrancy",
+        "aberrant",
+        "aberrate",
+        "aberrated",
+        "aberrates",
+        "aberrating",
+        "aberration",
+        "aberrational",
+        "aberrations",
+        "abersoch",
+        "abertilly",
+        "aberystwyth",
+        "abet",
+        "abets",
+        "abetted",
+        "abetting",
+        "abettor",
+        "abettors",
+        "abeyance",
+        "abeyant"
+    ]
 }
 
 struct MainDictionaryView_Previews: PreviewProvider {
